@@ -11,7 +11,7 @@
 
 
 
-<title>—</title>
+<title>Big Data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -268,27 +268,48 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Francisco JNM</a>
+      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Portada</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalar R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="instalar-r.html">Instalar R</a>
+    </li>
+    <li>
+      <a href="instalar-rtools.html">Instalar Rtools</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="shinyapps.html">Aplicaciones útiles</a>
-</li>
-<li>
-  <a href="cienciadedatos.html">Ciencia de datos</a>
-</li>
-<li>
-  <a href="nominas.html">Calcula tu nómina</a>
-</li>
-<li>
-  <a href="matematicas.html">Matemáticas con Sage</a>
-</li>
-<li>
-  <a href="acercademi.html">Acerca de mí</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lenguaje R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="Vectores.html">Vectores</a>
+    </li>
+    <li>
+      <a href="estructuras-de-control.html">Estructuras de control</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos.html">Marcos de datos</a>
+    </li>
+    <li>
+      <a href="Marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -302,20 +323,67 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">—</h1>
+<h1 class="title toc-ignore">Big Data</h1>
 
 </div>
 
 
-<div id="situación-actual-del-covid-19-en-españa" class="section level3">
-<h3>Situación actual del covid-19 en España</h3>
-<p>El covid-19 es una pandemia global y España uno de los países mas afectados.</p>
-<p>Desde esta app puedes obtener un <a href="https://francisco-jnm.shinyapps.io/coronavirus/">resumén rápido</a> dividido en tres secciones:</p>
+<div id="qué-es-esto-del-big-data-es-que-existe-el-small-data" class="section level3">
+<h3>¿Qué es esto del Big Data? ¿Es que existe el “small” Data?</h3>
+<p>El Big Data está revolucionando el mundo de los negocios pero… ¿qué es el Big Data? ¿Es una evolución de algo que ya existía y se llamaba “Data” o “Small Data”? ¿Se trata de Estadística? ¿Se trata de aprovechar la información almacenada en Internet?</p>
+</div>
+<div id="al-principio-era-aprendizaje-estadístico" class="section level3">
+<h3>Al principio era: Aprendizaje estadístico</h3>
+<p>El Aprendizaje Estadístico estaba ya entre nosotros mucho antes de que tuviéramos que clasificar los datos en “grandes” y “no tan grandes”. Los expertos en Aprendizaje Estadístico eran llamados “científicos de los datos” y a finales de los años 70 del siglo XX ya habían desarrollado técnicas tales como:</p>
 <ul>
-<li>Contadores de número de personas infectadas, fallecidas y sanadas. Las cifras se dan por cada 10.000 habitantes, para poder comparar con otros países.</li>
-<li>Gráficas de tendencia a medio y corto plazo, que indican si la tendencia de la pandemia es ascendente o descendente.</li>
-<li>Comparación con otros países.</li>
+<li>Análisis exploratorio de datos</li>
+<li>Inferencia estadística</li>
+<li>Regresión lineal</li>
+<li>Regresión logística</li>
+<li>Modelos lineales generalizados</li>
 </ul>
+<p>The ultimate goal of these techniques was (and still is) to <em>learn from data</em>: using data extracted from a population to make models and using these models to predict a future behaviour of the population or, at least, to achieve a better understanding of the main components of the population.</p>
+<p>Non-linear techniques where computationally prohibitive but this situation changed in the 1980s and new methods were introduced taking advantage of the unprecedented computer power:</p>
+<ul>
+<li>Classification and regression trees</li>
+<li>Cross Validation</li>
+<li>Generalizes additive models</li>
+</ul>
+<p>Then came the revolution: Internet, Facebook, Twitter, Amazon, Google, YouTube, Instagram and smartphones equipped with high definition cameras and accelerometers. Nowadays, these social networks and gadgets store globally more data every two days than were collected in the entire 20th century by any means. A bit scary.</p>
+<p>On one hand, it was overwhelming for data scientists coping with this but on the other hand the revolution itself provided help:</p>
+<ul>
+<li>Personal computers’ processing power has moved forward at an incredible pace while prices have felt down, so data scientists have no longer to apply for using a big computer in some big lab for a couple of hours.</li>
+<li>Powerful software has been developed and, in some cases such as the R system, they are even freely available (so any data scientist can use them and contribute to enhance them)</li>
+<li>New types of data store systems, such that Hadoop HDFS, have been designed to stores huge data files across multiple machines and manage them fast and efficiently.</li>
+<li>New engines, such that Apache Spark, have been built to manage huge data files either on the old or new store systems</li>
+<li>Companies like Amazon, Google or Microsoft offer to “rent” their computers for an affordable hourly rate to store and process data</li>
+</ul>
+</div>
+<div id="now-we-have-machine-learning" class="section level3">
+<h3>Now we have… Machine Learning</h3>
+<p>So Internet social networks combined with digital gadgets posed new defies, in the form of gigantic data sets, to Statistical Learning and, at the same time, provided tools to handle them.</p>
+<p>It was (or it is) the beginning of a new era for Statistical Learning, now so connected to machines to get and manage data that the entire field is better known as Machine Learning.</p>
+</div>
+<div id="and-why-is-all-that-so-important-in-real-life" class="section level3">
+<h3>And why is all that so important in real life?</h3>
+<p>The key is <em>prediction</em>. The list of organizations interested in prediction is never ending:</p>
+<ul>
+<li>Any sales department would want to be able to predict the effect on sales of advertising expenditure in different media (tv, radio, newspapers, Facebook…)</li>
+<li>Any government would want to be able to predict the impact on unemployment of new economic measures</li>
+<li>Any political party would want to be able to predict the impact on votes of some policys they are thinking to support</li>
+<li>Any pharmaceutical company would want to be able to predict the side effects of a new medicament they are developing</li>
+<li>Any person with shares in a company would want to be able to predict the effect on the stocks of a new strategy of the company</li>
+<li>Any insurance company would want to be able to predict the likelihood of his customers having expensive medical problems</li>
+</ul>
+<p>And so forth…</p>
+<p>Data scientists have been trying to make these predictions but there was always a problem to take accuracy to the highest level: not enough data. Not enough data to construct a prediction model, not enough data to test the model…</p>
+<p>Well, according to what we have said above, there are no more excuses: we have tons of data and tools to analyse them. So, everybody is expecting high level predictions on any issue.</p>
+<p>Will it happen? Nobody knows or, at least, I don’t know. But it’s worth a try to learn about all of this.</p>
+</div>
+<div id="what-can-we-fin-in-this-web-site" class="section level3">
+<h3>What can we fin in this web site?</h3>
+<p>I’ll be offering in the blog briefings of what I know so far (not much) and what I manage to learn (as much as possible) about the issues outlined above.</p>
+<p>That’s all. Hope you all like it!</p>
 </div>
 
 
