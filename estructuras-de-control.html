@@ -11,8 +11,9 @@
 
 
 
-<title>—</title>
+<title>estructuras-de-control.utf8</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -22,6 +23,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -67,6 +77,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -268,27 +279,48 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Francisco JNM</a>
+      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Portada</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalar R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="instalar-r.html">Instalar R</a>
+    </li>
+    <li>
+      <a href="instalar-rtools.html">Instalar Rtools</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="shinyapps.html">Aplicaciones útiles</a>
-</li>
-<li>
-  <a href="cienciadedatos.html">Ciencia de datos</a>
-</li>
-<li>
-  <a href="nominas.html">Calcula tu nómina</a>
-</li>
-<li>
-  <a href="matematicas.html">Matemáticas con Sage</a>
-</li>
-<li>
-  <a href="acercademi.html">Acerca de mí</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lenguaje R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="Vectores.html">Vectores</a>
+    </li>
+    <li>
+      <a href="estructuras-de-control.html">Estructuras de control</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos.html">Marcos de datos</a>
+    </li>
+    <li>
+      <a href="Marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -302,13 +334,65 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">—</h1>
 
 </div>
 
 
-<div id="en-construcción" class="section level3">
-<h3>En construcción</h3>
+<table>
+<tbody>
+<tr class="odd">
+<td>output:html_document</td>
+</tr>
+</tbody>
+</table>
+<div id="estructura-for" class="section level3">
+<h3>Estructura “for () {}”</h3>
+<pre class="r"><code>ciudades &lt;- vector (mode = &quot;character&quot;, length = 0)
+ciudades &lt;- append(ciudades, &quot;Málaga&quot;)
+ciudades &lt;- append(ciudades, &quot;Madrid&quot;)
+ciudades &lt;- append(ciudades, &quot;Cádiz&quot;)
+ciudades &lt;- append(ciudades, &quot;Segovia&quot;)
+ciudades &lt;- append(ciudades, &quot;Huelva&quot;)
+ciudades &lt;- append(ciudades, &quot;Sevilla&quot;)
+ciudades &lt;- append(ciudades, &quot;Córdoba&quot;)
+ciudades &lt;- append(ciudades, &quot;Badajoz&quot;)
+ciudades &lt;- append(ciudades, &quot;Granada&quot;)
+ciudades &lt;- append(ciudades, &quot;Badajoz&quot;)
+
+for (i in 1:length(ciudades)) {
+  print(paste(&quot;Ciudad número:&quot;, i, ciudades[i]))
+}</code></pre>
+<pre><code>## [1] &quot;Ciudad número: 1 Málaga&quot;
+## [1] &quot;Ciudad número: 2 Madrid&quot;
+## [1] &quot;Ciudad número: 3 Cádiz&quot;
+## [1] &quot;Ciudad número: 4 Segovia&quot;
+## [1] &quot;Ciudad número: 5 Huelva&quot;
+## [1] &quot;Ciudad número: 6 Sevilla&quot;
+## [1] &quot;Ciudad número: 7 Córdoba&quot;
+## [1] &quot;Ciudad número: 8 Badajoz&quot;
+## [1] &quot;Ciudad número: 9 Granada&quot;
+## [1] &quot;Ciudad número: 10 Badajoz&quot;</code></pre>
+</div>
+<div id="estructura-if-else" class="section level3">
+<h3>Estructura “if () {} else {}”</h3>
+<pre class="r"><code>primos = c(2, 3, 5, 7, 11)
+for (i in 1:length(ciudades)) {
+  if (i %in% primos) {
+    print(paste(&quot;=====&gt; Ciudad prima:&quot;, i, ciudades[i]))
+  } else {
+    print(paste(&quot;Ciudad NO prima:&quot;, i, ciudades[i]))
+  }
+}</code></pre>
+<pre><code>## [1] &quot;Ciudad NO prima: 1 Málaga&quot;
+## [1] &quot;=====&gt; Ciudad prima: 2 Madrid&quot;
+## [1] &quot;=====&gt; Ciudad prima: 3 Cádiz&quot;
+## [1] &quot;Ciudad NO prima: 4 Segovia&quot;
+## [1] &quot;=====&gt; Ciudad prima: 5 Huelva&quot;
+## [1] &quot;Ciudad NO prima: 6 Sevilla&quot;
+## [1] &quot;=====&gt; Ciudad prima: 7 Córdoba&quot;
+## [1] &quot;Ciudad NO prima: 8 Badajoz&quot;
+## [1] &quot;Ciudad NO prima: 9 Granada&quot;
+## [1] &quot;Ciudad NO prima: 10 Badajoz&quot;</code></pre>
 </div>
 
 
@@ -320,7 +404,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

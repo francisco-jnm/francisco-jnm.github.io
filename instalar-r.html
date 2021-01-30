@@ -13,6 +13,7 @@
 
 <title>—</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -22,6 +23,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -67,6 +77,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -268,27 +279,48 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Francisco JNM</a>
+      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Portada</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalar R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="instalar-r.html">Instalar R</a>
+    </li>
+    <li>
+      <a href="instalar-rtools.html">Instalar Rtools</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="shinyapps.html">Aplicaciones útiles</a>
-</li>
-<li>
-  <a href="cienciadedatos.html">Ciencia de datos</a>
-</li>
-<li>
-  <a href="nominas.html">Calcula tu nómina</a>
-</li>
-<li>
-  <a href="matematicas.html">Matemáticas con Sage</a>
-</li>
-<li>
-  <a href="acercademi.html">Acerca de mí</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lenguaje R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="Vectores.html">Vectores</a>
+    </li>
+    <li>
+      <a href="estructuras-de-control.html">Estructuras de control</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos.html">Marcos de datos</a>
+    </li>
+    <li>
+      <a href="Marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -307,20 +339,48 @@ $(document).ready(function () {
 </div>
 
 
-<div id="situación-actual-del-covid-19-en-españa" class="section level3">
-<h3>Situación actual del covid-19 en España</h3>
-<p>El covid-19 es una pandemia global y España uno de los países mas afectados.</p>
-<p>Desde esta app puedes obtener un <a href="https://francisco-jnm.shinyapps.io/coronavirus/">resumén rápido</a> dividido en tres secciones:</p>
-<ul>
-<li>Contadores de número de personas infectadas, fallecidas y sanadas. Las cifras se dan por cada 10.000 habitantes, para poder comparar con otros países.</li>
-<li>Gráficas de tendencia a medio y corto plazo, que indican si la tendencia de la pandemia es ascendente o descendente.</li>
-<li>Comparación con otros países.</li>
-</ul>
+<div id="instalación-de-r" class="section level3">
+<h3>Instalación de R</h3>
+<p>Web de R: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
+<p>Descarga: <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></p>
+<p>Se hace la instalación por defecto.</p>
+<p>En realidad, nunca vamos a iniciar sesión en R. Siempre se maneja a través de RStudio pero es necesario instalar R antes que RStudio.</p>
 </div>
-<div id="qué-es-una-aplicación-web-de-shiny" class="section level3">
-<h3>¿Qué es una aplicación web de Shiny?</h3>
-<p>Shiny es un paquete del <a href="https://es.wikipedia.org/wiki/R_(lenguaje_de_programaci%C3%B3n)">lenguaje de programación R</a> que permite construir aplicaciones web interactivas (apps).</p>
-<p>Puedes aprender más sobre Shiny en <a href="https://shiny.rstudio.com/">su web oficial</a>.</p>
+<div id="instalación-de-rstudio" class="section level3">
+<h3>Instalación de RStudio</h3>
+<p>Web de R studio: <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a></p>
+<p>Descarga: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></p>
+<p>Descargamos “Rstudio Desktop Open Source License FREE”.</p>
+<p>Se hace la instalación por defecto.</p>
+</div>
+<div id="git" class="section level3">
+<h3>Git</h3>
+<p>Git es un sistema de control de versiones de proyectos. Generalmente, nuestro proyecto estará en un directorio raíz del que colgarán diversos subdirectorios y archivos. Con Git, podemos crear una copia oculta del directorio raiz y etiquetarla como “versión 0” o similar. De esta manera, tendremos un histórico de nuestro proyecto y siempre podremos volver a una versión concreta, crear “ramas” para avanzar el proyecto en diferentes direcciones, mezclar elementos de diversas versiones y ramas, etc…</p>
+</div>
+<div id="instalación-de-git" class="section level3">
+<h3>Instalación de Git</h3>
+<p>Web de Git: <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p>
+<p>Descarga: <a href="https://git-scm.com/download/win" class="uri">https://git-scm.com/download/win</a></p>
+<p>Se hace la instalación por defecto. Es un típico entorno de “comandos en pantalla negra”, estilo “unix”.</p>
+</div>
+<div id="github" class="section level3">
+<h3>GitHub</h3>
+<p>Web de GitHub: <a href="https://github.com/" class="uri">https://github.com/</a></p>
+<p>GitHub es una nube donde almacenar proyectos, cada almacén se llama “repositorio”. Lo que le hace particular es que se pueden gestionar esos proyectos con Git, con lo que se tiene un histórico de versiones on-line y otros programadores pueden crear sus “ramas” de nuestro proyecto, mezclar elementos de diversas ramas y versiones, etc.</p>
+<p>Doy de alta la cuenta “francisco-jnm”. Uno de los repositorios lo configuro para funcionar como mi sitio web: <a href="https://francisco-jnm.github.io/" class="uri">https://francisco-jnm.github.io/</a></p>
+<pre><code>Pendiente: cómo construir una web en un repositorio de GitHub</code></pre>
+</div>
+<div id="github-desktop" class="section level3">
+<h3>GitHub Desktop</h3>
+<p>Descarga de GitHub Desktop: <a href="https://desktop.github.com/" class="uri">https://desktop.github.com/</a><br />
+Se hace la instalación por defecto.</p>
+<p>La gestión de GitHub directamente con Git es demasiado espartana. En la práctica se utiliza “GitHub Desktop” que interacciona visualmente con Git.</p>
+<p>Con GitHub Desktop instalado, el uso básico de GitHub es como sigue:</p>
+<ul>
+<li><p>Para empezar un proyecto: creamos un repositorio en GitHub y pulsamos “Clone or download &gt; Open in desktop”. GitHub Desktop nos pedirá un directorio local y quedará asociado al repositorio.</p></li>
+<li><p>Cada vez que tengamos el proyecto en un estado que valga la pena guardar: abrimos “GitHub desktop” y ponemos un nombre descriptivo en el campo “summary” del proyecto. Pulsamos “Commit to master” y luego “Sync”. Se subirá todo a la web de “GitHub” y quedará como una versión del proyecto.</p></li>
+<li><p>Cuando nos interesa un repositorio de alguien: vamos a GitHub y entramos en el repositorio. Pulsamos en “Fork” y se crea una copia en nuestra cuenta. Pulsamos “Clone or download &gt; Open in desktop”. GitHub Desktop nos pedirá un directorio local y quedará asociado al repositorio.</p></li>
+</ul>
 </div>
 
 
@@ -332,7 +392,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
