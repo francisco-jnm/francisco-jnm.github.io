@@ -11,7 +11,7 @@
 
 
 
-<title>Vectores.utf8</title>
+<title>—</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -296,6 +296,9 @@ $(document).ready(function () {
     <li>
       <a href="instalar-rtools.html">Instalar Rtools</a>
     </li>
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -318,7 +321,43 @@ $(document).ready(function () {
       <a href="marcos-de-datos.html">Marcos de datos</a>
     </li>
     <li>
-      <a href="Marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+      <a href="marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+    <li>
+      <a href="descargar-salvar-recuperar.html">Descargar / Salvar / Recuperar</a>
+    </li>
+    <li>
+      <a href="valores-perdidos.html">Valores perdidos</a>
+    </li>
+    <li>
+      <a href="directorios.html">Listar directorios</a>
+    </li>
+    <li>
+      <a href="expresiones-regulares.html">Expresiones regulares</a>
+    </li>
+    <li>
+      <a href="fechas.html">Fechas</a>
+    </li>
+    <li>
+      <a href="muestras-aleatorias.html">Muestras aleatorias</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Obtener datos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="leer-hojas-excel.html">Leer hojas Excel</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-xml.html">Leer ficheros XML</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-html.html">Leer ficheros HTML</a>
     </li>
   </ul>
 </li>
@@ -334,17 +373,11 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">—</h1>
 
 </div>
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td>output:html_document</td>
-</tr>
-</tbody>
-</table>
 <p>“Vector” es el término que se utiliza en R para referirse a las variables.</p>
 <p>Los 4 tipos básicos de vectores (variables) en R son “character”, “numeric”, “logical” y “Date”. Se puede utilizar el “=” como operador de asignación para crear un vector, pero lo estándar es utilizar “&lt;-” que se lee “get”.</p>
 <pre class="r"><code>ciudades &lt;- &quot;Málaga&quot;
@@ -384,6 +417,17 @@ print(ciudades)</code></pre>
 print(ciudades)</code></pre>
 <pre><code>##  [1] &quot;Málaga&quot;  &quot;Madrid&quot;  &quot;Cádiz&quot;   &quot;Segovia&quot; &quot;Huelva&quot;  &quot;Sevilla&quot; &quot;Cádiz&quot;  
 ##  [8] &quot;Córdoba&quot; &quot;Badajoz&quot; &quot;Granada&quot; &quot;Badajoz&quot;</code></pre>
+<p>La función <strong>sort</strong> ordena el vector:</p>
+<pre class="r"><code>print(sort(ciudades))</code></pre>
+<pre><code>##  [1] &quot;Badajoz&quot; &quot;Badajoz&quot; &quot;Cádiz&quot;   &quot;Cádiz&quot;   &quot;Córdoba&quot; &quot;Granada&quot; &quot;Huelva&quot; 
+##  [8] &quot;Madrid&quot;  &quot;Málaga&quot;  &quot;Segovia&quot; &quot;Sevilla&quot;</code></pre>
+<pre class="r"><code>print(sort(ciudades, decreasing = TRUE))</code></pre>
+<pre><code>##  [1] &quot;Sevilla&quot; &quot;Segovia&quot; &quot;Málaga&quot;  &quot;Madrid&quot;  &quot;Huelva&quot;  &quot;Granada&quot; &quot;Córdoba&quot;
+##  [8] &quot;Cádiz&quot;   &quot;Cádiz&quot;   &quot;Badajoz&quot; &quot;Badajoz&quot;</code></pre>
+<p>La función <strong>unique</strong> deja sólo los valores distintos del vector</p>
+<pre class="r"><code>print(unique(ciudades))</code></pre>
+<pre><code>## [1] &quot;Málaga&quot;  &quot;Madrid&quot;  &quot;Cádiz&quot;   &quot;Segovia&quot; &quot;Huelva&quot;  &quot;Sevilla&quot; &quot;Córdoba&quot;
+## [8] &quot;Badajoz&quot; &quot;Granada&quot;</code></pre>
 <p>Una regla básica de los vectores es que todos sus valores tienen que ser del mismo tipo. Si añadimos un elemento de tipo distinto a los existentes, R lo convertirá todo al tipo mas general. En última instancia, R lo convertirá todo a carácter.</p>
 <pre class="r"><code>anios = 1984
 anios &lt;- append(anios, lubridate::dmy(&quot;01-01-1984&quot;))

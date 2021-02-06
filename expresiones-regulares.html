@@ -378,14 +378,127 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<p>Las expresiones regulares son los métodos más poderosos para filtrar y transformar datos pero cuesta un poco acostumbrarse a ellas. En la práctica, suele ser suficiente con dos funciones:</p>
+<ul>
+<li>“grepl” para buscar un patrón en una cadena de caracteres</li>
+<li>“gsub” para sustituir un patrón por otro en una cadena de caracteres</li>
+</ul>
+<div id="la-función-grepl-encontrar" class="section level3">
+<h3>La función grepl (encontrar)</h3>
+<p>El uso más simple de “grepl” sería para averiguar si una palabra está en una cadena. “grepl” devuelve TRUE o FALSE según la palabra esté o no.</p>
+<pre class="r"><code>grepl(pattern = &quot;Panza&quot;,
+      x = c(&quot;Don Quijote&quot;, &quot;Sancho Panza&quot;))</code></pre>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+<p>Las opciones de búsqueda son inacabables.</p>
+<p>El “gorrito” busca sólo al principio de la palabra.</p>
+<pre class="r"><code>grepl(pattern = &quot;^Don&quot;,
+      x = c(&quot;Don Quijote&quot;, &quot;Es Don Quijote&quot;))</code></pre>
+<pre><code>## [1]  TRUE FALSE</code></pre>
+<p>El “dolar” busca sólo al final de la palabra</p>
+<pre class="r"><code>grepl(pattern = &quot;mar$&quot;,
+      x = c(&quot;El mar&quot;, &quot;El mar mediterraneo&quot;))</code></pre>
+<pre><code>## [1]  TRUE FALSE</code></pre>
+<p>El “+” busca repeticiones de la parte del patrón que va entre paréntesis. Los paréntesis son ignorados por “grepl”.</p>
+<pre class="r"><code>grepl(pattern = &quot;y b&quot;,    x = &quot;muy              bien&quot;)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>grepl(pattern = &quot;y( )+b&quot;, x = &quot;muy              bien&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>La “doble barra” seguida de una “d” indica un número del 0 al 9.</p>
+<pre class="r"><code>grepl(pattern = &quot;\\d&quot;, x = c(&quot;1 de enero&quot;, &quot;ONU&quot;, &quot;???&quot;))</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+<p>La “doble barra” seguida de una “w” indica un número del 0 al 9, una letra (minúscula o mayúscula) o un guión bajo.</p>
+<pre class="r"><code>grepl(pattern = &quot;\\w&quot;, x = c(&quot;1 de enero&quot;, &quot;ONU&quot;, &quot;???&quot;))</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
+<p>El “punto” vale por cualquier carácter.</p>
+<pre class="r"><code>grepl(pattern = &quot;.&quot;, x = c(&quot;1 de enero&quot;, &quot;ONU&quot;, &quot;???&quot;))</code></pre>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
+<p>La “doble barra” seguida de un “s” indica un espacio, tabulador o fin de línea</p>
+<pre class="r"><code>grepl(pattern = &quot;\\s&quot;, x = 
+&quot;Hola Adios&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>La “doble barra” seguida de un “n” indica fin de línea</p>
+<pre class="r"><code>grepl(pattern = &quot;\\n&quot;, x = 
+&quot;Hola 
+Adios&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>El “corchete” es como un “o”, vale cualquiera de los elementos que contiene.</p>
+<pre class="r"><code>grepl(pattern = &quot;b[ou]&quot;, x = &quot;muy bien&quot;)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>grepl(pattern = &quot;b[ou]&quot;, x = &quot;muy bonito&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>grepl(pattern = &quot;b[ou]&quot;, x = &quot;muy bueno&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Dentro del “corchete”, el “guión” permite definir una secuencia:</p>
+<pre class="r"><code>grepl(pattern = &quot;[a-d]&quot;, x = c(&quot;badajoz&quot;, &quot;toronto&quot;)) #letras a, b, c, d</code></pre>
+<pre><code>## [1]  TRUE FALSE</code></pre>
+<p>Dentro del “corchete”, el “gorrito” es la negación:</p>
+<pre class="r"><code>grepl(pattern = &quot;[^a-z]&quot;, x = c(&quot;badajoz&quot;, &quot;Badajoz&quot;)) #no minúsculas</code></pre>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+</div>
+<div id="la-función-gsub-sustituir" class="section level3">
+<h3>La función gsub (sustituir)</h3>
+<pre class="r"><code>cadena &lt;- &quot;      :: C/ Castilla, 28001, Madrid, España.   &quot;</code></pre>
+<p>Eliminar espacios a principios de palabra:</p>
+<pre class="r"><code>gsub(pattern = &quot;^\\s+&quot;, replacement = &quot;&quot;, x = cadena)</code></pre>
+<pre><code>## [1] &quot;:: C/ Castilla, 28001, Madrid, España.   &quot;</code></pre>
+<p>Eliminar espacios a final de palabra:</p>
+<pre class="r"><code>gsub(pattern = &quot;\\s+$&quot;, replacement = &quot;&quot;, x = cadena)</code></pre>
+<pre><code>## [1] &quot;      :: C/ Castilla, 28001, Madrid, España.&quot;</code></pre>
+<p>Eliminar las letras (minúsculas, mayúsculas y la ñ):</p>
+<pre class="r"><code>gsub(pattern = &quot;[a-zA-Zñ]+&quot;, replacement = &quot;&quot;, x = cadena)</code></pre>
+<pre><code>## [1] &quot;      :: / , 28001, , .   &quot;</code></pre>
+<p>Eliminar números:</p>
+<pre class="r"><code>gsub(pattern = &quot;\\d&quot;, replacement = &quot;&quot;, x = cadena)</code></pre>
+<pre><code>## [1] &quot;      :: C/ Castilla, , Madrid, España.   &quot;</code></pre>
+<p>Eliminar todo menos losnúmeros:</p>
+<pre class="r"><code>gsub(pattern = &quot;[^0-9]&quot;, replacement = &quot;&quot;, x = cadena)</code></pre>
+<pre><code>## [1] &quot;28001&quot;</code></pre>
+<p><strong>Esta es la funcionalidad mas potente (aunque es todo un arte): </strong> Particionar una cadena en trozos y “jugar” con los trozos. Los trozos se identifican mediante una doble barra y un número de orden.</p>
+<p>En este caso, extraemos el nombre de la calle que es el segundo de los cuatro trozos de la partición:</p>
+<pre class="r"><code>gsub(pattern = &quot;(^\\s+::\\s)(.+)(,\\s[0-9])(.+)$&quot;, 
+     replacement = &quot;\\2&quot;, 
+     x=cadena)</code></pre>
+<pre><code>## [1] &quot;C/ Castilla&quot;</code></pre>
+</div>
+<div id="filtrar-un-marco-de-datos-con-grepl" class="section level3">
+<h3>Filtrar un marco de datos con grepl</h3>
+<pre class="r"><code>provincias &lt;- read.table(
+   file = &quot;provincias.csv&quot;,
+   header = TRUE,
+   sep = &quot;;&quot;,
+   dec = &quot;.&quot;,
+   na.strings = &quot;&quot;,
+   stringsAsFactors = FALSE,
+   encoding = &#39;UTF-8&#39;
+)
+
+library(dplyr)</code></pre>
+<p>Provincias cuyo nombre contiene un espacio:</p>
+<pre class="r"><code>provincias %&gt;%
+   select(provincia) %&gt;%
+   filter(grepl(pattern = &quot;\\s&quot;, x = provincia))</code></pre>
+<pre><code>##                provincia
+## 1            Ciudad Real
+## 2              La Coruña
+## 3         Islas Baleares
+## 4             Las Palmas
+## 5 Santa Cruz de Tenerife</code></pre>
+<p>Regiones cuyo nombre empieza por vocal:</p>
+<pre class="r"><code>provincias  %&gt;%
+   group_by(region) %&gt;%
+   summarize(total = length(provincias)) %&gt;%
+   select(region) %&gt;%
+   filter(grepl(pattern = &quot;^[AEIOU]&quot;, x = region))</code></pre>
+<pre><code>## # A tibble: 6 x 1
+##   region        
+##   &lt;chr&gt;         
+## 1 Andalucía     
+## 2 Aragón        
+## 3 Asturias      
+## 4 Extremadura   
+## 5 Islas Baleares
+## 6 Islas Canarias</code></pre>
+</div>
 
 
 

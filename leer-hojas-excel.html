@@ -378,14 +378,32 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<p>Las hojas Excel se distribuyen todavía en dos formatos: xls y xlsx.</p>
+<p>El paquete <strong>readxl</strong> es la mejor opción para poder leer ambos formatos con una única función: <strong>read_excel</strong>.</p>
+<p><strong>read_excel</strong> sólo permite leer, no genera hojas Excel en ningún formato.</p>
+<p>Hay paquetes que permiten leer y escribir pero normalmente exigen instalar alguna máquina java o sólo trabajan con uno de los dos formatos.</p>
+<pre class="r"><code>library(&quot;readxl&quot;)
+
+xls &lt;- read_excel(path = &quot;provincias.xls&quot;)
+head(xls, 10)</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   region             provincia   habitantes superficie   pib pib_per_capita
+##   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 Castilla-La Mancha Albacete        390313      14926  7763          19888
+## 2 Castilla-La Mancha Ciudad Real     500280      19813 10391          20771
+## 3 Castilla-La Mancha Cuenca          201091      17140  4553          22639
+## 4 Castilla-La Mancha Guadalajara     255532      12214  4847          18968
+## 5 Castilla-La Mancha Toledo          685865      15369 12361          18022</code></pre>
+<pre class="r"><code>xlsx &lt;- read_excel(path = &quot;provincias.xlsx&quot;)
+head(xlsx, 10)</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   region             provincia   habitantes superficie   pib pib_per_capita
+##   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 Castilla-La Mancha Albacete        390313      14926  7763          19888
+## 2 Castilla-La Mancha Ciudad Real     500280      19813 10391          20771
+## 3 Castilla-La Mancha Cuenca          201091      17140  4553          22639
+## 4 Castilla-La Mancha Guadalajara     255532      12214  4847          18968
+## 5 Castilla-La Mancha Toledo          685865      15369 12361          18022</code></pre>
 
 
 

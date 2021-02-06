@@ -378,14 +378,96 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<div id="fechas" class="section level2">
+<h2>Fechas</h2>
+<p>La fecha del sistema se obtiene con la función <strong>Sys.Date</strong>:</p>
+<pre class="r"><code>Sys.Date()</code></pre>
+<pre><code>## [1] &quot;2021-02-06&quot;</code></pre>
+<p>Con la función <strong>as.Date</strong> podemos crear una fecha introduciéndola (obligatoriamente) con el formato “yyyy-mm-dd”:</p>
+<pre class="r"><code>navidad_2017 &lt;- as.Date(&quot;2017-12-25&quot;)
+navidad_2017</code></pre>
+<pre><code>## [1] &quot;2017-12-25&quot;</code></pre>
+<p>La función <strong>format</strong> permite diseccionar una fecha en día, mes, día de la semana…</p>
+<pre class="r"><code>format(navidad_2017, &quot;%d&quot;) # día</code></pre>
+<pre><code>## [1] &quot;25&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%m&quot;) # mes</code></pre>
+<pre><code>## [1] &quot;12&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%y&quot;) # año con dos dígitos</code></pre>
+<pre><code>## [1] &quot;17&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%Y&quot;) # año con cuatro dígitos</code></pre>
+<pre><code>## [1] &quot;2017&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%a&quot;) # nombre corto del día de la semana</code></pre>
+<pre><code>## [1] &quot;lu.&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%A&quot;) # nombre largo del día de la semana </code></pre>
+<pre><code>## [1] &quot;lunes&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%b&quot;) # nombre corto del día del mes</code></pre>
+<pre><code>## [1] &quot;dic.&quot;</code></pre>
+<pre class="r"><code>format(navidad_2017, &quot;%B&quot;) # nombre largo del día del mes</code></pre>
+<pre><code>## [1] &quot;diciembre&quot;</code></pre>
+<p>Se pueden combinar las opciones de <strong>format</strong>:</p>
+<pre class="r"><code>format(navidad_2017, &quot;%A, %d de %B de %Y&quot;)</code></pre>
+<pre><code>## [1] &quot;lunes, 25 de diciembre de 2017&quot;</code></pre>
+</div>
+<div id="fechas-con-horas" class="section level2">
+<h2>Fechas con horas</h2>
+<p>La función para leer la fecha y hora del sistema es <strong>Sys.time</strong>:</p>
+<pre class="r"><code>Sys.time()</code></pre>
+<pre><code>## [1] &quot;2021-02-06 20:35:20 CET&quot;</code></pre>
+<p>Mediante la función <strong>as.POSIXlt</strong> podemos crear una fecha con hora utilizando (obligatoriamente) el formato “yyyy-mm-dd hh:mm:ss”:</p>
+<pre class="r"><code>momento &lt;- as.POSIXlt(&quot;2017-12-25 22:33:44&quot; )
+momento</code></pre>
+<pre><code>## [1] &quot;2017-12-25 22:33:44 CET&quot;</code></pre>
+<p>El formato tiene un buen número de atributos que permiten diseccionar la fecha con hora:</p>
+<pre class="r"><code>attributes(momento)</code></pre>
+<pre><code>## $names
+##  [1] &quot;sec&quot;    &quot;min&quot;    &quot;hour&quot;   &quot;mday&quot;   &quot;mon&quot;    &quot;year&quot;   &quot;wday&quot;   &quot;yday&quot;  
+##  [9] &quot;isdst&quot;  &quot;zone&quot;   &quot;gmtoff&quot;
+## 
+## $class
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
+<p>La “disección” se hace utilizando los atributos como campos de la variable. Hay que poner atención en algunos atributos porque el primer elemento se numera como “0”, no como “1”.</p>
+<pre class="r"><code>momento$hour # hora</code></pre>
+<pre><code>## [1] 22</code></pre>
+<pre class="r"><code>momento$min # minutos</code></pre>
+<pre><code>## [1] 33</code></pre>
+<pre class="r"><code>momento$sec # segundos</code></pre>
+<pre><code>## [1] 44</code></pre>
+<pre class="r"><code>momento$mday # día del mes</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>momento$mon # mes del año...  empezando en 0 (enero) y acabando en 11 (diciembre)</code></pre>
+<pre><code>## [1] 11</code></pre>
+<pre class="r"><code>momento$year # año... empezando en 1900 O sea, años desde 1900</code></pre>
+<pre><code>## [1] 117</code></pre>
+<pre class="r"><code>momento$wday # día de la semana... empezando en 0 (domingo) y acabando en 6 (sábado)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>momento$yday # día del año... empezando en 0 (1 de enero) y terminando en 364 (años normales) o 365 (años bisiestos)</code></pre>
+<pre><code>## [1] 358</code></pre>
+<pre class="r"><code>momento$zone #zona horaria</code></pre>
+<pre><code>## [1] &quot;CET&quot;</code></pre>
+</div>
+<div id="el-paquete-lubridate" class="section level2">
+<h2>El paquete lubridate</h2>
+<p>Merece la pena cargar el paquete <strong>lubridate</strong> ya que aporta facilidad y utilidades para el manejo de fechas.</p>
+<pre class="r"><code>library(lubridate)</code></pre>
+<pre class="r"><code>today() # Hoy</code></pre>
+<pre><code>## [1] &quot;2021-02-06&quot;</code></pre>
+<pre class="r"><code>navidad_2017 &lt;- dmy(&quot;25122017&quot;) # Construir fecha indicando día, mes, año
+navidad_2017 &lt;- ymd(&quot;20171225&quot;) # Construir fecha indicando año, mes, día
+navidad_2017</code></pre>
+<pre><code>## [1] &quot;2017-12-25&quot;</code></pre>
+<pre class="r"><code>day(navidad_2017) # Día de la fecha</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>month(navidad_2017) # Mes de la fecha</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>year(navidad_2017) # Año de la fecha</code></pre>
+<pre><code>## [1] 2017</code></pre>
+<pre class="r"><code>navidad_2017 + days(3) # Sumar días a una fecha</code></pre>
+<pre><code>## [1] &quot;2017-12-28&quot;</code></pre>
+<pre class="r"><code>navidad_2017 + months(6) # Sumar meses a una fecha</code></pre>
+<pre><code>## [1] &quot;2018-06-25&quot;</code></pre>
+<pre class="r"><code>navidad_2017 + years(10) # Sumar años a una fecha</code></pre>
+<pre><code>## [1] &quot;2027-12-25&quot;</code></pre>
+</div>
 
 
 

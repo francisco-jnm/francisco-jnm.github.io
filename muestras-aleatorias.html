@@ -378,14 +378,124 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<div id="muestras-aleatorias-que-siguen-una-distribución-teórica" class="section level3">
+<h3>Muestras aleatorias que siguen una distribución teórica</h3>
+<p>Es muy fácil generar una muestra (semi)aleatoria que siga una distribución teórica “clásica” tal como una distribución normal, binomial o de Poisson.</p>
+<p>En realidad, generamos un vector. Cada elemento del vector recibe el nombre de “observación” de la muestra.</p>
+<p>Con la función <strong>rnorm</strong> se genera una muestra que sigue una distribución normal.</p>
+<p>Cada observación se puede interpretar como la medida de un individuo elegido aleatoriamente en una población <em>normal</em> con una media y una desviación típica conocidas.</p>
+<pre class="r"><code>muestra_normal = rnorm (n = 30, mean = 1.75, sd = 0.05)
+muestra_normal</code></pre>
+<pre><code>##  [1] 1.855695 1.731228 1.771374 1.762898 1.814125 1.667035 1.703566 1.731590
+##  [9] 1.676263 1.768603 1.819874 1.826135 1.711105 1.617126 1.735631 1.773524
+## [17] 1.743538 1.845126 1.700801 1.718243 1.718799 1.766254 1.731804 1.761791
+## [25] 1.676632 1.792812 1.770355 1.779673 1.791969 1.788575</code></pre>
+<p>Los parámetros son:</p>
+<ul>
+<li>n: número de observaciones a generar</li>
+<li>mean: media de la distribución normal</li>
+<li>sd: desviación típica de la distribución normal</li>
+</ul>
+<p>Si no se especifica la media ni la desviación típica, se suponen que son 0 y 1, respectivamente:</p>
+<pre class="r"><code>muestra_normal &lt;- rnorm (n = 10)
+muestra_normal</code></pre>
+<pre><code>##  [1] -0.42543262 -1.15621898  0.14758642 -0.74317487  0.97342516 -1.23133733
+##  [7] -1.43672454  0.53164886  1.82911205 -0.07468467</code></pre>
+<p>Con la función <strong>rbinom</strong> se genera una muestra que sigue una distribución binomial.</p>
+<p>Cada observación se puede interpretar como el número de veces que sale el número más alto al lanzar cierto número de veces un dado.</p>
+<pre class="r"><code>muestra_binomial = rbinom(n = 30, size = 60, prob = 1/6)
+muestra_binomial</code></pre>
+<pre><code>##  [1] 16 13  5 12  8 10  8 12 10 13  9 10  4 13  5 11  7  8 11 11 10  9  9 11  6
+## [26]  8 10  6  8  7</code></pre>
+<p>Los parámetros son:</p>
+<ul>
+<li>n: número de observaciones a generar</li>
+<li>size: número de veces que lanzamos el dado</li>
+<li>prob: probabilidad de que salga el número más alto en una tirada individual o, lo que es lo mismo, inverso del número de caras del dado.</li>
+</ul>
+<p>Con la función <strong>rpois</strong> se genera una muestra que sigue una distribución de Poisson.</p>
+<p>Cada observación se puede interpretar como el número de veces que llega un autobús si conocemos la frecuencia teórica del autobús y esperamos cierto tiempo.</p>
+<pre class="r"><code>#Esperamos 10 horas, la frecuencia teórica es de cuatro autobuses por hora
+muestra_poisson = rpois(n = 30, lambda = 10 * 4) 
+muestra_poisson</code></pre>
+<pre><code>##  [1] 45 42 37 34 36 36 35 41 26 39 40 43 37 51 30 44 45 40 47 50 45 54 45 26 38
+## [26] 42 38 41 35 33</code></pre>
+<p>Los parámetros son:</p>
+<ul>
+<li>n: número de observaciones a generar</li>
+<li>lambda: multiplicación del tiempo que esperamos y la frecuencia teórica</li>
+</ul>
+</div>
+<div id="muestras-aleatorias-como-subconjuntos-de-un-vector-dado" class="section level3">
+<h3>Muestras aleatorias como subconjuntos de un vector dado</h3>
+<p>Si tenemos un vector como, por ejemplo, una columna de un marco de datos, podemos extraer fácilmente una muestra aleatoria de un determinado tamaño.</p>
+<pre class="r"><code>provincias &lt;- read.table(
+   file = &quot;provincias.csv&quot;,
+   header = TRUE,
+   sep = &quot;;&quot;,
+   dec = &quot;.&quot;,
+   na.strings = &quot;&quot;,
+   stringsAsFactors = FALSE,
+   encoding = &#39;UTF-8&#39;
+)
+
+mis_provincias = sort(unique(provincias$provincia))
+mis_provincias</code></pre>
+<pre><code>##  [1] &quot;Álava&quot;                  &quot;Albacete&quot;               &quot;Alicante&quot;              
+##  [4] &quot;Almería&quot;                &quot;Asturias&quot;               &quot;Ávila&quot;                 
+##  [7] &quot;Badajoz&quot;                &quot;Barcelona&quot;              &quot;Burgos&quot;                
+## [10] &quot;Cáceres&quot;                &quot;Cádiz&quot;                  &quot;Cantabria&quot;             
+## [13] &quot;Castellón&quot;              &quot;Ceuta&quot;                  &quot;Ciudad Real&quot;           
+## [16] &quot;Córdoba&quot;                &quot;Cuenca&quot;                 &quot;Gerona&quot;                
+## [19] &quot;Granada&quot;                &quot;Guadalajara&quot;            &quot;Guipúzcoa&quot;             
+## [22] &quot;Huelva&quot;                 &quot;Huesca&quot;                 &quot;Islas Baleares&quot;        
+## [25] &quot;Jaén&quot;                   &quot;La Coruña&quot;              &quot;Las Palmas&quot;            
+## [28] &quot;León&quot;                   &quot;Lérida&quot;                 &quot;Logroño&quot;               
+## [31] &quot;Lugo&quot;                   &quot;Madrid&quot;                 &quot;Málaga&quot;                
+## [34] &quot;Melilla&quot;                &quot;Murcia&quot;                 &quot;Navarra&quot;               
+## [37] &quot;Orense&quot;                 &quot;Palencia&quot;               &quot;Pontevedra&quot;            
+## [40] &quot;Salamanca&quot;              &quot;Santa Cruz de Tenerife&quot; &quot;Segovia&quot;               
+## [43] &quot;Sevilla&quot;                &quot;Soria&quot;                  &quot;Tarragona&quot;             
+## [46] &quot;Teruel&quot;                 &quot;Toledo&quot;                 &quot;Valencia&quot;              
+## [49] &quot;Valladolid&quot;             &quot;Vizcaya&quot;                &quot;Zamora&quot;                
+## [52] &quot;Zaragoza&quot;</code></pre>
+<p>La muestra se obtiene mediante la función <strong>sample</strong>. El parámetro “size” indica el tamaño de la muestra:</p>
+<pre class="r"><code>sample(mis_provincias, size = 7)</code></pre>
+<pre><code>## [1] &quot;Jaén&quot;           &quot;Ciudad Real&quot;    &quot;Madrid&quot;         &quot;Islas Baleares&quot;
+## [5] &quot;Murcia&quot;         &quot;Cantabria&quot;      &quot;Málaga&quot;</code></pre>
+<p>Podemos permitir repeticiones con el parámetro “replace = TRUE”:</p>
+<pre class="r"><code>sample(mis_provincias[31:35], size = 7, replace = TRUE)</code></pre>
+<pre><code>## [1] &quot;Lugo&quot;   &quot;Málaga&quot; &quot;Murcia&quot; &quot;Málaga&quot; &quot;Málaga&quot; &quot;Málaga&quot; &quot;Murcia&quot;</code></pre>
+<p>También podemos tomar una muestra del marco de datos completo. El “truco” es tomar una muestra de los números de fila:</p>
+<pre class="r"><code>provincias[sample(1:nrow(provincias), 3),]</code></pre>
+<pre><code>##                region provincia habitantes superficie   pib pib_per_capita
+## 11             Aragón  Zaragoza     962432      17274 25996          27011
+## 7           Andalucía    Málaga    1645367       7306 29676          18036
+## 14 Castilla-La Mancha  Albacete     390313      14926  7763          19888</code></pre>
+</div>
+<div id="muestras-aleatorias-con-ruído" class="section level3">
+<h3>Muestras aleatorias con “ruído”</h3>
+<p>Partiendo de una muestra dada:</p>
+<pre class="r"><code>X = rnorm (n = 15, mean = 1.75, sd = 0.05)
+X</code></pre>
+<pre><code>##  [1] 1.712491 1.795802 1.743620 1.707982 1.752255 1.799856 1.800195 1.706000
+##  [9] 1.855147 1.746896 1.769189 1.700951 1.807645 1.694335 1.749408</code></pre>
+<p>, podemos construir otra aplicando cualquier transformación a ella:</p>
+<pre class="r"><code>Y &lt;- 10 * X + 2
+Y</code></pre>
+<pre><code>##  [1] 19.12491 19.95802 19.43620 19.07982 19.52255 19.99856 20.00195 19.06000
+##  [9] 20.55147 19.46896 19.69189 19.00951 20.07645 18.94335 19.49408</code></pre>
+<p>Para que esta nueva muestra no sea totalmente previsible a partir de la primera, podemos añadir un “ruído”, entiendo por ruído un muestra normal de media cero.</p>
+<pre class="r"><code>e &lt;- rnorm(15, mean = 0, sd=2)
+e</code></pre>
+<pre><code>##  [1]  1.562112271  4.333371474  2.058196811 -0.384848963 -3.446312822
+##  [6] -0.378113338  1.339794349 -0.863465461 -0.958962933  1.196134175
+## [11]  2.804901209  0.006889991 -1.663838810 -2.949351592  3.642809454</code></pre>
+<pre class="r"><code>Y = 10 * X + 2 + e
+Y</code></pre>
+<pre><code>##  [1] 20.68703 24.29139 21.49440 18.69497 16.07624 19.62045 21.34174 18.19653
+##  [9] 19.59250 20.66510 22.49679 19.01640 18.41261 15.99400 23.13689</code></pre>
+</div>
 
 
 

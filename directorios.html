@@ -378,14 +378,86 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<p>El directorio en el que R considera que estamos trabajando (“directorio de trabajo”) se puede mostrar con la función “getwd” (get working directoy):</p>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/_DOCUMENTOS_FJNM/Programacion/R/Rmarkdown_websites/ciencia-de-datos&quot;</code></pre>
+<p>Y se puede cambiar con la función “setwd” (set working directory). Hay que utilizar la barra “/” de Unix para indicar directorios, aunque se trabaje en Windows:</p>
+<pre><code>setwd(&quot;C:/directorio/directorio2&quot;)</code></pre>
+<p>Toda ruta es entendida por R como relativa al directorio de trabajo.</p>
+<p>Podemos ver el contenido del directorio de trabajo con la función “list_files”. Si indicamos “full.names = TRUE” se indicará el nombre de ruta completa (partiendo del directorio de trabajo):</p>
+<pre class="r"><code>list.files() #listado del directorio de trabajo</code></pre>
+<pre><code>##  [1] &quot;_site.yml&quot;                       &quot;baloncesto.html&quot;                
+##  [3] &quot;ciencia-de-datos.Rproj&quot;          &quot;descargar-salvar-recuperar.html&quot;
+##  [5] &quot;descargar-salvar-recuperar.Rmd&quot;  &quot;directorios.Rmd&quot;                
+##  [7] &quot;ejemplo.xml&quot;                     &quot;estructuras-de-control.Rmd&quot;     
+##  [9] &quot;expresiones-regulares.Rmd&quot;       &quot;fechas.Rmd&quot;                     
+## [11] &quot;github&quot;                          &quot;index.Rmd&quot;                      
+## [13] &quot;instalar-r.Rmd&quot;                  &quot;instalar-rtools.Rmd&quot;            
+## [15] &quot;leer-ficheros-html.Rmd&quot;          &quot;leer-ficheros-xml.Rmd&quot;          
+## [17] &quot;leer-hojas-excel.Rmd&quot;            &quot;marcos-de-datos-con-dplyr.Rmd&quot;  
+## [19] &quot;marcos-de-datos.Rmd&quot;             &quot;muestras-aleatorias.Rmd&quot;        
+## [21] &quot;provincias.csv&quot;                  &quot;provincias.xls&quot;                 
+## [23] &quot;provincias.xlsx&quot;                 &quot;recursos.Rmd&quot;                   
+## [25] &quot;resto de cursos&quot;                 &quot;site_libs&quot;                      
+## [27] &quot;style.css&quot;                       &quot;valores-perdidos.csv&quot;           
+## [29] &quot;valores-perdidos.Rmd&quot;            &quot;Vectores.Rmd&quot;</code></pre>
+<pre class="r"><code>list.files(full.names = TRUE) #ruta completa relativa al directorio de trabajo</code></pre>
+<pre><code>##  [1] &quot;./_site.yml&quot;                       &quot;./baloncesto.html&quot;                
+##  [3] &quot;./ciencia-de-datos.Rproj&quot;          &quot;./descargar-salvar-recuperar.html&quot;
+##  [5] &quot;./descargar-salvar-recuperar.Rmd&quot;  &quot;./directorios.Rmd&quot;                
+##  [7] &quot;./ejemplo.xml&quot;                     &quot;./estructuras-de-control.Rmd&quot;     
+##  [9] &quot;./expresiones-regulares.Rmd&quot;       &quot;./fechas.Rmd&quot;                     
+## [11] &quot;./github&quot;                          &quot;./index.Rmd&quot;                      
+## [13] &quot;./instalar-r.Rmd&quot;                  &quot;./instalar-rtools.Rmd&quot;            
+## [15] &quot;./leer-ficheros-html.Rmd&quot;          &quot;./leer-ficheros-xml.Rmd&quot;          
+## [17] &quot;./leer-hojas-excel.Rmd&quot;            &quot;./marcos-de-datos-con-dplyr.Rmd&quot;  
+## [19] &quot;./marcos-de-datos.Rmd&quot;             &quot;./muestras-aleatorias.Rmd&quot;        
+## [21] &quot;./provincias.csv&quot;                  &quot;./provincias.xls&quot;                 
+## [23] &quot;./provincias.xlsx&quot;                 &quot;./recursos.Rmd&quot;                   
+## [25] &quot;./resto de cursos&quot;                 &quot;./site_libs&quot;                      
+## [27] &quot;./style.css&quot;                       &quot;./valores-perdidos.csv&quot;           
+## [29] &quot;./valores-perdidos.Rmd&quot;            &quot;./Vectores.Rmd&quot;</code></pre>
+<p>Se puede indicar que “list_files” liste un subdirectorio del directorio de trabajo:</p>
+<pre class="r"><code>list.files(&quot;github&quot;) #listado de subdirectorio del directorio de traabjo</code></pre>
+<pre><code>##  [1] &quot;baloncesto.html&quot;                 &quot;descargar-salvar-recuperar.html&quot;
+##  [3] &quot;directorios.html&quot;                &quot;ejemplo.xml&quot;                    
+##  [5] &quot;estructuras-de-control.html&quot;     &quot;expresiones-regulares.html&quot;     
+##  [7] &quot;fechas.html&quot;                     &quot;index.html&quot;                     
+##  [9] &quot;instalar-r.html&quot;                 &quot;instalar-rtools.html&quot;           
+## [11] &quot;leer-ficheros-html.html&quot;         &quot;leer-ficheros-xml.html&quot;         
+## [13] &quot;leer-hojas-excel.html&quot;           &quot;marcos-de-datos-con-dplyr.html&quot; 
+## [15] &quot;marcos-de-datos.html&quot;            &quot;muestras-aleatorias.html&quot;       
+## [17] &quot;provincias.csv&quot;                  &quot;provincias.xls&quot;                 
+## [19] &quot;provincias.xlsx&quot;                 &quot;recursos.html&quot;                  
+## [21] &quot;site_libs&quot;                       &quot;style.css&quot;                      
+## [23] &quot;valores-perdidos.csv&quot;            &quot;valores-perdidos.html&quot;          
+## [25] &quot;Vectores.html&quot;</code></pre>
+<pre class="r"><code>list.files(&quot;github&quot;, full.names = TRUE) #ruta completa relativa al directorio de trabajo</code></pre>
+<pre><code>##  [1] &quot;github/baloncesto.html&quot;                
+##  [2] &quot;github/descargar-salvar-recuperar.html&quot;
+##  [3] &quot;github/directorios.html&quot;               
+##  [4] &quot;github/ejemplo.xml&quot;                    
+##  [5] &quot;github/estructuras-de-control.html&quot;    
+##  [6] &quot;github/expresiones-regulares.html&quot;     
+##  [7] &quot;github/fechas.html&quot;                    
+##  [8] &quot;github/index.html&quot;                     
+##  [9] &quot;github/instalar-r.html&quot;                
+## [10] &quot;github/instalar-rtools.html&quot;           
+## [11] &quot;github/leer-ficheros-html.html&quot;        
+## [12] &quot;github/leer-ficheros-xml.html&quot;         
+## [13] &quot;github/leer-hojas-excel.html&quot;          
+## [14] &quot;github/marcos-de-datos-con-dplyr.html&quot; 
+## [15] &quot;github/marcos-de-datos.html&quot;           
+## [16] &quot;github/muestras-aleatorias.html&quot;       
+## [17] &quot;github/provincias.csv&quot;                 
+## [18] &quot;github/provincias.xls&quot;                 
+## [19] &quot;github/provincias.xlsx&quot;                
+## [20] &quot;github/recursos.html&quot;                  
+## [21] &quot;github/site_libs&quot;                      
+## [22] &quot;github/style.css&quot;                      
+## [23] &quot;github/valores-perdidos.csv&quot;           
+## [24] &quot;github/valores-perdidos.html&quot;          
+## [25] &quot;github/Vectores.html&quot;</code></pre>
 
 
 

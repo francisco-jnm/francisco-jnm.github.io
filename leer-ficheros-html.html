@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>—</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalar R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="instalar-r.html">Instalar R</a>
+    </li>
+    <li>
+      <a href="instalar-rtools.html">Instalar Rtools</a>
+    </li>
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lenguaje R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="Vectores.html">Vectores</a>
+    </li>
+    <li>
+      <a href="estructuras-de-control.html">Estructuras de control</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos.html">Marcos de datos</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+    <li>
+      <a href="descargar-salvar-recuperar.html">Descargar / Salvar / Recuperar</a>
+    </li>
+    <li>
+      <a href="valores-perdidos.html">Valores perdidos</a>
+    </li>
+    <li>
+      <a href="directorios.html">Listar directorios</a>
+    </li>
+    <li>
+      <a href="expresiones-regulares.html">Expresiones regulares</a>
+    </li>
+    <li>
+      <a href="fechas.html">Fechas</a>
+    </li>
+    <li>
+      <a href="muestras-aleatorias.html">Muestras aleatorias</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Obtener datos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="leer-hojas-excel.html">Leer hojas Excel</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-xml.html">Leer ficheros XML</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-html.html">Leer ficheros HTML</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">—</h1>
+
+</div>
+
+
+<p>Los ficheros HTML (que son páginas web) se leen en R utilizando el paquete XML. Este paquete, como su nombre indica, está pensado para tratar ficheros XML pero también incluye funciones para HTML.</p>
+<p>El lenguaje HTML es parecido pero mucho menos estructurado que el XML. Por eso, obtendremos unos datos menos limpios y habrá que trabajar mas para limpiarlos.</p>
+<p>El fichero “baloncesto.html” contiene datos de los 50 mejores anotadores en la temporada regular 2016-17 de la euroliga de baloncesto.</p>
+<p>Queremos construir un marco de datos extrayendo del fichero html la información de: jugador, equipo y puntos.</p>
+<p>Leemos el fichero html con <strong>htmlParse</strong> y cargamos el nodo raíz con <strong>xmlRoot</strong>.</p>
+<pre class="r"><code>library(&quot;XML&quot;)
+html &lt;- htmlParse(file = &quot;baloncesto.html&quot;)
+htmltop &lt;- xmlRoot(html)</code></pre>
+<p>La función básica es <strong>xpathSApply</strong>.</p>
+<p>Por inspección directa del fichero vemos que los jugadores están en un nodo “span” con atributo “class” con valor “hidden-xs”:</p>
+<pre class="r"><code>readLines(&quot;baloncesto.html&quot;)[885:890]</code></pre>
+<pre><code>## [1] &quot;                    &lt;span class=\&quot;hidden-xs\&quot;&gt;LANGFORD, KEITH&lt;/span&gt;&lt;span class=\&quot;visible-xs\&quot;&gt;LANGFORD, K.&lt;/span&gt;&quot;                                                                                                                                                                                                                                                                                                                         
+## [2] &quot;                &lt;/a&gt;&lt;/td&gt;&lt;td class=\&quot;StatsCenterTeams\&quot;&gt;&lt;a href=\&quot;/competition/teams/showteam?clubcode=UNK&amp;amp;seasoncode=E2016#!stats\&quot;&gt;&lt;span class=\&quot;visible-xs-inline\&quot;&gt;UNK&lt;/span&gt;&lt;span class=\&quot;visible-sm-inline\&quot;&gt;Unics Kazan&lt;/span&gt;&lt;span class=\&quot;visible-md-inline visible-lg-inline\&quot;&gt;Unics Kazan&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;&lt;td align=\&quot;right\&quot;&gt;28&lt;/td&gt;&lt;td align=\&quot;right\&quot;&gt;609&lt;/td&gt;&lt;td align=\&quot;right\&quot;&gt;21.75&lt;/td&gt;&lt;td align=\&quot;right\&quot;&gt;25.57&lt;/td&gt;&quot;
+## [3] &quot;\t\t&lt;/tr&gt;&lt;tr class=\&quot;StatsAlternatingGridResults\&quot;&gt;&quot;                                                                                                                                                                                                                                                                                                                                                                                          
+## [4] &quot;\t\t\t&lt;td class=\&quot;IndividualStatsRank\&quot; align=\&quot;center\&quot;&gt;2&lt;/td&gt;&lt;td align=\&quot;left\&quot;&gt;&quot;                                                                                                                                                                                                                                                                                                                                                            
+## [5] &quot;                &lt;a class=\&quot;StatsCenterPlayerName\&quot; href=\&quot;/competition/players/showplayer?pcode=005838&amp;amp;seasoncode=E2016\&quot;&gt;&quot;                                                                                                                                                                                                                                                                                                             
+## [6] &quot;                    &lt;span class=\&quot;hidden-xs\&quot;&gt;WANAMAKER, BRAD&lt;/span&gt;&lt;span class=\&quot;visible-xs\&quot;&gt;WANAMAKER, B.&lt;/span&gt;&quot;</code></pre>
+<pre class="r"><code>jugadores &lt;- xpathSApply(htmltop, &quot;//span[@class=&#39;hidden-xs&#39;]&quot;, xmlValue)
+jugadores</code></pre>
+<pre><code>##  [1] &quot;Rank&quot;                 &quot;Games&quot;                &quot;Points&quot;              
+##  [4] &quot;Per 40 min.&quot;          &quot;LANGFORD, KEITH&quot;      &quot;WANAMAKER, BRAD&quot;     
+##  [7] &quot;DE COLO, NANDO&quot;       &quot;LLULL, SERGIO&quot;        &quot;CLYBURN, WILL&quot;       
+## [10] &quot;HEURTEL, THOMAS&quot;      &quot;LARKIN, SHANE&quot;        &quot;BROWN, DERRICK&quot;      
+## [13] &quot;JANKUNAS, PAULIUS&quot;    &quot;RICE, TYRESE&quot;         &quot;TEODOSIC, MILOS&quot;     
+## [16] &quot;SIMONOVIC, MARKO&quot;     &quot;SINGLETON, CHRIS&quot;     &quot;MILLER, DARIUS&quot;      
+## [19] &quot;MELLI, NICOLO&quot;        &quot;GOUDELOCK, ANDREW&quot;    &quot;DIXON, BOBBY&quot;        
+## [22] &quot;RIVERS, K.C.&quot;         &quot;PARAKHOUSKI, ARTSIOM&quot; &quot;MICOV, VLADIMIR&quot;     
+## [25] &quot;PRINTEZIS, GEORGIOS&quot;  &quot;MOTUM, BROCK&quot;         &quot;DUNSTON, BRYANT&quot;     
+## [28] &quot;HANGA, ADAM&quot;          &quot;GULER, SINAN&quot;         &quot;BEAUBOIS, RODRIGUE&quot;  
+## [31] &quot;UDOH, EKPE&quot;           &quot;SPANOULIS, VASSILIS&quot;  &quot;CALATHES, NICK&quot;      
+## [34] &quot;WILBEKIN, SCOTTIE&quot;    &quot;HICKMAN, RICKY&quot;       &quot;RUDD, VICTOR&quot;        
+## [37] &quot;SANDERS, RAKIM&quot;       &quot;VOIGTMANN, JOHANNES&quot;  &quot;TYUS, ALEX&quot;          
+## [40] &quot;VESELY, JAN&quot;          &quot;RANDOLPH, ANTHONY&quot;    &quot;GREEN, ERICK&quot;        
+## [43] &quot;ANDERSON, JAMES&quot;      &quot;CAUSEUR, FABIEN&quot;      &quot;THEIS, DANIEL&quot;       
+## [46] &quot;JAMES, MIKE&quot;          &quot;AYON, GUSTAVO&quot;        &quot;KUZMIC, OGNJEN&quot;      
+## [49] &quot;JENKINS, CHARLES&quot;     &quot;COLOM, QUINO&quot;         &quot;GRANGER, JAYSON&quot;     
+## [52] &quot;KOPONEN, PETTERI&quot;     &quot;HONEYCUTT, TYLER&quot;     &quot;DATOME, LUIGI&quot;</code></pre>
+<p>También vemos que los equipos están en un nodo “span” con atributo “class” con valor “visible-sm-inline”:</p>
+<pre class="r"><code>equipos &lt;- xpathSApply(htmltop, &quot;//span[@class=&#39;visible-sm-inline&#39;]&quot;, xmlValue)
+equipos</code></pre>
+<pre><code>##  [1] &quot;Unics Kazan&quot;                     &quot;Darussafaka Dogus Istanbul&quot;     
+##  [3] &quot;CSKA Moscow&quot;                     &quot;Real Madrid&quot;                    
+##  [5] &quot;Darussafaka Dogus Istanbul&quot;      &quot;Anadolu Efes Istanbul&quot;          
+##  [7] &quot;Baskonia Vitoria Gasteiz&quot;        &quot;Anadolu Efes Istanbul&quot;          
+##  [9] &quot;Zalgiris Kaunas&quot;                 &quot;FC Barcelona Lassa&quot;             
+## [11] &quot;CSKA Moscow&quot;                     &quot;Crvena Zvezda mts Belgrade&quot;     
+## [13] &quot;Panathinaikos Superfoods Athens&quot; &quot;Brose Bamberg&quot;                  
+## [15] &quot;Brose Bamberg&quot;                   &quot;Maccabi FOX Tel Aviv&quot;           
+## [17] &quot;Fenerbahce Istanbul&quot;             &quot;Panathinaikos Superfoods Athens&quot;
+## [19] &quot;Unics Kazan&quot;                     &quot;Galatasaray Odeabank Istanbul&quot;  
+## [21] &quot;Olympiacos Piraeus&quot;              &quot;Zalgiris Kaunas&quot;                
+## [23] &quot;Anadolu Efes Istanbul&quot;           &quot;Baskonia Vitoria Gasteiz&quot;       
+## [25] &quot;Galatasaray Odeabank Istanbul&quot;   &quot;Baskonia Vitoria Gasteiz&quot;       
+## [27] &quot;Fenerbahce Istanbul&quot;             &quot;Olympiacos Piraeus&quot;             
+## [29] &quot;Panathinaikos Superfoods Athens&quot; &quot;Darussafaka Dogus Istanbul&quot;     
+## [31] &quot;EA7 Emporio Armani Milan&quot;        &quot;Maccabi FOX Tel Aviv&quot;           
+## [33] &quot;EA7 Emporio Armani Milan&quot;        &quot;Baskonia Vitoria Gasteiz&quot;       
+## [35] &quot;Galatasaray Odeabank Istanbul&quot;   &quot;Fenerbahce Istanbul&quot;            
+## [37] &quot;Real Madrid&quot;                     &quot;Olympiacos Piraeus&quot;             
+## [39] &quot;Darussafaka Dogus Istanbul&quot;      &quot;Brose Bamberg&quot;                  
+## [41] &quot;Brose Bamberg&quot;                   &quot;Panathinaikos Superfoods Athens&quot;
+## [43] &quot;Real Madrid&quot;                     &quot;Crvena Zvezda mts Belgrade&quot;     
+## [45] &quot;Crvena Zvezda mts Belgrade&quot;      &quot;Unics Kazan&quot;                    
+## [47] &quot;Anadolu Efes Istanbul&quot;           &quot;FC Barcelona Lassa&quot;             
+## [49] &quot;Anadolu Efes Istanbul&quot;           &quot;Fenerbahce Istanbul&quot;</code></pre>
+<p>Los puntos anotados no son tan fáciles de localizar, no hay un nodo con un valor concreto de uno de sus atributos que los identifique. Mirando con cuidado, vemos que sí hay un nodo “td” que cuando el atributo “align” lleva el valor “right” nos da cuatro estadísticas consecutivas: partidos, puntos (lo que buscamos), media de puntos por partido y media de puntos por 40 minutos:</p>
+<pre class="r"><code>estadisticas &lt;- xpathSApply(htmltop, &quot;//td[@align=&#39;right&#39;]&quot;, xmlValue)
+estadisticas</code></pre>
+<pre><code>##   [1] &quot;28&quot;    &quot;609&quot;   &quot;21.75&quot; &quot;25.57&quot; &quot;30&quot;    &quot;485&quot;   &quot;16.17&quot; &quot;19.63&quot; &quot;23&quot;   
+##  [10] &quot;463&quot;   &quot;20.13&quot; &quot;29.40&quot; &quot;27&quot;    &quot;434&quot;   &quot;16.07&quot; &quot;23.46&quot; &quot;30&quot;    &quot;397&quot;  
+##  [19] &quot;13.23&quot; &quot;18.54&quot; &quot;30&quot;    &quot;395&quot;   &quot;13.17&quot; &quot;20.04&quot; &quot;30&quot;    &quot;393&quot;   &quot;13.10&quot;
+##  [28] &quot;18.01&quot; &quot;30&quot;    &quot;390&quot;   &quot;13.00&quot; &quot;17.43&quot; &quot;30&quot;    &quot;390&quot;   &quot;13.00&quot; &quot;21.99&quot;
+##  [37] &quot;30&quot;    &quot;389&quot;   &quot;12.97&quot; &quot;17.51&quot; &quot;24&quot;    &quot;386&quot;   &quot;16.08&quot; &quot;22.18&quot; &quot;30&quot;   
+##  [46] &quot;378&quot;   &quot;12.60&quot; &quot;18.86&quot; &quot;30&quot;    &quot;368&quot;   &quot;12.27&quot; &quot;17.39&quot; &quot;30&quot;    &quot;366&quot;  
+##  [55] &quot;12.20&quot; &quot;17.98&quot; &quot;30&quot;    &quot;346&quot;   &quot;11.53&quot; &quot;15.79&quot; &quot;20&quot;    &quot;345&quot;   &quot;17.25&quot;
+##  [64] &quot;24.07&quot; &quot;29&quot;    &quot;329&quot;   &quot;11.34&quot; &quot;17.20&quot; &quot;30&quot;    &quot;329&quot;   &quot;10.97&quot; &quot;16.23&quot;
+##  [73] &quot;29&quot;    &quot;327&quot;   &quot;11.28&quot; &quot;21.15&quot; &quot;29&quot;    &quot;326&quot;   &quot;11.24&quot; &quot;15.43&quot; &quot;25&quot;   
+##  [82] &quot;324&quot;   &quot;12.96&quot; &quot;20.71&quot; &quot;30&quot;    &quot;323&quot;   &quot;10.77&quot; &quot;18.63&quot; &quot;30&quot;    &quot;322&quot;  
+##  [91] &quot;10.73&quot; &quot;14.66&quot; &quot;30&quot;    &quot;317&quot;   &quot;10.57&quot; &quot;15.13&quot; &quot;30&quot;    &quot;315&quot;   &quot;10.50&quot;
+## [100] &quot;14.46&quot; &quot;27&quot;    &quot;314&quot;   &quot;11.63&quot; &quot;22.83&quot; &quot;26&quot;    &quot;308&quot;   &quot;11.85&quot; &quot;15.01&quot;
+## [109] &quot;26&quot;    &quot;308&quot;   &quot;11.85&quot; &quot;18.13&quot; &quot;30&quot;    &quot;304&quot;   &quot;10.13&quot; &quot;14.73&quot; &quot;27&quot;   
+## [118] &quot;304&quot;   &quot;11.26&quot; &quot;18.14&quot; &quot;30&quot;    &quot;303&quot;   &quot;10.10&quot; &quot;16.17&quot; &quot;30&quot;    &quot;302&quot;  
+## [127] &quot;10.07&quot; &quot;15.58&quot; &quot;24&quot;    &quot;301&quot;   &quot;12.54&quot; &quot;21.98&quot; &quot;30&quot;    &quot;301&quot;   &quot;10.03&quot;
+## [136] &quot;17.22&quot; &quot;30&quot;    &quot;300&quot;   &quot;10.00&quot; &quot;20.35&quot; &quot;29&quot;    &quot;292&quot;   &quot;10.07&quot; &quot;16.59&quot;
+## [145] &quot;28&quot;    &quot;292&quot;   &quot;10.43&quot; &quot;20.12&quot; &quot;29&quot;    &quot;291&quot;   &quot;10.03&quot; &quot;19.42&quot; &quot;30&quot;   
+## [154] &quot;288&quot;   &quot;9.60&quot;  &quot;17.24&quot; &quot;29&quot;    &quot;287&quot;   &quot;9.90&quot;  &quot;15.66&quot; &quot;30&quot;    &quot;287&quot;  
+## [163] &quot;9.57&quot;  &quot;19.38&quot; &quot;22&quot;    &quot;284&quot;   &quot;12.91&quot; &quot;23.46&quot; &quot;30&quot;    &quot;283&quot;   &quot;9.43&quot; 
+## [172] &quot;18.95&quot; &quot;30&quot;    &quot;282&quot;   &quot;9.40&quot;  &quot;18.17&quot; &quot;30&quot;    &quot;282&quot;   &quot;9.40&quot;  &quot;14.41&quot;
+## [181] &quot;25&quot;    &quot;282&quot;   &quot;11.28&quot; &quot;16.83&quot; &quot;30&quot;    &quot;281&quot;   &quot;9.37&quot;  &quot;14.79&quot; &quot;27&quot;   
+## [190] &quot;274&quot;   &quot;10.15&quot; &quot;17.97&quot; &quot;30&quot;    &quot;269&quot;   &quot;8.97&quot;  &quot;14.63&quot; &quot;28&quot;    &quot;269&quot;  
+## [199] &quot;9.61&quot;  &quot;15.34&quot;</code></pre>
+<p>Por tanto, los elementos que queremos del vector “estadísticas” son los índices: 2, 6, 10, 14, etc…</p>
+<pre class="r"><code>puntos &lt;- estadisticas[seq(2, length(estadisticas), by=4)]
+puntos &lt;- as.numeric(puntos)
+puntos</code></pre>
+<pre><code>##  [1] 609 485 463 434 397 395 393 390 390 389 386 378 368 366 346 345 329 329 327
+## [20] 326 324 323 322 317 315 314 308 308 304 304 303 302 301 301 300 292 292 291
+## [39] 288 287 287 284 283 282 282 282 281 274 269 269</code></pre>
+<p>¿Cuadran las longitudes?</p>
+<pre class="r"><code>length(jugadores)</code></pre>
+<pre><code>## [1] 54</code></pre>
+<pre class="r"><code>length(equipos)</code></pre>
+<pre><code>## [1] 50</code></pre>
+<pre class="r"><code>length(puntos)</code></pre>
+<pre><code>## [1] 50</code></pre>
+<p>No cuadran pero es fácil ver que los cuatro primeros elementos del vector de jugadores sobran:</p>
+<pre class="r"><code>jugadores &lt;- jugadores[5:length(jugadores)]
+length(jugadores)</code></pre>
+<pre><code>## [1] 50</code></pre>
+<p>Ya podemos construir un marco de datos con toda la información:</p>
+<pre class="r"><code>df &lt;- data.frame(jugador = jugadores,
+                 equipo = equipos,
+                 puntos = puntos)
+head(df,10)</code></pre>
+<pre><code>##              jugador                     equipo puntos
+## 1    LANGFORD, KEITH                Unics Kazan    609
+## 2    WANAMAKER, BRAD Darussafaka Dogus Istanbul    485
+## 3     DE COLO, NANDO                CSKA Moscow    463
+## 4      LLULL, SERGIO                Real Madrid    434
+## 5      CLYBURN, WILL Darussafaka Dogus Istanbul    397
+## 6    HEURTEL, THOMAS      Anadolu Efes Istanbul    395
+## 7      LARKIN, SHANE   Baskonia Vitoria Gasteiz    393
+## 8     BROWN, DERRICK      Anadolu Efes Istanbul    390
+## 9  JANKUNAS, PAULIUS            Zalgiris Kaunas    390
+## 10      RICE, TYRESE         FC Barcelona Lassa    389</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

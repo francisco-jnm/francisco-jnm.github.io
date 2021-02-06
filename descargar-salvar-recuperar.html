@@ -378,14 +378,105 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<div id="descargar-ficheros-desde-un-sitio-web" class="section level3">
+<h3>Descargar ficheros desde un sitio web</h3>
+<p>Aunque existen funciones para leer directamente ficheros desde una URL, da muchos menos problemas descargar el fichero a local y luego leerlo. Si se trata de un fichero plano (csv, html, xml, txt, etc…), es muy directo descargarlo utilizando la función “download.file”.</p>
+<p>En este ejemplo, nos interesa un fichero csv que está en la url “<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv" class="uri">https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv</a>” y que queremos guardar con el nombre “idaho_housing.csv”. También queremos comprobar si ya lo hemos descargado previamente para no descargarlo en ese caso</p>
+<pre class="r"><code>file_name &lt;- &quot;idaho_housing.csv&quot; 
+file_url &lt;- &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv&quot;
+if(!file.exists(file_name)) {download.file(file_url, destfile = file_name)}</code></pre>
+<p>El fichero descargado se puede eliminar directamente desde R con la función “unlink”.</p>
+<pre class="r"><code>unlink(&quot;idaho_housing.csv&quot;)</code></pre>
+<p>Si se trata de un fichero comprimido (fichero “zip”, generalmente), es lo mismo que con un fichero plano salvo que, además, realizamos la descompresión con la función “unzip”:</p>
+<pre class="r"><code>file_name &lt;- &quot;hospital_compare.zip&quot; 
+file_url &lt;- &quot;https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2FProgAssignment3-data.zip&quot; 
+if(!file.exists(file_name)) {
+    download.file(file_url, destfile = file_name)
+    unzip(file_name, exdir = &quot;.&quot;) }
+
+# Eliminamos lo descargado
+unlink(&quot;hospital_compare.zip&quot;)
+unlink(&quot;Hospital_Revised_Flatfiles.pdf&quot;)
+unlink(&quot;hospital-data.csv&quot;)
+unlink(&quot;outcome-of-care-measures.csv&quot;)</code></pre>
+<p>Cuando el fichero no es plano (una hoja Excel, por ejemplo), utilizamos “download.file” en modo binario (mode=“wb”). En este ejemplo, nos interesa una hoja excel xlsx:</p>
+<pre class="r"><code>file_url &lt;- &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx&quot;
+file_name &lt;- &quot;060_natural_gas.xlsx&quot;
+if(!file.exists(file_name)) {download.file(file_url, destfile = file_name, mode=&quot;wb&quot;)}
+
+# Eliminamos lo descargado
+unlink(&quot;060_natural_gas.xlsx&quot;)</code></pre>
+</div>
+<div id="salvarrecuperar-un-marco-de-datos-en-formato-estándar-de-r" class="section level3">
+<h3>Salvar/recuperar un marco de datos en formato estándar de R</h3>
+<p>La manera mas simple de salvar y recuperar más tarde un marco de datos es utilizar el formato estándar de R (“.rds”). Para ello, sólo hay que utilizar la función “saveRDS” para salvar y “readRDS” para recuperar:</p>
+<pre class="r"><code>ciudades = data.frame(
+    ciudad = c(&quot;Albacete&quot;, &quot;Alicante&quot;, &quot;Almería&quot;),
+    miles_habitantes = c(390.31, 1838.97, 700.71)
+)
+print(ciudades)</code></pre>
+<pre><code>##     ciudad miles_habitantes
+## 1 Albacete           390.31
+## 2 Alicante          1838.97
+## 3  Almería           700.71</code></pre>
+<pre class="r"><code>#Salvar a fichero RDS
+saveRDS(object = ciudades, file = &quot;ciudades.rds&quot;)
+
+#Leer (recuperar) de fichero RDS
+ciudades = readRDS(file = &quot;ciudades.rds&quot;)
+
+# Eliminamos rds
+unlink(&quot;ciudades.rds&quot;)</code></pre>
+</div>
+<div id="salvarrecuperar-un-marco-de-datos-en-fichero-csv" class="section level3">
+<h3>Salvar/recuperar un marco de datos en fichero csv</h3>
+<p>Para guardar nuestro marco de datos de manera que se pueda abrir o importar en otras aplicaciones, el formato rds no es la mejor opción. Es mucho mas flexible salvarlo a un fichero “.csv” mediante la función “write.table”:</p>
+<pre class="r"><code>write.table(x = ciudades, 
+            file = &quot;ciudades.csv&quot;, 
+            sep = &quot;;&quot;,
+            dec = &quot;.&quot;,
+            quote = FALSE,
+            row.names = FALSE)</code></pre>
+<ul>
+<li>x: indica el nombre del marco de datos a salvar</li>
+<li>file: indica el nombre del fichero de texto en el que vamos a salvar el marco de datos</li>
+<li>sep: indica el carácter que separa las columnas en el fichero de texto</li>
+<li>dec: indica el símbolo que actua como separador decimal. Casi siempre será o bien el punto o bien la coma.</li>
+<li>quote = FALSE: indica que no se utilicen caracteres especiales (como comillas o comillas dobles) para rodear los campos de tipo carácter</li>
+<li>row.names = FALSE: indica que no se incluye en el fichero el número de cada línea</li>
+</ul>
+<p>Se puede echar un vistazo a las primeras líneas de un fichero plano con la función “readLines”. El parámetro “n” indica cuántas filas queremos leer como máximo.</p>
+<pre class="r"><code>readLines(&quot;ciudades.csv&quot;, n=4)</code></pre>
+<pre><code>## [1] &quot;ciudad;miles_habitantes&quot; &quot;Albacete;390.31&quot;        
+## [3] &quot;Alicante;1838.97&quot;        &quot;Almería;700.71&quot;</code></pre>
+<p>La recuperación de un marco de datos salvado a fichero csv se hace con la función “read.table”:</p>
+<pre class="r"><code>ciudades &lt;- read.table(
+    file = &quot;ciudades.csv&quot;,
+    header = TRUE,
+    sep = &quot;;&quot;,
+    dec = &quot;.&quot;,
+    na.strings = &quot;&quot;,
+    stringsAsFactors = FALSE,
+    encoding = &#39;UTF-8&#39;
+)
+
+print(ciudades)</code></pre>
+<pre><code>##       ciudad miles_habitantes
+## 1   Albacete           390.31
+## 2   Alicante          1838.97
+## 3 Almer&lt;ed&gt;a           700.71</code></pre>
+<pre class="r"><code># Eliminamos csv
+unlink(&quot;ciudades.csv&quot;)</code></pre>
+<ul>
+<li>file: indica el nombre del fichero de texto del que vamos a cargar el marco de datos</li>
+<li>header = TRUE. Esto indica que la primera fila del fichero contiene los nombre de las columnas. Suele ser lo habitual pero, por defecto, R considera lo contrario.</li>
+<li>sep: indica el carácter que separa las columnas en el fichero de texto</li>
+<li>dec: indica el símbolo que actua como separador decimal. Casi siempre será o bien el punto o bien la coma.</li>
+<li>na.strings: indica los caracteres que corresponden a un valor “perdido”. Depende de la aplicación que generó el fichero. Si se generó con R será “NA”, con excel sería “#N/A”, en otros casos puede ser un espacio en blanco. Incluso se puede especificar que pueden ser varios. Por ejemplo: na.strings = c(“NA”, “#N/A”, " ")</li>
+<li>stringsAsFactors = FALSE. Esto se debe incluir porque R hereda de sus primeras versiones la “manía” de transformar los campos de tipo caracter a otro tipo llamado “factor” que viene a ser como un “entero etiquetado”. Mejor evitarlo.</li>
+<li>encoding: indica el código de caracteres activo cuando se salvó el fichero (se indica en las opciones de R)</li>
+</ul>
+</div>
 
 
 

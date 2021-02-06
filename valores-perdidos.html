@@ -378,14 +378,79 @@ $(document).ready(function () {
 </div>
 
 
-<p>Rtools es una colección de herramientas Windows para construir nuevos paquetes de R. Su instalación es opcional.</p>
-<p>No se instala, simplemente, como un paquete de R, hay que ejecutar primero un programa de instalación que se descarga de la <a href="https://cran.r-project.org/bin/windows/Rtools">Web de R-tools</a></p>
-<p>Se hace la instalación por defecto y entonces ya se puede instalar el paquete “devtools”:</p>
-<pre><code>install.packages(&quot;devtools&quot;, dependencies = TRUE)</code></pre>
-<p>Al acabar, entramos en Rstudio y tiene que funcionar la carga del paquete “devtools”:</p>
-<pre><code>library(devtools)</code></pre>
-<p>Una comprobación adicional es llamar a la función “find_rtools” y comprobar que devuelve TRUE:</p>
-<pre><code>find_rtools()</code></pre>
+<p>Los marcos de datos que se construyen en el curso de un estudio es muy probable que tengan valores perdidos, bien por pérdida del dato durante el proceso de creación del marco de datos, bien porque realmente ese dato nunca se llegó a recopilar.</p>
+<p>Los valores perdidos se reconocen en un marco de datos de R porque tienen el valor “NA” que significa (Not A value).</p>
+<p>Cuando cargamos un marco de datos a partir de un fichero csv, indicamos mediante el parámetro “na.strings” los caracteres que identifican las celdas con valores perdidos y R las carga con valor “NA”.</p>
+<p>En este ejemplo, le decimos a R que en el csv los valores perdidos son las celdas que cuyo contenido es una pareja de espacios en blanco:</p>
+<pre class="r"><code>baloncesto &lt;- read.table(file = &quot;valores-perdidos.csv&quot;, 
+                            header = TRUE, 
+                            sep = &quot;;&quot;, 
+                            dec = &quot;.&quot;,  
+                            na.strings = &quot;  &quot;,
+                            stringsAsFactors = FALSE)
+head(baloncesto)</code></pre>
+<pre><code>##               jugador equipo partidos minutos puntos rebotes asistencias
+## 1       AARON JACKSON    CSK       29     619    209      43         103
+## 2 ANDREY VORONTSEVICH    CSK       30     583    234      76          30
+## 3        CORY HIGGINS    CSK       27     542    246      55          42
+## 4      DMITRY KULAGIN    CSK       17     176     67      26          20
+## 5     JAMES AUGUSTINE    CSK       29     478    169     130          12
+## 6          JEFF AYRES    CSK        4      NA     24      19           0</code></pre>
+<pre class="r"><code>library(dplyr)</code></pre>
+<p>La función “complete.cases” permite filtrar las filas en las que no hay valores perdidos. Por negación, también permite filtrar las filas en las que alguna columna tiene un valor perdido:</p>
+<pre class="r"><code>baloncesto %&gt;% filter(!complete.cases(.))</code></pre>
+<pre><code>##                 jugador equipo partidos minutos puntos rebotes asistencias
+## 1            JEFF AYRES    CSK        4      NA     24      19           0
+## 2         JOEL FREELAND    CSK       14      NA     22      16           1
+## 3       MIKHAIL KULAGIN    CSK        6      NA     22       2           0
+## 4      AHMET DUVERIOGLU    FNB        7      56     NA      12           1
+## 5       ANTHONY BENNETT    FNB        8      61     NA       9           1
+## 6          BARIS HERSEK    FNB        3      12      4      NA           0
+## 7           BERK UGURLU    FNB        7      30      2      NA          NA
+## 8           EGEHAN ARNA    FNB        1      NA      0       0           0
+## 9        YORDAN MINCHEV    FNB        2      NA      0       2           0
+## 10    IOANNIS ATHINAIOU    OLY        9      42      3       3          NA
+## 11 VASSILIS TOLIOPOULOS    OLY        2      NA      0       0           0
+## 12       ANDRES NOCIONI    RMB       14      87     32       9          NA</code></pre>
+<p>También podemos filtrar las filas que tienen valores perdidos en alguna columna concreta:</p>
+<pre class="r"><code>baloncesto %&gt;%  filter(!complete.cases(puntos))</code></pre>
+<pre><code>##            jugador equipo partidos minutos puntos rebotes asistencias
+## 1 AHMET DUVERIOGLU    FNB        7      56     NA      12           1
+## 2  ANTHONY BENNETT    FNB        8      61     NA       9           1</code></pre>
+<p>Uno de los principales problemas que dan los valores perdidos es cuando vamos a realizar una agrupación/totalización: si existe algún valor pedido en una columna entonces la totalización de la columna es siempre “valor perdido”.</p>
+<pre class="r"><code>baloncesto %&gt;% 
+    group_by(equipo) %&gt;%
+    summarize(total_puntos = sum(puntos))</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   equipo total_puntos
+## * &lt;chr&gt;         &lt;int&gt;
+## 1 CSK            2619
+## 2 FNB              NA
+## 3 OLY            2338
+## 4 RMB            2585</code></pre>
+<p>Hay dos formas de evitar esto. La primera es filtrar para eliminar las filas con valores perdidos en las columnas por que vamos a totalizar:</p>
+<pre class="r"><code>baloncesto %&gt;% 
+    filter(complete.cases(puntos)) %&gt;%
+    group_by(equipo) %&gt;%
+    summarize(total_puntos = sum(puntos))</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   equipo total_puntos
+## * &lt;chr&gt;         &lt;int&gt;
+## 1 CSK            2619
+## 2 FNB            2246
+## 3 OLY            2338
+## 4 RMB            2585</code></pre>
+<p>La segunda forma es utilizar el parámeto “na.rm” que suelen tener todas las funciones de totalización y que indica que se ignoren los valores perdidos y se totalice sobre los restantes:</p>
+<pre class="r"><code>baloncesto %&gt;% 
+    group_by(equipo) %&gt;%
+    summarize(total_puntos = sum(puntos, na.rm=TRUE))</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   equipo total_puntos
+## * &lt;chr&gt;         &lt;int&gt;
+## 1 CSK            2619
+## 2 FNB            2246
+## 3 OLY            2338
+## 4 RMB            2585</code></pre>
 
 
 
