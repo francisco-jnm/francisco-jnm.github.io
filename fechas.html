@@ -299,6 +299,9 @@ $(document).ready(function () {
     <li>
       <a href="recursos.html">Recursos de R</a>
     </li>
+    <li>
+      <a href="swirl.html">Aprender R con SWIRL</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -341,6 +344,9 @@ $(document).ready(function () {
     <li>
       <a href="muestras-aleatorias.html">Muestras aleatorias</a>
     </li>
+    <li>
+      <a href="graficos-ggplot2.html">Gráficos</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -358,6 +364,45 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="leer-ficheros-html.html">Leer ficheros HTML</a>
+    </li>
+    <li>
+      <a href="leer-twitter.html">Leer Twitter</a>
+    </li>
+    <li>
+      <a href="leer-bases-de-datos-sql.html">Leer bases de datos SQL</a>
+    </li>
+    <li>
+      <a href="leer-bases-de-datos-no-sql.html">Leer bases de datos No SQL</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Studio
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="paquete-rmarkdown.html">R MarkDown</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Estadística
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ley-grandes-numeros.html">La ley de los grandes números</a>
+    </li>
+    <li>
+      <a href="estadistica-descriptiva.html">Estadística descriptiva</a>
+    </li>
+    <li>
+      <a href="prueba-t-student.html">La prueba t de Student</a>
     </li>
   </ul>
 </li>
@@ -382,7 +427,7 @@ $(document).ready(function () {
 <h2>Fechas</h2>
 <p>La fecha del sistema se obtiene con la función <strong>Sys.Date</strong>:</p>
 <pre class="r"><code>Sys.Date()</code></pre>
-<pre><code>## [1] &quot;2021-02-06&quot;</code></pre>
+<pre><code>## [1] &quot;2021-02-16&quot;</code></pre>
 <p>Con la función <strong>as.Date</strong> podemos crear una fecha introduciéndola (obligatoriamente) con el formato “yyyy-mm-dd”:</p>
 <pre class="r"><code>navidad_2017 &lt;- as.Date(&quot;2017-12-25&quot;)
 navidad_2017</code></pre>
@@ -412,7 +457,7 @@ navidad_2017</code></pre>
 <h2>Fechas con horas</h2>
 <p>La función para leer la fecha y hora del sistema es <strong>Sys.time</strong>:</p>
 <pre class="r"><code>Sys.time()</code></pre>
-<pre><code>## [1] &quot;2021-02-06 20:35:20 CET&quot;</code></pre>
+<pre><code>## [1] &quot;2021-02-16 21:32:46 CET&quot;</code></pre>
 <p>Mediante la función <strong>as.POSIXlt</strong> podemos crear una fecha con hora utilizando (obligatoriamente) el formato “yyyy-mm-dd hh:mm:ss”:</p>
 <pre class="r"><code>momento &lt;- as.POSIXlt(&quot;2017-12-25 22:33:44&quot; )
 momento</code></pre>
@@ -450,7 +495,7 @@ momento</code></pre>
 <p>Merece la pena cargar el paquete <strong>lubridate</strong> ya que aporta facilidad y utilidades para el manejo de fechas.</p>
 <pre class="r"><code>library(lubridate)</code></pre>
 <pre class="r"><code>today() # Hoy</code></pre>
-<pre><code>## [1] &quot;2021-02-06&quot;</code></pre>
+<pre><code>## [1] &quot;2021-02-16&quot;</code></pre>
 <pre class="r"><code>navidad_2017 &lt;- dmy(&quot;25122017&quot;) # Construir fecha indicando día, mes, año
 navidad_2017 &lt;- ymd(&quot;20171225&quot;) # Construir fecha indicando año, mes, día
 navidad_2017</code></pre>

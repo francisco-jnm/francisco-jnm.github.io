@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>—</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.17/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Instalar R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="instalar-r.html">Instalar R</a>
+    </li>
+    <li>
+      <a href="instalar-rtools.html">Instalar Rtools</a>
+    </li>
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="swirl.html">Aprender R con SWIRL</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lenguaje R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recursos.html">Recursos de R</a>
+    </li>
+    <li>
+      <a href="Vectores.html">Vectores</a>
+    </li>
+    <li>
+      <a href="estructuras-de-control.html">Estructuras de control</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos.html">Marcos de datos</a>
+    </li>
+    <li>
+      <a href="marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
+    </li>
+    <li>
+      <a href="descargar-salvar-recuperar.html">Descargar / Salvar / Recuperar</a>
+    </li>
+    <li>
+      <a href="valores-perdidos.html">Valores perdidos</a>
+    </li>
+    <li>
+      <a href="directorios.html">Listar directorios</a>
+    </li>
+    <li>
+      <a href="expresiones-regulares.html">Expresiones regulares</a>
+    </li>
+    <li>
+      <a href="fechas.html">Fechas</a>
+    </li>
+    <li>
+      <a href="muestras-aleatorias.html">Muestras aleatorias</a>
+    </li>
+    <li>
+      <a href="graficos-ggplot2.html">Gráficos</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Obtener datos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="leer-hojas-excel.html">Leer hojas Excel</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-xml.html">Leer ficheros XML</a>
+    </li>
+    <li>
+      <a href="leer-ficheros-html.html">Leer ficheros HTML</a>
+    </li>
+    <li>
+      <a href="leer-twitter.html">Leer Twitter</a>
+    </li>
+    <li>
+      <a href="leer-bases-de-datos-sql.html">Leer bases de datos SQL</a>
+    </li>
+    <li>
+      <a href="leer-bases-de-datos-no-sql.html">Leer bases de datos No SQL</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Studio
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="paquete-rmarkdown.html">R MarkDown</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Estadística
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ley-grandes-numeros.html">La ley de los grandes números</a>
+    </li>
+    <li>
+      <a href="estadistica-descriptiva.html">Estadística descriptiva</a>
+    </li>
+    <li>
+      <a href="prueba-t-student.html">La prueba t de Student</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">—</h1>
+
+</div>
+
+
+<div id="el-paquete-ggplot2" class="section level3">
+<h3>El paquete ggplot2</h3>
+<p>Los tres paquetes básicos para hacer gráficos bidimensionales que tiene R son:</p>
+<ul>
+<li><strong>base</strong>: el paquete básico, no hay que cargar nada, sus funciones vienen pre-cargadas.Cada elemento del gráfico hay que dibujarlo individualmente.</li>
+<li><strong>ggplot2</strong>: una gran mejora del paquete básico donde, además, muchos elementos útiles del gráfico salen directamente.</li>
+<li><strong>lattice</strong>: una alternativa a ggplot2 pero menos lograda, en mi opinión.</li>
+</ul>
+<p>Una pequeña muestra de que ggplot2 vale la pena con respecto al paquete básico:</p>
+<pre class="r"><code>#Base
+with(airquality, { 
+    plot(Temp, Ozone)
+    lines(loess.smooth(Temp, Ozone))
+})</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>#ggplot2
+library(ggplot2)
+ggplot(data = airquality, aes(x = Temp, y = Ozone)) + 
+    geom_point() +
+    geom_smooth()</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>La función que permite explotar el paquete ggplot2 es <strong>ggplot</strong>, aunque el paquete incluye una función más sencilla de aprender pero más limitada, <strong>qplot</strong> (“quick plot”), pensada para facilitar la transición desde el paquete gráfico básico. Conviene centrase en <strong>ggplot</strong>.</p>
+</div>
+<div id="el-marco-de-datos-mpg-miles-per-gallon-para-hacer-ejemplos" class="section level3">
+<h3>El marco de datos mpg (“miles per gallon”) para hacer ejemplos</h3>
+<p>El marco de datos “mpg” es un marco de datos para hacer ejemplos que viene incluido en el propio paquete “ggplot2”. Contiene información sobre modelos de coches. Nos vamos a centrar en 5 campos y a renombrarlos para mayor claridad:</p>
+<ul>
+<li>manufacturer: marca del modelo de coche</li>
+<li>model: modelo</li>
+<li>displ: volumen en litros del motor</li>
+<li>hwy: millas que puede recorrer el coche gastando sólo un galón de combustible</li>
+<li>drv: tipo de tracción (delantera, trasera o en las cuatro ruedas)</li>
+</ul>
+<pre class="r"><code>library(dplyr)
+coches &lt;- mpg %&gt;% select (manufacturer, model, displ, hwy, drv) %&gt;% 
+    rename(marca = manufacturer, 
+           modelo = model, 
+           litros = displ, 
+           millas = hwy,
+           traccion = drv)
+
+DT::datatable(coches[c(1, 19, 51, 81, 101),], options = list(dom = &#39;t&#39;))</code></pre>
+<div id="htmlwidget-51a352e8fd074c237ada" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-51a352e8fd074c237ada">{"x":{"filter":"none","data":[["1","2","3","4","5"],["audi","chevrolet","dodge","ford","honda"],["a4","c1500 suburban 2wd","dakota pickup 4wd","explorer 4wd","civic"],[1.8,5.3,3.9,4,1.6],[29,20,17,19,32],["f","r","4","4","f"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>marca<\/th>\n      <th>modelo<\/th>\n      <th>litros<\/th>\n      <th>millas<\/th>\n      <th>traccion<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="los-tres-gráficos-exploratorios-básicos-histograma-diagrama-de-dispersión-y-diagrama-de-cajas." class="section level3">
+<h3>Los tres gráficos exploratorios básicos: histograma, diagrama de dispersión y diagrama de cajas.</h3>
+<p>Un gráfico creado con la función <strong>ggplot</strong> tiene varios componentes. Los más comunes son:</p>
+<ul>
+<li>“data”: indica el marco de datos que contiene las variables a dibujar<br />
+</li>
+<li>“aes”: indica las variables a dibujar y sus características “estéticas” tales como color, tamaño, forma y ubicación<br />
+</li>
+<li>(“data” y “aes” son imprescindibles, son lo primero que se indica y se indican juntas; por ello, se puede considerar que, ambas, son el primer componente)<br />
+</li>
+<li>“geom”: indica los elementos geométricos a utilizar (puntos, líneas, tipo de diagrama, …)<br />
+</li>
+<li>facets: indica que hay que dividir el gráfico en paneles y cómo diseñarlos</li>
+<li>stats: indica cálculos estadísticos a utilizar, tales como curvas de regresión</li>
+</ul>
+<div id="histograma" class="section level4">
+<h4>Histograma</h4>
+<p>Es un gráfico en el se levantan barras de una anchura fija; las bases de las barras cubren todos los valores de una variable (una columna de un marco de datos) y la altura de cada barra indica la frecuencia de los valores incluidos en la base.</p>
+<p>Se indica que queremos un histograma pasando a la función “ggplot”:</p>
+<ul>
+<li>data = el marco de datos en cuestión<br />
+</li>
+<li>elementos estéticos: x = la variable en cuestión<br />
+</li>
+<li>geometría: geom_histogram()
+<ul>
+<li>color: para indicar el color del borde de las barras y que no aparezcan solapadas</li>
+<li>fill: para indicar el color del relleno de las barras, que es gris por defecto</li>
+<li>binwith: para indicar el ancho de las barras</li>
+</ul></li>
+</ul>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros)) + 
+    geom_histogram(color = &quot;white&quot;, fill = &quot;blue&quot;, binwidth = 0.25)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Con el componente “labs” se pueden dar nombres descriptivos a los ejes y al gráfico:</p>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros)) + 
+    geom_histogram(color = &quot;white&quot;, fill = &quot;blue&quot;, binwidth = 0.25) +
+    labs(title = &quot;Histograma&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Número de coches&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="diagrama-de-dispersión-scattered-plot" class="section level5">
+<h5>Diagrama de dispersión (scattered plot)</h5>
+<p>Es un gráfico que contiene un punto por cada pareja de valores de dos variables numéricas (dos columnas del marco de datos). El diagrama de dispersión sólo dibuja un punto cada vez que encuentra una combinación de valores de las variables indicadas. No da información acerca de si ha encontrado la combinación 1 vez o 1 millón de veces.</p>
+<p>Se indica que queremos un diagrama de dispersión pasando a la función “ggplot”:</p>
+<ul>
+<li>data = el marco de datos en cuestión</li>
+<li>elementos estéticos: x = primera variable, y = segunda variable</li>
+<li>geometría: geom_point()
+<ul>
+<li>color: color de los puntos que por defecto es el color negro.</li>
+</ul></li>
+</ul>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, y = millas)) + 
+    geom_point(color = &quot;blue&quot;) +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Es muy habitual añadir al diagrama de dispersión una curva de regresión. Para eso tan sólo hay que añadir la geometría “geom_smooth()”. Con la curva de regresión, ggplot2 dibuja también una <em>sombra</em> que representa el intervalo de confianza. El método de cálculo es “loess”, una mejora del clásico método de mínimos cuadrados.</p>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, y = millas)) + 
+    geom_point() +
+    geom_smooth()  +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="diagrama-de-cajas-boxplot" class="section level5">
+<h5>Diagrama de cajas (boxplot)</h5>
+<p>El diagrama de cajas muestra una caja cuya base es el primer cuartil, la tapa es el tercer cuartil, la mediana (que cae dentro de la caja) se marca claramente y se añaden dos líneas perperdiculares a la caja (llamadas “bigotes de la caja”) con longitud igual a 1,5 veces la altura de la caja.</p>
+<p>Se pintan también aquelos valores (si existen) que quedan fuera de los bigotes de la caja. Estos valores se consideran atípicos (“outliers”).</p>
+<p>Se indica que queremos un diagrama de cajas pasando a la función “ggplot”:</p>
+<ul>
+<li>data = el marco de datos en cuestión</li>
+<li>elementos estéticos: x ="", y = la variable en cuestión</li>
+<li>geometría: geom_boxplot()
+<ul>
+<li>color: color de las líneas que por defecto es el color negro.</li>
+<li>fill: color de relleno de la caja.</li>
+</ul></li>
+</ul>
+<pre class="r"><code>ggplot(data = coches, aes(x=&quot;&quot;, y = litros)) +
+    geom_boxplot(color = &quot;blue&quot;, fill = &quot;orange&quot;) +
+    labs(title = &quot;Diagrama de cajas&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Cuartiles&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="la-tercera-dimensión-el-color" class="section level3">
+<h3>La tercera dimensión: el color</h3>
+<p>ggplot2 es un paquete gráfico bidimensional, es decir, los gráficos se refieren básicamente a dos variables “x, y”. Pero utilizando las posibilidades de colorear los datos en función de otras variables se puede obtener información impactante que excede de lo bidimensional.</p>
+<div id="colores-en-un-un-histograma" class="section level5">
+<h5>Colores en un un Histograma</h5>
+<p>Utilizamos el parámetro “fill” pero no dentro de la geometría (en cuyo caso indicaría un color fijo de relleno) sino dentro de los elementos estéticos, asociado a una variable. Esto hace que el relleno dependa de los valores de la variable:</p>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, fill = traccion)) + 
+    geom_histogram(color = &quot;white&quot;, binwidth = 0.3) +
+    labs(title = &quot;Histograma&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Número de coches&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Se puede notar que los valores de “tracción” son poco significativos. Una opción sería renombrarlos pero hay una opción menos “invasiva”: convertir la variable de carácter a factor. Los factores son como caracteres pero tienen la posibilidad de llevar una etiqueta para cada valor y, en caso de llevarla, <strong>ggplot2</strong> la utilizará en lugar del valor.</p>
+<pre class="r"><code># Convertimos el campo &quot;tracción&quot; de tipo caracter a tipo factor
+coches = coches %&gt;% mutate (traccion = as.factor(traccion))
+
+# Añadimos etiquetas al campo &quot;tracción&quot;
+coches$traccion &lt;- factor(coches$traccion, 
+                          levels = c(&quot;f&quot;,&quot;r&quot;, &quot;4&quot;), 
+                          labels = c(&quot;delantera&quot;,&quot;trasera&quot;,&quot;4x4&quot;))</code></pre>
+<p>Imprimimos de nuevo el histograma y ya se se utilizan las etiquetas en lugar de los valores del campo “tracción”:</p>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, fill = traccion)) + 
+    geom_histogram(color = &quot;white&quot;, binwidth = 0.3) +
+    labs(title = &quot;Histograma&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Número de coches&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>En este ejemplo se ve claramente que la tracción delantera se da mayoritariamente en la primera mitad de los litros y la tracción trasera en la segunda mitad, mientras que la tracción 4x4 está repartida de manera más uniforme.</p>
+</div>
+<div id="colores-en-un-diagrama-de-dispersión" class="section level5">
+<h5>Colores en un diagrama de dispersión</h5>
+<p>Utilizamos el parámetro “color” pero no dentro de la geometría (en cuyo caso indicaría un color fijo de dibujo) sino dentro de los elementos estéticos, asociado a una variable. Esto hace que el color de dibujo dependa de los valores de la variable:</p>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, y = millas, color = traccion)) + 
+    geom_point() +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>En este ejemplo se puede ver, sin necesidad de haber coloreado, que los motores de menos litros permiten recorrer más millas con un único galón de combustible. Pero gracias al color se aprecia que son realmente los motores de pocos litros y tracción delantera los que recorren muchas millas con un único galón.</p>
+</div>
+<div id="colores-en-un-diagrama-de-cajas-boxplot" class="section level5">
+<h5>Colores en un diagrama de cajas (boxplot)</h5>
+<p>Utilizamos el parámetro “fill” pero no dentro de la geometría (en cuyo caso indicaría un color fijo de relleno) sino dentro de los elementos estéticos, asociado a una variable. Esto hace que el relleno dependa de los valores de la variable:</p>
+<pre class="r"><code>ggplot(data = coches, aes(x=&quot;&quot;, y = litros, fill = traccion)) +
+    geom_boxplot() +
+    labs(title = &quot;Diagrama de cajas&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Cuartiles&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+<div id="la-otra-tercera-dimensión-los-paneles" class="section level3">
+<h3>La otra tercera dimensión: los paneles</h3>
+<p>Una alternativa a colorear los gráficos en función de los valores de una tercera variable es dibujar varias veces el gráfico, correspondiendo cada dibujo a un valor de la tercera variable.</p>
+<p>Para eso se añade al gráfico el componente “facet_grid”. La nomenclatura es “facet_grid(z1~z2)”, donde z1 y z2 son variables del marco de datos. La variable z1 provoca un desglose en tantas filas como valores tenga z1. La variable z2 provoca un desglose en tantas columnas como valores tenga z2. Si sólo nos interesa desglosar por una variable, se utiliza un “.” en lugar de la otra. Veamos cómo.</p>
+<div id="paneles-en-un-histograma" class="section level5">
+<h5>Paneles en un histograma</h5>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros)) + 
+    geom_histogram(color = &quot;white&quot;, fill = &quot;blue&quot;, binwidth = 0.25) +
+    facet_grid(.~traccion) +
+    labs(title = &quot;Histograma&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Número de coches&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="paneles-en-un-diagrama-de-dispersión" class="section level5">
+<h5>Paneles en un diagrama de dispersión</h5>
+<pre class="r"><code>ggplot(data = coches, aes(x = litros, y = millas)) + 
+    geom_point(color = &quot;blue&quot;) +
+    facet_grid(.~traccion) +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="paneles-en-un-diagrama-de-cajas" class="section level5">
+<h5>Paneles en un diagrama de cajas</h5>
+<pre class="r"><code>ggplot(data = coches, aes(x=&quot;&quot;, y = litros)) +
+    geom_boxplot(color = &quot;blue&quot;, fill = &quot;orange&quot;) +
+    facet_grid(.~traccion) +
+    labs(title = &quot;Diagrama de cajas&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Cuartiles&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+<div id="guardar-un-gráfico" class="section level3">
+<h3>Guardar un gráfico</h3>
+<p>ggplot2 permite exportar fácilmente a pdf y png.</p>
+<p>Exportar a pdf. Las dimensiones se dan en pulgadas. Por defecto, se utiliza: width=7, height=7.</p>
+<pre class="r"><code>pdf(&quot;ggplot2.pdf&quot;, width=12, height=8)
+ggplot(data = coches, aes(x = litros, y = millas)) + 
+    geom_point(color = &quot;orange&quot;) +
+    geom_smooth()
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<pre class="r"><code>unlink(&quot;ggplot2.pdf&quot;) #eliminamos el pdf generado</code></pre>
+<p>Exportar a png. Las dimensiones se dan pixeles y la resolución en dpi. Por defecto, se utiliza: width=480, height=480, res=72.</p>
+<pre class="r"><code>png(&quot;ggplot2.png&quot;, width=800, height=600, res=50)
+ggplot(data = coches, aes(x = litros, y = millas)) + 
+    geom_point(color = &quot;orange&quot;) +
+    geom_smooth()
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<pre class="r"><code>unlink(&quot;ggplot2.png&quot;) #eliminamos el png generado</code></pre>
+</div>
+<div id="aumentar-el-tamaño-de-los-puntos-en-proporción-a-su-frecuencia" class="section level3">
+<h3>Aumentar el tamaño de los puntos en proporción a su frecuencia</h3>
+<p>Un diagrama de dispersión dibuja un punto por cada pareja de valores y no hay forma de saber si esa pareja de valores apareció una vez o cien veces. Pero si hacemos esa cuenta podemos pasarla en los elementos estéticos mediante el parámetro “size”.</p>
+<pre class="r"><code>coches &lt;- coches %&gt;% 
+    select (litros, millas) %&gt;% 
+    group_by(litros,millas) %&gt;%
+    mutate(veces = n())
+
+DT::datatable(head(coches, 5), options=list(dom=&quot;t&quot;))</code></pre>
+<div id="htmlwidget-faca17114930d92a255c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-faca17114930d92a255c">{"x":{"filter":"none","data":[["1","2","3","4","5"],[1.8,1.8,2,2,2.8],[29,29,31,30,26],[4,4,1,1,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>litros<\/th>\n      <th>millas<\/th>\n      <th>veces<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>ggplot(coches, aes(x = litros, y = millas, size = veces)) + 
+    geom_point(color = &quot;blue&quot;) +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>También podemos pasar la cuenta en el parámetro “color” e indicar un escala de colores como “del verde al púrpura” mediante el componente “scale_colour_gradient”:</p>
+<pre class="r"><code>ggplot(coches, aes(x = litros, y = millas, color = veces)) + 
+    geom_point() + 
+    scale_colour_gradient(low = &quot;green&quot;, high=&quot;purple&quot;) +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Y, por supuesto, podemos combinar ambos efectos:</p>
+<pre class="r"><code>ggplot(coches, aes(x = litros, y = millas, size = veces, color = veces)) + 
+    geom_point() + 
+    scale_colour_gradient(low = &quot;green&quot;, high=&quot;purple&quot;) +
+    labs(title = &quot;Diagrama de dispersión&quot;, 
+         x = &quot;Volumen en litros del motor&quot;,
+         y = &quot;Millas que se pueden hacer con un galón&quot;)</code></pre>
+<p><img src="graficos-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

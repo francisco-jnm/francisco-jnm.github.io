@@ -11,7 +11,7 @@
 
 
 
-<title>—</title>
+<title>paquete-rmarkdown.utf8</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -418,182 +418,125 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">—</h1>
 
 </div>
 
 
-<div id="paquete-dplyr" class="section level3">
-<h3>Paquete DPLYR</h3>
-<p>Para manejar un marco de datos, uno de los paquetes más utilizados es “dplyr”, que aporta funciones bastante similares a las del lenguaje SQL:</p>
+<div id="documentos-mágicos-con-código-que-se-autoejecuta." class="section level3">
+<h3>Documentos “mágicos” con código que se autoejecuta.</h3>
+<p>La investigación reproducible sólo es factible si el investigador se molesta en hacer un documento en el que se mezclen las explicaciones verbales con el código. Además de hacer este documento, el investigador tiene que dejar accesibles los conjuntos de datos con los que trabaja el código.</p>
+<p>Si el investigador hace eso, cualquiera podrá reproducir la investigación, cuestionarla, ampliarla, sugerir alternativas…</p>
+<p>Existen diversas herramientas para producir estos documentos mixtos (texto y código que se autoejecuta) y la herramienta propia de R es el paquete <strong>RMarkDown</strong>.</p>
+<p>Estas líneas que estamos leyendo se han escrito con <strong>RMarkDown</strong>.</p>
+</div>
+<div id="documentación-de-rmarkdown" class="section level3">
+<h3>Documentación de RMarkDown</h3>
+<p>Esta es la web de <a href="http://rmarkdown.rstudio.com">RMarkDown</a> y dentro de la web el documento más conciso <a href="http://rmarkdown.rstudio.com/authoring_basics.html">es este</a> que, además, tiene referencias a otros documentos más completos.</p>
+<p>Una presentación muy buena <a href="http://rmarkdown.rstudio.com/lesson-1.html">es esta</a>.</p>
+</div>
+<div id="instalación-de-rmarkdown" class="section level3">
+<h3>Instalación de RMarkDown</h3>
+<p>RMarkDown se instala como cualquier otro paquete de RStudio:</p>
+<pre><code>install.packages(&quot;rmarkdown&quot;)</code></pre>
+<p>En cuanto se instala, ya tenemos en el menú “File &gt; New File” un submenú “RMarkDown”.</p>
+</div>
+<div id="básicos-de-rmarkdown-texto" class="section level3">
+<h3>Básicos de RMarkDown (texto)</h3>
+<p>Poniendo un asterisco al principio y al final de un texto, aparece <em>en cursiva</em></p>
+<p>Poniendo dos asteriscos al principio y al final de un texto, aparece <strong>en negrita</strong>.</p>
+<p>Se pueden crear listas con los símbolos: "*" “+” “-”</p>
+<pre><code>* Málaga
+* Almería
+* Granada</code></pre>
 <ul>
-<li>select</li>
-<li>filter</li>
-<li>arrange</li>
-<li>rename</li>
-<li>mutate</li>
-<li>group_by / summarize</li>
+<li>Málaga</li>
+<li>Almería</li>
+<li>Granada</li>
 </ul>
-<pre class="r"><code>library(dplyr)
-
-provincias = read.table(
-  file = &quot;provincias.csv&quot;,
-  header = TRUE,
-  sep = &quot;;&quot;,
-  dec = &quot;,&quot;,
-  na.strings = &quot;NA&quot;,
-  stringsAsFactors = FALSE,
-  encoding = &#39;UTF-8&#39;
-)</code></pre>
+<p>Se pueden crear sublistas utilizando el tabulador:</p>
+<pre><code>* Andalucía  
+  * Málaga  
+  * Almería  
+  * Granada  
+  * ...  </code></pre>
+<ul>
+<li>Andalucía
+<ul>
+<li>Málaga<br />
+</li>
+<li>Almería<br />
+</li>
+<li>Granada<br />
+</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p>También se pueden hacer listas numeradas utilizando “1.” como símbolo. RMarkDown cambiará el “1.” por el número que corresponda. Se puede utilizar cualquier otro número o, directamente, indicar bien la numeración.</p>
+<pre><code>1. Málaga  
+1. Almería  
+1. Granada  </code></pre>
+<ol style="list-style-type: decimal">
+<li>Málaga<br />
+</li>
+<li>Almería<br />
+</li>
+<li>Granada</li>
+</ol>
 </div>
-<div id="select" class="section level3">
-<h3>SELECT</h3>
-<p>Con la función “select” podemos indicar los campos que queremos mostrar:</p>
-<pre class="r"><code>head ( select (provincias, provincia, habitantes, pib_per_capita) )</code></pre>
-<pre><code>##   provincia habitantes pib_per_capita
-## 1   Almería     700712          20465
-## 2     Cádiz    1240434          17343
-## 3   Córdoba     787819          17964
-## 4   Granada     916486          17894
-## 5    Huelva     521605          19185
-## 6      Jaén     638991          17465</code></pre>
-<p>También podemos seleccionar los campos que no queremos mostrar mediante el signo “-”:</p>
-<pre class="r"><code>head( select (provincias, -pib, -pib_per_capita) )</code></pre>
-<pre><code>##      region provincia habitantes superficie
-## 1 Andalucía   Almería     700712       8775
-## 2 Andalucía     Cádiz    1240434       7440
-## 3 Andalucía   Córdoba     787819      13771
-## 4 Andalucía   Granada     916486      12646
-## 5 Andalucía    Huelva     521605      10127
-## 6 Andalucía      Jaén     638991      13496</code></pre>
-<p>O indicar mediante el operador “:” el primer campo y el último a mostrar:</p>
-<pre class="r"><code>head( select (provincias, region:pib) )</code></pre>
-<pre><code>##      region provincia habitantes superficie   pib
-## 1 Andalucía   Almería     700712       8775 14340
-## 2 Andalucía     Cádiz    1240434       7440 21513
-## 3 Andalucía   Córdoba     787819      13771 14152
-## 4 Andalucía   Granada     916486      12646 16400
-## 5 Andalucía    Huelva     521605      10127 10007
-## 6 Andalucía      Jaén     638991      13496 11160</code></pre>
+<div id="básicos-de-rmarkdown-código" class="section level3">
+<h3>Básicos de RMarkDown (código)</h3>
+<p>El código básico (autoejecutable) se escribe así:</p>
+<pre><code>{r}
+library(dplyr)</code></pre>
+<p>Para evitar que se impriman mensajes y avisos:</p>
+<pre><code>{r message = FALSE, warning = FALSE}
+library(dplyr)</code></pre>
+<p>Para no mostrar el código pero lanzar algún cálculo:</p>
+<pre><code>{r message = FALSE, warning = FALSE, echo = FALSE}
+muestra &lt;- rnorm(10, 4, 1.5)
+media &lt;- mean(muestra)</code></pre>
+<p>Esto es útil para mostrar los resultados más adelante en el texto:</p>
+<pre><code>r media</code></pre>
+<p>3.8128494</p>
 </div>
-<div id="filter" class="section level3">
-<h3>FILTER</h3>
-<p>Con la función “filter” podemos indicar las filas que nos interesan del marco de datos:</p>
-<pre class="r"><code>filter(provincias, region == &quot;Andalucía&quot;)</code></pre>
-<pre><code>##      region provincia habitantes superficie   pib pib_per_capita
-## 1 Andalucía   Almería     700712       8775 14340          20465
-## 2 Andalucía     Cádiz    1240434       7440 21513          17343
-## 3 Andalucía   Córdoba     787819      13771 14152          17964
-## 4 Andalucía   Granada     916486      12646 16400          17894
-## 5 Andalucía    Huelva     521605      10127 10007          19185
-## 6 Andalucía      Jaén     638991      13496 11160          17465
-## 7 Andalucía    Málaga    1645367       7306 29676          18036
-## 8 Andalucía   Sevilla    1943302      14036 38215          19665</code></pre>
-<p>Admite los operadores básicos: &amp; (and), | (or), == (igual a), %in% (lista) &lt;, &lt;=, etc…</p>
-<pre class="r"><code>filter(provincias, region == &quot;Andalucía&quot; &amp; habitantes &gt;= 1000000)</code></pre>
-<pre><code>##      region provincia habitantes superficie   pib pib_per_capita
-## 1 Andalucía     Cádiz    1240434       7440 21513          17343
-## 2 Andalucía    Málaga    1645367       7306 29676          18036
-## 3 Andalucía   Sevilla    1943302      14036 38215          19665</code></pre>
-<pre class="r"><code>filter(provincias, region %in% c(&quot;Aragón&quot;, &quot;Extremadura&quot;))</code></pre>
-<pre><code>##        region provincia habitantes superficie   pib pib_per_capita
-## 1      Aragón    Huesca     219169      15636  6336          28910
-## 2      Aragón    Teruel     134113      14809  3343          24928
-## 3      Aragón  Zaragoza     962432      17274 25996          27011
-## 4 Extremadura   Badajoz     676141      21766 11925          17637
-## 5 Extremadura   Cáceres     397010      19868  7574          19077</code></pre>
+<div id="archivos-que-puede-producir-rmarkdown" class="section level3">
+<h3>Archivos que puede producir RMarkDown</h3>
+<p>Cuando se pulsa el botón “Knit”, se genera un archivo del formato indicado al principio del documento con el comando output.</p>
+<p>Formato markdown (extensión “.md”)</p>
+<pre><code>---
+output: github_document
+---</code></pre>
+<p>Formato html (extensión “.html”)</p>
+<pre><code>---
+output: html_document
+---</code></pre>
+<p>Formato pdf (extensión “.pdf”)</p>
+<pre><code>---
+output: pdf_document
+---</code></pre>
+<p>Formato Microsoft Word (extensión “.doc”)</p>
+<pre><code>---
+output: word_document
+---</code></pre>
+<p>El formato básico es “md” (markdown) y siempre se genera un archivo md que luego se convierte al formato solicitado. Tras la conversión, se elimina automáticamente el archivo “md”, a menos que hayamos indicado “keep_md: yes”.</p>
+<pre><code>---
+output:
+  html_document:
+    keep_md: yes
+---</code></pre>
 </div>
-<div id="arrange" class="section level3">
-<h3>ARRANGE</h3>
-<p>La función “arrange” se utiliza para ordenar las filas del marco de datos. La función “desc” permite ordenar de manera descendente.</p>
-<pre class="r"><code>head( arrange(provincias, region, pib_per_capita) )</code></pre>
-<pre><code>##      region provincia habitantes superficie   pib pib_per_capita
-## 1 Andalucía     Cádiz    1240434       7440 21513          17343
-## 2 Andalucía      Jaén     638991      13496 11160          17465
-## 3 Andalucía   Granada     916486      12646 16400          17894
-## 4 Andalucía   Córdoba     787819      13771 14152          17964
-## 5 Andalucía    Málaga    1645367       7306 29676          18036
-## 6 Andalucía    Huelva     521605      10127 10007          19185</code></pre>
-<pre class="r"><code>head( arrange(provincias, desc(region), pib_per_capita) )</code></pre>
-<pre><code>##             region provincia habitantes superficie   pib pib_per_capita
-## 1 Región de Murcia    Murcia    1473618    11313.0 30601          20766
-## 2       País Vasco   Vizcaya    1134136     2217.0 35046          30901
-## 3       País Vasco Guipúzcoa     708872     1997.0 22695          32015
-## 4       País Vasco     Álava     324568     3037.0 11983          36921
-## 5          Navarra   Navarra     640965    10391.0 19555          30508
-## 6          Melilla   Melilla      84809       12.3  1521          17934</code></pre>
+<div id="rpubs-una-red-social-para-compartir-archivos-rmarkdown" class="section level3">
+<h3>Rpubs: una red social para compartir archivos RMarkDown</h3>
+<p>Los creadores de RStudio han creado también <a href="https://rpubs.com">la web Rpubs</a> donde se puede subir cualquier archivo creado con RMarkDown. El resto de usuarios puede comentar y compartir el documento.</p>
+<p>La web está totalmente integrada en RStudio, se sube el documento pulsando el botón “Publish” después de generar el documento con el botón “Knit”.</p>
 </div>
-<div id="rename" class="section level3">
-<h3>RENAME</h3>
-<p>La función “rename” permite cambiarle el nombre a una columna de un marco de datos. Parece simple pero es que con las funciones básicas de R… es muy difícil.</p>
-<pre class="r"><code>head( rename(provincias, &quot;Comunidad autónoma&quot; = region) )</code></pre>
-<pre><code>##   Comunidad autónoma provincia habitantes superficie   pib pib_per_capita
-## 1          Andalucía   Almería     700712       8775 14340          20465
-## 2          Andalucía     Cádiz    1240434       7440 21513          17343
-## 3          Andalucía   Córdoba     787819      13771 14152          17964
-## 4          Andalucía   Granada     916486      12646 16400          17894
-## 5          Andalucía    Huelva     521605      10127 10007          19185
-## 6          Andalucía      Jaén     638991      13496 11160          17465</code></pre>
-</div>
-<div id="mutate" class="section level3">
-<h3>MUTATE</h3>
-<p>La función “mutate” permite crear una nueva columna mediante un cálculo a partir de las ya existentes.</p>
-<pre class="r"><code>head( mutate(provincias, &quot;Millones de habitantes&quot; = 
-               round(habitantes / 1000000,2)) )</code></pre>
-<pre><code>##      region provincia habitantes superficie   pib pib_per_capita
-## 1 Andalucía   Almería     700712       8775 14340          20465
-## 2 Andalucía     Cádiz    1240434       7440 21513          17343
-## 3 Andalucía   Córdoba     787819      13771 14152          17964
-## 4 Andalucía   Granada     916486      12646 16400          17894
-## 5 Andalucía    Huelva     521605      10127 10007          19185
-## 6 Andalucía      Jaén     638991      13496 11160          17465
-##   Millones de habitantes
-## 1                   0.70
-## 2                   1.24
-## 3                   0.79
-## 4                   0.92
-## 5                   0.52
-## 6                   0.64</code></pre>
-</div>
-<div id="group-by-and-summarize" class="section level3">
-<h3>GROUP BY AND SUMMARIZE</h3>
-<p>Las funciones “group_by” and “summarize” permite calcular campos totalizados a partir de campos agrupados.</p>
-<pre class="r"><code>head( 
-  
-  summarize(group_by(provincias, region), 
-                    total_habitantes = sum(habitantes),
-                    media_habitantes = mean(habitantes)
-                    )
-  
-      )</code></pre>
-<pre><code>## # A tibble: 6 x 3
-##   region             total_habitantes media_habitantes
-##   &lt;chr&gt;                         &lt;int&gt;            &lt;dbl&gt;
-## 1 Andalucía                   8394716         1049340.
-## 2 Aragón                      1315714          438571.
-## 3 Asturias                    1029973         1029973 
-## 4 Cantabria                    580924          580924 
-## 5 Castilla-La Mancha          2033081          406616.
-## 6 Castilla y León             2427418          269713.</code></pre>
-</div>
-<div id="la-tubería" class="section level3">
-<h3>LA TUBERÍA %&gt;%</h3>
-<p>El operador %&gt;% (que se lee “then” o “y después”) permite enlazar varias de las funciones anteriores, de manera que no tenemos que ir sobreescribiendo un marco de datos auxiliar hasta llegar al definitivo.</p>
-<pre class="r"><code>provincias %&gt;%
-  mutate(&quot;Millones de habitantes&quot; =
-           round(habitantes / 1000000, 2)) %&gt;%
-  filter(region == &quot;Andalucía&quot;)  %&gt;%
-  select (provincia, superficie, &quot;Millones de habitantes&quot;) %&gt;%
-  arrange(desc(superficie))</code></pre>
-<pre><code>##   provincia superficie Millones de habitantes
-## 1   Sevilla      14036                   1.94
-## 2   Córdoba      13771                   0.79
-## 3      Jaén      13496                   0.64
-## 4   Granada      12646                   0.92
-## 5    Huelva      10127                   0.52
-## 6   Almería       8775                   0.70
-## 7     Cádiz       7440                   1.24
-## 8    Málaga       7306                   1.65</code></pre>
+<div id="bookdown-una-mejora-de-rmarkdown-libros-y-artículos-más-profesionales" class="section level3">
+<h3>BookDown: una mejora de RMarkDown (libros y artículos más profesionales)</h3>
+<p>El <a href="https://bookdown.org/home/getting-started.html">paquete bookdown</a> se puede instalar a continuación de RMarkDown y permite escribir libros y artículos más profesionales.</p>
+<p>Además, los creadores de BookDown han seguido el ejemplo de Rpubs y permiten mostrar gratuitamente los libros escritos con este paquete en la <a href="https://bookdown.org/">web de bookdown</a>.</p>
+<p>Varios de los libros de la especialización en Ciencia de Datos de la Universidad Johns Hopkins están publicados gratuitamente (en su primera edición) en esa web:</p>
+<p><a href="https://bookdown.org/rdpeng/rprogdatascience">R Programming for Data Science</a></p>
+<p><a href="https://bookdown.org/rdpeng/artofdatascience">The Art of Data Science</a></p>
 </div>
 
 
