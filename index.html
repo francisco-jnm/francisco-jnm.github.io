@@ -11,15 +11,24 @@
 
 
 
-<title>Bienvenidos</title>
+<title>index.knit</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -34,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -51,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -88,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +143,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +171,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -274,135 +237,89 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Ciencia de datos</a>
+      <a class="navbar-brand" href="index.html">Mis inversiones</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Instalar R
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Fondos de Inversión
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="instalar-r.html">Instalar R</a>
-    </li>
-    <li>
-      <a href="instalar-rtools.html">Instalar Rtools</a>
-    </li>
-    <li>
-      <a href="recursos.html">Recursos de R</a>
-    </li>
-    <li>
-      <a href="swirl.html">Aprender R con SWIRL</a>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Indexa</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="Vanguard-US-500-Stk-Idx-Eur-Ins-Plus.html">Vanguard US 500 Stk Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-European-Stk-Idx-Eur-Ins-Plus.html">Vanguard European Stk Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Japan-Stk-Idx-Eur-Ins-Plus.html">Vanguard Japan Stk Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Emrg-Mk-Stk-Idx-Eur-Ins-Plus.html">Vanguard Emrg Mk Stk Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Global-Small-Cap-Idx-Eur-Ins-Plus.html">Vanguard Global Small Cap Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-US-Gov-Bnd-Idx-Eur-Hdg-Ins-Plus.html">Vanguard US Gov Bnd Idx Eur Hdg -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Eur-Gov-Bnd-Idx-Ins-Plus.html">Vanguard Eur Gov Bnd Idx -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Euro-Inv-Gr-Bnd-Idx-Eur-Ins-Plus.html">Vanguard Euro Inv Gr Bnd Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-US-Inv-Gr-Bnd-Idx-Eur-Hdg-Ins-Plus.html">Vanguard US Inv Gr Bnd Idx Eur Hdg -Ins Plus</a>
+        </li>
+        <li>
+          <a href="Vanguard-Euroz-Inf-Lk-Bnd-Idx-Eur-Ins-Plus.html">Vanguard Euroz Inf Lk Bnd Idx Eur -Ins Plus</a>
+        </li>
+        <li>
+          <a href="indexa.html">Cartera 3 de Indexa</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Lenguaje R
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Criptomonedas
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="recursos.html">Recursos de R</a>
+      <a href="bitcoin.html">Bitcoin</a>
     </li>
     <li>
-      <a href="Vectores.html">Vectores</a>
+      <a href="eth-ethereum.html">Eth-ethereum</a>
     </li>
     <li>
-      <a href="estructuras-de-control.html">Estructuras de control</a>
-    </li>
-    <li>
-      <a href="marcos-de-datos.html">Marcos de datos</a>
-    </li>
-    <li>
-      <a href="marcos-de-datos-con-dplyr.html">Marcos de datos con dplyr</a>
-    </li>
-    <li>
-      <a href="descargar-salvar-recuperar.html">Descargar / Salvar / Recuperar</a>
-    </li>
-    <li>
-      <a href="valores-perdidos.html">Valores perdidos</a>
-    </li>
-    <li>
-      <a href="directorios.html">Listar directorios</a>
-    </li>
-    <li>
-      <a href="expresiones-regulares.html">Expresiones regulares</a>
-    </li>
-    <li>
-      <a href="fechas.html">Fechas</a>
-    </li>
-    <li>
-      <a href="muestras-aleatorias.html">Muestras aleatorias</a>
-    </li>
-    <li>
-      <a href="graficos-ggplot2.html">Gráficos</a>
+      <a href="ada-cardano.html">Ada-cardano</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Obtener datos
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Otros activos
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="leer-hojas-excel.html">Leer hojas Excel</a>
-    </li>
-    <li>
-      <a href="leer-ficheros-xml.html">Leer ficheros XML</a>
-    </li>
-    <li>
-      <a href="leer-ficheros-html.html">Leer ficheros HTML</a>
-    </li>
-    <li>
-      <a href="leer-twitter.html">Leer Twitter</a>
-    </li>
-    <li>
-      <a href="leer-bases-de-datos-sql.html">Leer bases de datos SQL</a>
-    </li>
-    <li>
-      <a href="leer-bases-de-datos-no-sql.html">Leer bases de datos No SQL</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    R Studio
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="paquete-rmarkdown.html">R MarkDown</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Estadística
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="ley-grandes-numeros.html">La ley de los grandes números</a>
-    </li>
-    <li>
-      <a href="estadistica-descriptiva.html">Estadística descriptiva</a>
-    </li>
-    <li>
-      <a href="prueba-t-student.html">La prueba t de Student</a>
+      <a href="oro.html">Oro</a>
     </li>
   </ul>
 </li>
@@ -414,17 +331,16 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Bienvenidos</h1>
 
 </div>
 
 
-<div id="qué-es-la-ciencia-de-datos" class="section level3">
-<h3>¿Qué es la Ciencia de Datos?</h3>
+<div id="análisis-de-mercados" class="section level2">
+<h2>Análisis de mercados</h2>
 </div>
 
 
@@ -454,7 +370,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
