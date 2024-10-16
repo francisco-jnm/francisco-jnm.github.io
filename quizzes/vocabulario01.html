@@ -2,9 +2,40 @@
 <html>
 <head>
     <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #444;
+            font-size: 24px;
+        }
+        #answer {
+            color: blue;
+            font-size: 20px;
+        }
+        button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #eee;
+            border: 1px solid #ccc;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
     <script>
         let questionAnswerPairs = [];
         let currentIndex = 0;
+        let showingAnswer = false;
 
         // Function to fetch the .txt file and split questions/answers
         function loadTxtFile() {
@@ -46,8 +77,9 @@
         function showNextQuestion() {
             if (currentIndex < questionAnswerPairs.length) {
                 const { question } = questionAnswerPairs[currentIndex];
-                document.getElementById('question').innerText = question;
+                document.getElementById('question').innerHTML = `<h2>${question}</h2>`;
                 document.getElementById('answer').innerText = ''; // Clear answer when showing the next question
+                showingAnswer = false; // Reset showing answer state
             } else {
                 document.getElementById('question').innerText = 'No more questions!';
                 document.getElementById('answer').innerText = ''; // Clear answer when no more questions
@@ -56,11 +88,10 @@
 
         // Function to show the answer
         function showAnswer() {
-            if (currentIndex < questionAnswerPairs.length) {
+            if (!showingAnswer && currentIndex < questionAnswerPairs.length) {
                 const { answer } = questionAnswerPairs[currentIndex];
-                document.getElementById('answer').innerText = answer; // Show the answer
-            } else {
-                document.getElementById('answer').innerText = 'No more answers!';
+                document.getElementById('answer').innerHTML = answer; // Show the answer
+                showingAnswer = true; // Prevent showing the answer again until the next question
             }
         }
 
@@ -68,6 +99,13 @@
         function nextQuestion() {
             currentIndex++; // Move to the next question-answer pair
             showNextQuestion(); // Show the next question
+        }
+
+        // Function to reset the quiz
+        function resetQuiz() {
+            currentIndex = 0;
+            shuffleQuestions(); // Shuffle questions again
+            showNextQuestion(); // Show the first question again
         }
     </script>
 </head>
@@ -77,5 +115,6 @@
     <div id="answer"></div>
     <button onclick="showAnswer()">Show Answer</button>
     <button onclick="nextQuestion()">Next Question</button>
+    <button onclick="resetQuiz()">Restart Quiz</button>
 </body>
 </html>
