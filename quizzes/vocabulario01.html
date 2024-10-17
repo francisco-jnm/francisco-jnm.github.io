@@ -11,22 +11,25 @@
         }
         h1 {
             color: #333;
+            font-size: 1vw; /* Responsive font size for the title */
         }
         h2 {
             color: #444;
-            font-size: 24px;
+            font-size: 4vw; /* Responsive font size for questions */
         }
         #answer {
             color: blue;
-            font-size: 20px;
+            font-size: 4vw; /* Responsive font size for answers */
         }
         button {
             margin: 10px 5px;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 2vw; /* Responsive font size for buttons */
             cursor: pointer;
             background-color: #eee;
             border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px; /* Limit button size on larger screens */
         }
         button:hover {
             background-color: #ddd;
@@ -100,21 +103,13 @@
             currentIndex++; // Move to the next question-answer pair
             showNextQuestion(); // Show the next question
         }
-
-        // Function to reset the quiz
-        function resetQuiz() {
-            currentIndex = 0;
-            shuffleQuestions(); // Shuffle questions again
-            showNextQuestion(); // Show the first question again
-        }
     </script>
 </head>
 <body onload="loadTxtFile()">
-    <h1>Quiz</h1>
+    <h1>English phonetics quiz</h1>
     <div id="question"></div>
     <div id="answer"></div>
     <button onclick="showAnswer()">Show Answer</button>
     <button onclick="nextQuestion()">Next Question</button>
-    <button onclick="resetQuiz()">Restart Quiz</button>
 </body>
 </html>
