@@ -41,16 +41,16 @@ acting
 'AKTING
 
 action
-'AKSHioN
+'AKSHoN
 
 actions
-'AKSHioNS
+'AKSHoNS
 
 activity
 AKT'IVeTII
 
 actual
-'AKCHuaUaL
+'AKCHuaU*L
 
 add
 'AD
@@ -62,7 +62,7 @@ addressed
 aDR'EST
 
 administration
-ADMINISTR'EISHioN
+ADMINISTR'EISHoN
 
 admiral
 'ADMERaL
@@ -77,7 +77,7 @@ advantage
 ADV'ANTILL
 
 adventurous
-ADV'ENCHERouS
+ADV'ENCHERaS
 
 advertise
 'ADVERTAIS
@@ -140,7 +140,7 @@ airport
 'ERPORT
 
 alarm
-aLaRM
+aL'AARM
 
 all
 'OL
@@ -176,7 +176,7 @@ americans
 aM'EReKaNS
 
 ammunition
-AMIeN'ISHaN
+AMIeN'ISH*N
 
 among
 aMoNG
@@ -218,13 +218,13 @@ any
 'ENII
 
 anybody
-'ENIIBaDII
+'ENIIB*DII
 
 anybody's
-'ENIIBaDIIS
+'ENIIB*DIIS
 
 anyone
-'ENIIUaN
+'ENIIU*N
 
 anything
 'ENIIZING
@@ -233,7 +233,7 @@ anywhere
 'ENIIUER
 
 apartment
-aPaRTMeNT
+aP'AARTMeNT
 
 apparently
 aP'EReNTLII
@@ -242,7 +242,7 @@ apple
 'APeL
 
 application
-APLeK'EISHioN
+APLeK'EISHoN
 
 applying
 aPL'AIING
@@ -272,25 +272,25 @@ arabs
 'ARaBS
 
 are
-aR
+'AAR
 
 area
-'ERIIa
+'ERII*
 
 aren't
-aReNT
+'AAReNT
 
 arguments
-aRGIeMaNTS
+'AARGIeM*NTS
 
 arithmetic
 ERIZM'ETIK
 
 arm
-aRM
+'AARM
 
 army
-aRMII
+'AARMII
 
 around
 ER'AUND
@@ -338,7 +338,7 @@ attend
 aT'END
 
 attention
-aT'ENSHioN
+aT'ENSHoN
 
 attitude
 'ATeTUUD
@@ -350,7 +350,7 @@ attorneys
 aT'ERNIIS
 
 august
-'AAGaST
+'OGoST
 
 authorities
 auZ'OReTIIS
@@ -386,7 +386,7 @@ away
 aU'EI
 
 awful
-aFaL
+'AAFoL
 
 baby
 B'EIBII
@@ -410,16 +410,16 @@ bank
 B'ANGK
 
 banquet
-B'ANGKUaT
+B'ANGKU*T
 
 bar
-BaR
+B'AAR
 
 barely
 B'ERLII
 
 bars
-BaRS
+B'AARS
 
 based
 B'EIST
@@ -473,7 +473,7 @@ began
 BIG'AN
 
 begun
-BIG'aN
+BIG'oN
 
 behind
 BIJ'AIND
@@ -632,13 +632,13 @@ business
 B'ISNeS
 
 bustling
-B'aSeLING
+B'oSeLING
 
 busy
 B'ISII
 
 but
-B'aT
+B'oT
 
 buy
 B'AI
@@ -674,7 +674,7 @@ can't
 K'ANT
 
 cancellations
-KANSeL'EISHioNS
+KANSeL'EISHoNS
 
 candidate
 K'ANDeDEIT
@@ -698,10 +698,10 @@ captivated
 K'APTIVEITID
 
 car
-KaR
+K'AAR
 
 card
-KaRD
+K'AARD
 
 care
 K'ER
@@ -710,7 +710,7 @@ careful
 K'ERFeL
 
 carpet
-KaRPeT
+K'AARPeT
 
 carrot
 K'ARoT
@@ -731,10 +731,10 @@ casinos
 KaS'IINOUS
 
 cause
-K'AAS
+K'OS
 
 caused
-K'AASD
+K'OSD
 
 ceiling
 S'IILING
@@ -767,10 +767,10 @@ character
 K'ERIKTER
 
 charge
-CHaRLL
+CH'AARLL
 
 charlie
-CHaRLII
+CH'AARLII
 
 chatted
 CH'ATeD
@@ -782,7 +782,7 @@ checked
 CH'EKT
 
 checkup
-CH'EKaP
+CH'EKoP
 
 child
 CH'AILD
@@ -803,7 +803,7 @@ christmas
 KR'ISMaS
 
 circumstances
-S'ERKaMSTANSeS
+S'ERKoMSTANSeS
 
 city
 S'ITII
@@ -929,10 +929,10 @@ condensed
 KoND'ENST
 
 conditioning
-KoND'ISHioNING
+KoND'ISHoNING
 
 conductor
-KoND'aKTER
+KoND'oKTER
 
 confident
 K'ONFeDeNT
@@ -959,7 +959,7 @@ considers
 KoNS'IDERS
 
 consolation
-KAANSoL'EISHioN
+KONSoL'EISHoN
 
 constant
 K'ONSTaNT
@@ -968,7 +968,7 @@ constantly
 K'ONSTaNTLII
 
 consult
-KoNS'aLT
+KoNS'oLT
 
 contact
 K'ONTAKT
@@ -992,7 +992,7 @@ controlled
 KoNTR'OULD
 
 convention
-KoNV'ENSHioN
+KoNV'ENSHoN
 
 convincing
 KoNV'INSING
@@ -1001,7 +1001,7 @@ corfu
 真corfu??
 
 costcutting
-K'OSTKaTING
+K'OSTKoTING
 
 costs
 K'OSTS
@@ -1013,7 +1013,7 @@ could've
 KUDeV
 
 couldn't
-K'UDaNT
+K'UD*NT
 
 count
 K'AUNT
@@ -1022,13 +1022,13 @@ counterparts
 K'AUNTERPAARTS
 
 country
-KouNTRII
+K'aNTRII
 
 countryside
-KouNTRIISAID
+K'aNTRIISAID
 
 couple
-KouPeL
+K'aPeL
 
 courage
 K'ERaLL
@@ -1082,10 +1082,10 @@ current
 K'EReNT
 
 customs
-K'aSToMS
+K'oSToMS
 
 cynical
-S'INIKaL
+S'INIK*L
 
 damp
 D'AMP
@@ -1121,10 +1121,10 @@ decided
 DIS'AIDID
 
 decision
-DIS'ISHioN
+DIS'ISHoN
 
 decisions
-DIS'ISHioNS
+DIS'ISHoNS
 
 decisive
 DIS'AISIV
@@ -1154,10 +1154,10 @@ demonstrators
 D'EMoNSTREITERS
 
 department
-DIPaRTMeNT
+DIP'AARTMeNT
 
 departments
-DIPaRTMeNTS
+DIP'AARTMeNTS
 
 depress
 DIPR'ES
@@ -1178,7 +1178,7 @@ did
 D'ID
 
 didn't
-D'IDaNT
+D'ID*NT
 
 die
 D'AI
@@ -1199,7 +1199,7 @@ directed
 DER'EKTeD
 
 direction
-DER'EKSHioN
+DER'EKSHoN
 
 disabled
 DIS'EIBeLD
@@ -1229,7 +1229,7 @@ dividing
 DIV'AIDING
 
 division
-DIV'ISHioN
+DIV'ISHoN
 
 do
 D'UU
@@ -1244,13 +1244,13 @@ doctors
 D'OKTERS
 
 documents
-D'OKIeMaNTS
+D'OKIeM*NTS
 
 does
 DoeS
 
 doesn't
-DoeSaNT
+DoeS*NT
 
 dogs
 D'OGS
@@ -1271,7 +1271,7 @@ door
 D'OR
 
 double
-DouBeL
+D'aBeL
 
 doubt
 D'AUT
@@ -1319,13 +1319,13 @@ drops
 DR'OPS
 
 drunk
-DR'aNGK
+DR'oNGK
 
 dry
 DR'AI
 
 duct
-D'aKT
+D'oKT
 
 during
 D'URING
@@ -1349,7 +1349,7 @@ easier
 'IISIIER
 
 easiest
-'IISIIaST
+'IISII*ST
 
 easily
 'IISeLII
@@ -1454,7 +1454,7 @@ enjoyed
 ENLL'OID
 
 enough
-INouF
+IN'aF
 
 entertain
 ENTERT'EIN
@@ -1469,7 +1469,7 @@ envy
 'ENVII
 
 equipment
-IKU'IPMaNT
+IKU'IPM*NT
 
 errand
 'ERaND
@@ -1496,7 +1496,7 @@ europe's
 I'URePS
 
 europeans
-IUReaP'IIaNS
+IUReaP'II*NS
 
 even
 'IIVIN
@@ -1508,7 +1508,7 @@ every
 'EVERII
 
 everybody
-'EVRIIBAADII
+'EVRIIBODII
 
 everyday
 'EVRIID'EI
@@ -1529,7 +1529,7 @@ except
 IKS'EPT
 
 exception
-IKS'EPSHioN
+IKS'EPSHoN
 
 exciting
 IKS'AITING
@@ -1550,7 +1550,7 @@ expect
 IKSP'EKT
 
 expectations
-EKSPEKT'EISHioNS
+EKSPEKT'EISHoNS
 
 expected
 IKSP'EKTeD
@@ -1568,7 +1568,7 @@ explain
 IKSPL'EIN
 
 explanations
-EKSPLaN'EISHioNS
+EKSPLaN'EISHoNS
 
 export
 'EKSPORT
@@ -1577,7 +1577,7 @@ express
 IKSPR'ES
 
 expression
-IKSPR'ESHioN
+IKSPR'ESHoN
 
 extra
 'EKSTRa
@@ -1616,13 +1616,13 @@ family
 F'AMeLII
 
 famous
-F'EIMouS
+F'EIMaS
 
 fans
 F'ANS
 
 far
-FaR
+F'AAR
 
 fast
 F'AST
@@ -1640,7 +1640,7 @@ fastest
 F'ASTeST
 
 father
-FaDER
+F'AADER
 
 faults
 F'OLTS
@@ -1799,7 +1799,7 @@ forms
 F'ORMS
 
 fortune
-F'ORCHaN
+F'ORCHoN
 
 forty
 F'ORTII
@@ -1841,7 +1841,7 @@ full
 F'UL
 
 funny
-F'aNII
+F'oNII
 
 gain
 G'EIN
@@ -1853,10 +1853,10 @@ gambling
 G'AMBeLING
 
 garage
-GERaSH
+GER'AASH
 
 gardener
-GaRDeNER
+G'AARDeNER
 
 gas
 G'AS
@@ -1871,10 +1871,10 @@ general
 LL'ENERaL
 
 generations
-LLENER'EISHioNS
+LLENER'EISHoNS
 
 genoa
-LL'ENOUa
+LL'ENOU*
 
 gentlemen
 LL'ENTeLMIN
@@ -1949,7 +1949,7 @@ government
 GoVERMeNT
 
 graduates
-GR'ALLuaUaTS
+GR'ALLuaU*TS
 
 grandfather
 GR'ANDFAADER
@@ -1994,7 +1994,7 @@ had
 J'AD
 
 hadn't
-J'ADaNT
+J'AD*NT
 
 half
 J'AF
@@ -2036,22 +2036,22 @@ happy
 J'APII
 
 hard
-JaRD
+J'AARD
 
 harder
-JaRDER
+J'AARDER
 
 hardly
-JaRDLII
+J'AARDLII
 
 hardworking
-JaRDUERKING
+J'AARDUERKING
 
 has
 J'AS
 
 hasn't
-J'ASaNT
+J'AS*NT
 
 have
 J'AV
@@ -2063,7 +2063,7 @@ having
 J'AVING
 
 hazardous
-J'ASERDouS
+J'ASERDaS
 
 haze
 J'EIS
@@ -2207,16 +2207,16 @@ huge
 JI'UULL
 
 human
-JI'UUMaN
+JI'UUM*N
 
 humiliating
 JIUUM'ILIIEITING
 
 hundred
-J'aNDReD
+J'oNDReD
 
 hungry
-J'aNGGRII
+J'oNGGRII
 
 hurt
 J'ERT
@@ -2243,10 +2243,10 @@ ice
 'AIS
 
 idea
-AID'IIa
+AID'II*
 
 ideas
-AID'IIaS
+AID'II*S
 
 if
 'IF
@@ -2282,7 +2282,7 @@ impress
 IMPR'ES
 
 impression
-IMPR'ESHioN
+IMPR'ESHoN
 
 impressive
 IMPR'ESIV
@@ -2309,25 +2309,25 @@ independence
 INDIP'ENDeNS
 
 indian
-'INDIIaN
+'INDII*N
 
 indicates
 'INDIKEITS
 
 individual
-INDeV'ILLuaUaL
+INDeV'ILLuaU*L
 
 infant
 'INFaNT
 
 inflation
-INFL'EISHioN
+INFL'EISHoN
 
 influence
 'INFLUUeNS
 
 information
-INFERM'EISHioN
+INFERM'EISHoN
 
 informed
 INF'ORMD
@@ -2348,7 +2348,7 @@ insisting
 INS'ISTING
 
 insomnia
-INS'OMNIIa
+INS'OMNII*
 
 install
 INST'OL
@@ -2363,13 +2363,13 @@ instead
 INST'ED
 
 instruction
-INSTR'aKSHioN
+INSTR'oKSHoN
 
 instructions
-INSTR'aKSHioNS
+INSTR'oKSHoNS
 
 instrument
-'INSTRaMeNT
+'INSTRoMeNT
 
 insurance
 INSH'URaNS
@@ -2381,7 +2381,7 @@ intended
 INT'ENDeD
 
 intentions
-INT'ENCHioNS
+INT'ENCHoNS
 
 interest
 'INTReST
@@ -2396,13 +2396,13 @@ interior
 INT'IRIIER
 
 interrupt
-INTER'aPT
+INTER'oPT
 
 interrupted
-INTER'aPTID
+INTER'oPTID
 
 intersections
-INTERS'EKSHioNS
+INTERS'EKSHoNS
 
 into
 INT'UU
@@ -2411,7 +2411,7 @@ is
 'IS
 
 isn't
-'ISaNT
+'IS*NT
 
 issue
 'ISHUU
@@ -2420,13 +2420,13 @@ it
 'IT
 
 it'll
-'ITaL
+'IT*L
 
 it's
 'ITS
 
 italians
-IT'ALIaNS
+IT'ALI*NS
 
 its
 'ITS
@@ -2468,22 +2468,22 @@ jones
 LL'OUNS
 
 judge
-LL'aLL
+LL'oLL
 
 judgements
-LL'aLLMeNTS
+LL'oLLMeNTS
 
 july
 LLUUL'AI
 
 jumping
-LL'aMPING
+LL'oMPING
 
 june
 LL'UUN
 
 just
-LL'aST
+LL'oST
 
 kangaroo
 KANGGER'UU
@@ -2555,7 +2555,7 @@ language
 L'ANGGUeLL
 
 languages
-L'ANGGUeLLaS
+L'ANGGUeLL*S
 
 last
 L'AST
@@ -2741,16 +2741,16 @@ loyal
 L'OIaL
 
 lucky
-L'aKII
+L'oKII
 
 lunatic
 L'UUNaTIK
 
 lunch
-L'aNCH
+L'oNCH
 
 luxury
-L'aGSHERII
+L'oGSHERII
 
 lying
 L'AIING
@@ -2813,7 +2813,7 @@ managers
 M'ANaLLERS
 
 manuals
-M'ANIUUaLS
+M'ANIUU*LS
 
 manufactured
 MANIaF'AKCHERD
@@ -2822,7 +2822,7 @@ many
 M'ENII
 
 margin
-MaRLLeN
+M'AARLLeN
 
 marine
 MER'IIN
@@ -2837,10 +2837,10 @@ mastered
 M'ASTERD
 
 material
-MaT'IRIIaL
+MaT'IRII*L
 
 materials
-MaT'IRIIaLS
+MaT'IRII*LS
 
 maternity
 MaT'ERNITII
@@ -2876,7 +2876,7 @@ medical
 M'EDeKaL
 
 mediterranean
-MEDeTER'EINIIaN
+MEDeTER'EINII*N
 
 meet
 M'IIT
@@ -2924,7 +2924,7 @@ might
 M'AIT
 
 million
-M'ILIaN
+M'ILI*N
 
 millionaire
 MILIeN'ER
@@ -2939,13 +2939,13 @@ mines
 M'AINS
 
 minute
-M'INaT
+M'INoT
 
 minutes
-M'INaTS
+M'INoTS
 
 misjudge
-MISLL'aLL
+MISLL'oLL
 
 miss
 M'IS
@@ -2960,7 +2960,7 @@ mistake
 MIST'EIK
 
 molotov
-M'OLoTAAF
+M'OLoTOF
 
 money
 MoNII
@@ -2993,7 +2993,7 @@ mountain
 M'AUNTeN
 
 moustache
-MouSTASH
+M'aSTASH
 
 moustaches
 真moustaches??
@@ -3017,22 +3017,22 @@ mr
 M'ISTER
 
 much
-M'aCH
+M'oCH
 
 muscles
-M'aSeLS
+M'oSeLS
 
 museum
-MIUUS'IIaM
+MIUUS'II*M
 
 music
 MI'UUSIK
 
 musical
-MI'UUSIKaL
+MI'UUSIK*L
 
 must
-M'aST
+M'oST
 
 my
 M'AI
@@ -3050,7 +3050,7 @@ nasa
 N'ASa
 
 national
-N'ASHioNaL
+N'ASHoNaL
 
 natural
 N'ACHERaL
@@ -3089,7 +3089,7 @@ neighbours
 真neighbours??
 
 nervous
-N'ERVouS
+N'ERVaS
 
 never
 N'EVER
@@ -3116,7 +3116,7 @@ no
 N'OU
 
 nobody
-N'OUBAADII
+N'OUBODII
 
 nor
 N'OR
@@ -3152,19 +3152,19 @@ nowadays
 N'AUaDEIS
 
 number
-N'aMBER
+N'oMBER
 
 obey
 OUB'EI
 
 obnoxious
-AABN'OKSHiouS
+OBN'OKSHiouS
 
 obsessed
 oBS'EST
 
 occasion
-oK'EISHioN
+oK'EISHoN
 
 occur
 oK'ER
@@ -3251,13 +3251,13 @@ operate
 'OPEREIT
 
 opinion
-oP'INIaN
+oP'INI*N
 
 opportunities
-AAPERT'UUNeTIIS
+OPERT'UUNeTIIS
 
 opportunity
-AAPERT'UUNeTII
+OPERT'UUNeTII
 
 or
 'OR
@@ -3356,22 +3356,22 @@ paris
 P'ERIS
 
 park
-PaRK
+P'AARK
 
 parked
-PaRKT
+P'AARKT
 
 part
-PaRT
+P'AART
 
 partially
-PaRSHiaLII
+P'AARSHiaLII
 
 parttime
-PaRTTAIM
+P'AARTTAIM
 
 party
-PaRTII
+P'AARTII
 
 pass
 P'AS
@@ -3398,7 +3398,7 @@ peaceful
 P'IISFeL
 
 pension
-P'ENSHioN
+P'ENSHoN
 
 people
 P'IIPeL
@@ -3413,7 +3413,7 @@ perhaps
 PERJ'APS
 
 period
-P'IRIIaD
+P'IRII*D
 
 permanently
 P'ERMaNeNTLII
@@ -3503,10 +3503,10 @@ pleased
 PL'IISD
 
 plumbing
-PL'aMING
+PL'oMING
 
 plus
-PL'aS
+PL'oS
 
 point
 P'OINT
@@ -3515,7 +3515,7 @@ points
 P'OINTS
 
 poisonous
-P'OISoNouS
+P'OISoNaS
 
 polar
 P'OULER
@@ -3530,13 +3530,13 @@ popular
 P'OPIaLER
 
 position
-PoS'ISHioN
+PoS'ISHoN
 
 positive
 P'OSeTIV
 
 possibility
-PAASeB'ILeTII
+POSeB'ILeTII
 
 possible
 P'OSeBeL
@@ -3554,7 +3554,7 @@ prefer
 PReF'ER
 
 preparation
-PREPER'EISHioN
+PREPER'EISHoN
 
 prepare
 PRIIP'ER
@@ -3572,10 +3572,10 @@ present
 PR'ESeNT
 
 presentation
-PRESeNT'EISHioN
+PRESeNT'EISHoN
 
 presentations
-PRESeNT'EISHioNS
+PRESeNT'EISHoNS
 
 presentday
 真presentday??
@@ -3614,10 +3614,10 @@ processor
 PR'OSESER
 
 production
-PRoD'aKSHioN
+PRoD'oKSHoN
 
 professional
-PRoF'ESHioNaL
+PRoF'ESHoNaL
 
 profits
 PR'OFITS
@@ -3635,10 +3635,10 @@ promise
 PR'OMeS
 
 promotion
-PRoM'OUSHioN
+PRoM'OUSHoN
 
 proportion
-PRoP'ORSHioN
+PRoP'ORSHoN
 
 proposal
 PRoP'OUSaL
@@ -3659,22 +3659,22 @@ province
 PR'OVeNS
 
 provocation
-PRAAVoK'EISHioN
+PROVoK'EISHoN
 
 psychologist
-SAIK'OLeLLaST
+SAIK'OLeLL*ST
 
 public
-P'aBLIK
+P'oBLIK
 
 publicity
-PaBL'ISeTII
+PoBL'ISeTII
 
 punishing
-P'aNISHING
+P'oNISHING
 
 punishments
-P'aNISHMeNTS
+P'oNISHMeNTS
 
 purpose
 P'ERPoS
@@ -3686,22 +3686,22 @@ put
 P'UT
 
 puzzle
-P'aSeL
+P'oSeL
 
 puzzles
-P'aSeLS
+P'oSeLS
 
 pyjamas
 真pyjamas??
 
 question
-KU'ESCHaN
+KU'ESCH*N
 
 questions
-KU'ESCHaNS
+KU'ESCH*NS
 
 quiet
-KU'AIaT
+KU'AI*T
 
 quit
 KU'IT
@@ -3734,7 +3734,7 @@ rather
 R'ADER
 
 raw
-Ra
+R'AA
 
 reach
 R'IICH
@@ -3743,7 +3743,7 @@ reached
 R'IICHT
 
 reactions
-RII'AKSHaNS
+RII'AKSH*NS
 
 read
 R'ED
@@ -3788,7 +3788,7 @@ recent
 R'IISeNT
 
 recharged
-RIICHaRLLD
+RIICH'AARLLD
 
 recommend
 REKoM'END
@@ -3815,16 +3815,16 @@ rehearsing
 RIJ'ERSING
 
 relations
-RIIL'EISHioNS
+RIIL'EISHoNS
 
 relative
 R'ELaTIV
 
 relaxation
-RIILAKS'EISHioN
+RIILAKS'EISHoN
 
 reliable
-RIL'AIeBaL
+RIL'AIeB*L
 
 remained
 RIM'EIND
@@ -3893,7 +3893,7 @@ research
 RIIS'ERCH
 
 reservations
-RESERV'EISHioNS
+RESERV'EISHoNS
 
 resort
 RIS'ORT
@@ -3902,7 +3902,7 @@ respect
 RISP'EKT
 
 responsibility
-RIISPAANSeB'ILeTII
+RIISPONSeB'ILeTII
 
 rest
 R'EST
@@ -3917,10 +3917,10 @@ restrooms
 R'ESTRUUMS
 
 result
-RIS'aLT
+RIS'oLT
 
 results
-RIS'aLTS
+RIS'oLTS
 
 resumes
 RIS'UUMS
@@ -3992,13 +3992,13 @@ rumours
 RUUMERS
 
 run
-R'aN
+R'oN
 
 runs
-R'aNS
+R'oNS
 
 russians
-R'aSHiaNS
+R'oSHiaNS
 
 sacred
 S'EIKReD
@@ -4118,10 +4118,10 @@ series
 S'IRIIS
 
 serious
-S'IRIIaS
+S'IRII*S
 
 seriousness
-S'IRIIeSNaS
+S'IRIIeSN*S
 
 serve
 S'ERV
@@ -4133,7 +4133,7 @@ service
 S'ERVeS
 
 session
-S'ESHioN
+S'ESHoN
 
 set
 S'ET
@@ -4193,7 +4193,7 @@ should
 SH'UD
 
 shouldn't
-SH'UDaNT
+SH'UD*NT
 
 show
 SH'OU
@@ -4235,7 +4235,7 @@ sit
 S'IT
 
 situation
-SICHUU'EISHaN
+SICHUU'EISH*N
 
 six
 S'IKS
@@ -4277,10 +4277,10 @@ smallest
 SM'OLeST
 
 smart
-SMaRT
+SM'AART
 
 smarter
-SMaRTER
+SM'AARTER
 
 smile
 SM'AIL
@@ -4295,7 +4295,7 @@ smoke
 SM'OUK
 
 smuggler
-SM'aGLER
+SM'oGLER
 
 snake
 SN'EIK
@@ -4310,7 +4310,7 @@ soldiers
 S'OULLLERS
 
 solutions
-SoL'UUSHioNS
+SoL'UUSHoNS
 
 solve
 S'OLV
@@ -4409,25 +4409,25 @@ standing
 ST'ANDING
 
 star
-STaR
+ST'AAR
 
 staring
 ST'ERING
 
 start
-STaRT
+ST'AART
 
 started
-STaRTeD
+ST'AARTeD
 
 starters
-STaRTERS
+ST'AARTERS
 
 starting
-STaRTING
+ST'AARTING
 
 starts
-STaRTS
+ST'AARTS
 
 states
 ST'EITS
@@ -4436,7 +4436,7 @@ statesmen
 ST'EITSMIN
 
 station
-ST'EISHioN
+ST'EISHoN
 
 stay
 ST'EI
@@ -4499,70 +4499,70 @@ strongly
 STR'ONGLII
 
 stubborn
-ST'aBERN
+ST'oBERN
 
 stuck
-ST'aK
+ST'oK
 
 students
 ST'UUDeNTS
 
 study
-ST'aDII
+ST'oDII
 
 subject
-SaBLL'EKT
+SoBLL'EKT
 
 subjects
-S'aBLLIKTS
+S'oBLLIKTS
 
 subordinate
-SaB'ORDeNEIT
+SoB'ORDeNEIT
 
 subordinates
-SaB'ORDeNEITS
+SoB'ORDeNEITS
 
 succeed
-SaKS'IID
+SoKS'IID
 
 success
-SaKS'ES
+SoKS'ES
 
 successful
-SaKS'ESFaL
+SoKS'ESFoL
 
 such
-S'aCH
+S'oCH
 
 suffered
-S'aFERD
+S'oFERD
 
 suggesting
-SaGLL'ESTING
+SoGLL'ESTING
 
 summary
-S'aMERII
+S'oMERII
 
 summer
-S'aMER
+S'oMER
 
 summers
-S'aMERS
+S'oMERS
 
 sun
-S'aN
+S'oN
 
 supply
-SaPL'AI
+SoPL'AI
 
 support
-SaP'ORT
+SoP'ORT
 
 suppose
-SaP'OUS
+SoP'OUS
 
 supposed
-SaP'OUSD
+SoP'OUSD
 
 sure
 SH'UR
@@ -4589,7 +4589,7 @@ swim
 SU'IM
 
 system
-S'ISTaM
+S'IST*M
 
 t
 T'II
@@ -4631,7 +4631,7 @@ tape
 T'EIP
 
 targets
-TaRGeTS
+T'AARGeTS
 
 task
 T'ASK
@@ -4895,7 +4895,7 @@ trains
 TR'EINS
 
 transition
-TRANS'ISHioN
+TRANS'ISHoN
 
 travelling
 TR'AVeLING
@@ -4922,13 +4922,13 @@ troops
 TR'UUPS
 
 trouble
-TRouBeL
+TR'aBeL
 
 troublemakers
-TRouBeLMEIKERS
+TR'aBeLMEIKERS
 
 truck
-TR'aK
+TR'oK
 
 true
 TR'UU
@@ -4937,16 +4937,16 @@ truly
 TR'UULII
 
 trust
-TR'aST
+TR'oST
 
 trusted
-TR'aSTID
+TR'oSTID
 
 trusting
-TR'aSTING
+TR'oSTING
 
 trustworthy
-TR'aSTUERDII
+TR'oSTUERDII
 
 truth
 TR'UUZ
@@ -4961,7 +4961,7 @@ tune
 T'UUN
 
 tunnel
-T'aNeL
+T'oNeL
 
 turn
 T'ERN
@@ -4973,7 +4973,7 @@ turning
 T'ERNING
 
 tuxedos
-TaKS'IIDOUS
+ToKS'IIDOUS
 
 tv
 T'IIV'II
@@ -5009,40 +5009,40 @@ typists
 T'AIPISTS
 
 under
-'aNDER
+'oNDER
 
 understand
-aNDERST'AND
+oNDERST'AND
 
 understanding
-aNDERST'ANDING
+oNDERST'ANDING
 
 unique
 IUUN'IIK
 
 university
-IUUNeV'ERSaTII
+IUUNeV'ERS*TII
 
 unsettle
-aNS'ETeL
+oNS'ETeL
 
 until
-aNT'IL
+oNT'IL
 
 up
-'aP
+'oP
 
 upbringing
-'aPBRINGING
+'oPBRINGING
 
 upset
-aPS'ET
+oPS'ET
 
 upstairs
-aPST'ERS
+oPST'ERS
 
 us
-'aS
+'oS
 
 use
 I'UUS
@@ -5051,22 +5051,22 @@ used
 I'UUSD
 
 useful
-I'UUSFaL
+I'UUSFoL
 
 using
 I'UUSING
 
 usually
-I'UUSHaUaLII
+I'UUSH*U*LII
 
 vacation
-VEIK'EISHioN
+VEIK'EISHoN
 
 values
 V'ALIUUS
 
 ventilation
-VENTeL'EISHioN
+VENTeL'EISHoN
 
 very
 V'ERII
@@ -5114,7 +5114,7 @@ want
 U'AANT
 
 wanted
-UeNTaD
+U'AANT*D
 
 wants
 U'AANTS
@@ -5132,7 +5132,7 @@ was
 U'AAS
 
 wasn't
-U'AASaNT
+U'AAS*NT
 
 waste
 U'EIST
@@ -5192,16 +5192,16 @@ were
 UER
 
 weren't
-U'ERaNT
+U'ER*NT
 
 west
 U'EST
 
 what
-U'aT
+U'*T
 
 what's
-U'aTS
+U'*TS
 
 whatever
 UeT'EVER
@@ -5270,7 +5270,7 @@ winner
 U'INER
 
 wisconsin
-UISKiNSaN
+UISK'AANS*N
 
 wise
 U'AIS
@@ -5288,13 +5288,13 @@ without
 UIZ'AUT
 
 witnesses
-U'ITNeSaS
+U'ITNeS*S
 
 women
-U'IMaN
+U'IM*N
 
 won
-U'aN
+U'*N
 
 won't
 U'OUNT
@@ -5303,7 +5303,7 @@ wonder
 UeNDER
 
 wonderful
-UeNDERFaL
+UeNDERF*L
 
 word
 U'ERD
@@ -5348,13 +5348,13 @@ would
 U'UD
 
 would've
-U'UDaV
+U'UD*V
 
 wouldn't
-U'UDaNT
+U'UD*NT
 
 wounded
-U'UUNDaD
+U'UUND*D
 
 wrap
 R'AP
@@ -5408,7 +5408,7 @@ you've
 I'UUV
 
 young
-I'aNG
+I'*NG
 
 younger
 IeNGGER
