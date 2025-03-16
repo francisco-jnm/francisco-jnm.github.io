@@ -1,0 +1,53 @@
+Columna 1 - Hidrógeno  
+Hidrógeno (H) Litio (Li) Sodio (Na) Potasio (K) Rubidio (Rb) Cesio (Cs) Francio (Fr)
+
+Columna 2 - Berilio  
+Berilio (Be) Magnesio (Mg) Calcio (Ca) Estroncio (Sr) Bario (Ba) Radio (Ra)
+
+Columna 3 - Escandio  
+Escandio (Sc) Itrio (Y) Lantano (La) Actinio (Ac)
+
+Columna 4 - Titanio  
+Titanio (Ti) Circonio (Zr) Hafnio (Hf)
+
+Columna 5 - Vanadio  
+Vanadio (V) Niobio (Nb) Tantalio (Ta)
+
+Columna 6 - Cromo  
+Cromo (Cr) Molibdeno (Mo) Wolframio (W)
+
+Columna 7 - Manganeso  
+Manganeso (Mn) Tecnecio (Tc) Renio (Re)
+
+Columna 8 - Hierro  
+Hierro (Fe) Rutenio (Ru) Osmio (Os)
+
+Columna 9 - Cobalto  
+Cobalto (Co) Rodio (Rh) Iridio (Ir)
+
+Columna 10 - Níquel  
+Níquel (Ni) Paladio (Pd) Platino (Pt)
+
+Columna 11 - Cobre  
+Cobre (Cu) Plata (Ag) Oro (Au)
+
+Columna 12 - Zinc  
+Zinc (Zn) Cadmio (Cd) Mercurio (Hg)
+
+Columna 13 - Boro  
+Boro (B) Aluminio (Al) Galio (Ga) Indio (In) Talio (Tl)
+
+Columna 14 - Carbono  
+Carbono (C) Silicio (Si) Germanio (Ge) Estaño (Sn) Plomo (Pb)
+
+Columna 15 - Nitrógeno  
+Nitrógeno (N) Fósforo (P) Arsénico (As) Antimonio (Sb) Bismuto (Bi)
+
+Columna 16 - Oxígeno  
+Oxígeno (O) Azufre (S) Selenio (Se) Telurio (Te) Polonio (Po)
+
+Columna 17 - Flúor  
+Flúor (F) Cloro (Cl) Bromo (Br) Yodo (I) Astato (At)
+
+Columna 18 - Helio  
+Helio (He) Neón (Ne) Argón (Ar) Kriptón (Kr) Xenón (Xe) Radón (Rn)

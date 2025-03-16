@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 4vw; /* Responsive font size for the title */
+        }
+        h2 {
+            color: #444;
+            font-size: 10vw; /* Responsive font size for questions */
+        }
+        #answer {
+            color: blue;
+            font-size: 10vw; /* Responsive font size for answers */
+        }
+        button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            font-size: 8vw; /* Responsive font size for buttons */
+            cursor: pointer;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px; /* Limit button size on larger screens */
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    label {
+            font-size: 4vw; /* Responsive font size for checkbox label */
+    }
+    input[type="checkbox"] {
+        transform: scale(2); /* Scale checkbox size */
+        margin-right: 10px; /* Optional: add space between checkbox and text */
+    }
+    </style>
+    <script>
+        let questionAnswerPairs = [];
+        let currentIndex = 0;
+        let showingAnswer = false;
+
+// Function to fetch the .txt file and split questions/answers
+        function loadTxtFile() {
+    // Get the current URL and extract the file name
+            const currentFile = window.location.pathname.split('/').pop();
+            const txtFileName = currentFile.replace('.html', '.txt');
+
+    // Now use the txtFileName in the fetch call
+            fetch(txtFileName)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('TXT file not found');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+            const lines = data.split('\n').filter(line => line.trim() !== ''); // Filter out empty lines
+            // Store question-answer pairs: odd lines = questions, even lines = answers
+                    for (let i = 0; i < lines.length; i += 2) {
+                        const question = lines[i].trim();
+                        const answer = lines[i + 1] ? lines[i + 1].trim() : '';
+                        questionAnswerPairs.push({ question, answer });
+                    }
+                    showNextQuestion();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('question').innerText = 'Error loading the quiz file!';
+                });
+        }
+
+        // Function to show the next question
+        function showNextQuestion() {
+            if (currentIndex < questionAnswerPairs.length) {
+                const { question } = questionAnswerPairs[currentIndex];
+                document.getElementById('question').innerHTML = `<h2>${question}</h2>`;
+                document.getElementById('answer').innerText = ''; // Clear answer when showing the next question
+                showingAnswer = false; // Reset showing answer state
+            } else {
+                document.getElementById('question').innerText = 'No more questions!';
+                document.getElementById('answer').innerText = ''; // Clear answer when no more questions
+            }
+        }
+
+        // Function to show the answer
+        function showAnswer() {
+            if (!showingAnswer && currentIndex < questionAnswerPairs.length) {
+                const { answer } = questionAnswerPairs[currentIndex];
+                document.getElementById('answer').innerHTML = answer; // Show the answer
+                showingAnswer = true; // Prevent showing the answer again until the next question
+            }
+        }
+
+        // Function to go to the next question
+        function nextQuestion() {
+            const isNotRandom = document.getElementById('notRandomCheckbox').checked;
+            if (isNotRandom) {
+                currentIndex = (currentIndex + 1) % questionAnswerPairs.length;
+            } else {
+                currentIndex = Math.floor(Math.random() * questionAnswerPairs.length);
+            }
+            showNextQuestion();
+        }
+    </script>
+</head>
+<body onload="loadTxtFile()">
+    <h1>Capitales europeas difíciles.</h1>
+    <div id="question"></div>
+    <div id="answer"></div>
+    <button onclick="showAnswer()">Show Answer</button>
+    <button onclick="nextQuestion()">Next Question</button>
+    <br>
+    <label><input type="checkbox" id="notRandomCheckbox"> Not Random</label>
+</body>
+</html>
