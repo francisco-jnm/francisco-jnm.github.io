@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de Quizzes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 8vw; /* Responsive font size */
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            font-size: 5vw; /* Responsive font size */
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Directorio de Quizzes</h1>
+    <div id="links"></div>
+
+    <script>
+        // Function to load and parse CSV file
+        function loadCSVFile() {
+            fetch('directory.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('CSV file not found');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const lines = data.split('\n').filter(line => line.trim() !== ''); // Remove empty lines
+                    const linksDiv = document.getElementById('links');
+                    
+                    // Iterate over each line in the CSV, skipping the header
+                    lines.slice(1).forEach(line => {
+                        const [text, url] = line.split(';');
+                        
+                        // Create a hyperlink for each entry
+                        const link = document.createElement('a');
+                        link.href = url.trim(); // Set the URL
+                        link.textContent = text.trim(); // Set the text for the link
+                        linksDiv.appendChild(link);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading CSV:', error);
+                });
+        }
+
+        // Load CSV file on page load
+        window.onload = loadCSVFile;
+    </script>
+</body>
+</html>
