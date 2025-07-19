@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Memorizando</title>
+  <title>Trabajando la memoria</title>
   <style>
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -13,16 +13,13 @@
       background-color: #f9f9f9;
       color: #333;
     }
-
     h1 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
     }
-
     label, select, button {
       font-size: 1rem;
     }
-
     #output {
       margin-top: 1.5rem;
       font-size: 1.4rem;
@@ -30,15 +27,14 @@
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      word-break: break-word;
     }
-
     #buttons {
       margin-top: 1rem;
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     button {
       padding: 0.6rem 1rem;
       font-size: 1rem;
@@ -48,209 +44,166 @@
       color: white;
       cursor: pointer;
     }
-
     button:disabled {
       background-color: #aaa;
       cursor: default;
     }
-
     #contador {
       margin-top: 0.8rem;
       font-size: 1rem;
       color: #555;
     }
-
     select {
       max-width: 100%;
       padding: 0.4rem;
     }
+    #letrasPanel label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Trabajando la memoria.</h1>
-
+  <h1>Trabajando la memoria</h1>
   <div>
     <label><input type="radio" name="tipo" value="articulos" checked> Artículos</label>
     <label><input type="radio" name="tipo" value="textos"> Textos</label>
+    <label><input type="radio" name="tipo" value="diccionario"> Diccionario</label>
   </div>
-
   <label for="selector">Selecciona:</label>
   <select id="selector"></select>
-
+  <div id="diccionarioControls" style="display: none; margin-top: 1rem;">
+    <label for="categoriaSelect">Categoría:</label>
+    <select id="categoriaSelect">
+      <option value="">(todas)</option>
+    </select>
+    <div style="margin-top: 0.5rem;">Filtrar por letra inicial:</div>
+    <div id="letrasPanel" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0;"></div>
+    <button id="filtrarBtn">Filtrar</button>
+  </div>
   <div id="output"></div>
-
   <div id="buttons">
-    <button id="nextButton" disabled>Siguiente palabra</button>
-    <button id="resetButton" disabled>Reiniciar</button>
+    <button id="nextButton">Siguiente palabra</button>
+    <button id="resetButton">Reiniciar</button>
     <button id="pauseButton" disabled>Pausar</button>
   </div>
-
-
   <div id="contador"></div>
 
   <script>
-    let textos = {};
-    let textosTxt = {};
-    let palabras = [];
-    let currentIndex = 1;
-    let modo = 'articulos';
-    let intervalo = null;
-	let pausado = false;
+    let datos = [], textos = {}, diccionario = {}, listaPalabras = [], indice = 0;
+    let intervalo = null, modo = 'articulos', pausado = false;
 
-    async function cargarTextos() {
-      try {
-        const response = await fetch('articulos.json');
-        textos = await response.json();
-        poblarSelector();
-      } catch (error) {
-        alert("Error al cargar el archivo articulos.json");
-        console.error(error);
-      }
+    async function cargarJSON() {
+      const res = await fetch("articulos.json");
+      datos = await res.json();
     }
 
     async function cargarTextosTxt() {
-      if (Object.keys(textosTxt).length > 0) return;
-      const response = await fetch('textos.txt');
-      const contenido = await response.text();
+      const res = await fetch("textos.txt");
+      const txt = await res.text();
+      textos = {};
+      const bloques = txt.split(/TEXTO \d+: /).filter(Boolean);
+      for (let b of bloques) {
+        const [titulo, ...contenido] = b.trim().split("\n");
+        textos[titulo.trim()] = contenido.join(" ").replace(/\s+/g, ' ').trim();
+      }
+    }
 
-      const bloques = contenido.split(/TEXTO \d+: /).slice(1);
-      bloques.forEach(bloque => {
-        const [tituloLinea, ...cuerpoLineas] = bloque.split('\n');
-        const titulo = tituloLinea.trim();
-        const cuerpo = cuerpoLineas.join(' ').trim();
-        textosTxt[titulo] = cuerpo;
-      });
+    async function cargarDiccionario() {
+      const res = await fetch("diccionario-fonetico.py");
+      const txt = await res.text();
+      diccionario = eval("(" + txt + ")");
     }
 
     function poblarSelector() {
-      const selector = document.getElementById('selector');
-      selector.innerHTML = '';
-
-      Object.keys(textos).forEach(id => {
-        const option = document.createElement('option');
-        option.value = id;
-        option.textContent = `${id}`;
-        selector.appendChild(option);
+      const sel = document.getElementById("selector");
+      sel.innerHTML = "";
+      datos.forEach((item, i) => {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = item.titulo;
+        sel.appendChild(opt);
       });
-
-      selector.onchange = () => prepararTexto(selector.value);
-
-      if (selector.options.length > 0) {
-        prepararTexto(selector.options[0].value);
-      }
     }
 
     function poblarSelectorTextos() {
-      const selector = document.getElementById('selector');
-      selector.innerHTML = '';
+      const sel = document.getElementById("selector");
+      sel.innerHTML = "";
+      for (const titulo in textos) {
+        const opt = document.createElement("option");
+        opt.value = titulo;
+        opt.textContent = titulo;
+        sel.appendChild(opt);
+      }
+    }
 
-      Object.keys(textosTxt).forEach(titulo => {
-        const option = document.createElement('option');
-        option.value = titulo;
-        option.textContent = titulo;
-        selector.appendChild(option);
+    function poblarDiccionarioUI() {
+      const letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+      const letrasPanel = document.getElementById("letrasPanel");
+      letrasPanel.innerHTML = "";
+      letras.forEach(l => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="checkbox" value="${l}">${l}`;
+        letrasPanel.appendChild(label);
       });
-
-      selector.onchange = () => prepararTextoTxt(selector.value);
-
-      if (selector.options.length > 0) {
-        prepararTextoTxt(selector.options[0].value);
-      }
+      const categorias = [...new Set(Object.values(diccionario).map(x => x[2]))].sort();
+      const catSel = document.getElementById("categoriaSelect");
+      catSel.innerHTML = '<option value="">(todas)</option>';
+      categorias.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        catSel.appendChild(opt);
+      });
     }
 
-    function prepararTexto(id) {
-      if (intervalo) clearInterval(intervalo);
-      const textoPlano = textos[id];
-      palabras = textoPlano.split(/(\s+|\n)/g).filter(p => p.trim() !== '' || p === '\n');
-      currentIndex = 1;
-      mostrarPalabras();
-      document.getElementById('nextButton').disabled = false;
-      document.getElementById('nextButton').textContent = "Siguiente palabra";
-      document.getElementById('resetButton').disabled = false;
-    }
-
-    function mostrarPalabras() {
-      const visibles = palabras
-        .slice(0, currentIndex)
-        .map(p => p === '\n' ? '<br>' : p);
-      document.getElementById('output').innerHTML = visibles.join(' ');
-
-      actualizarContador();
-
-      if (currentIndex >= palabras.length) {
-        document.getElementById('nextButton').textContent = "Texto completo";
-        document.getElementById('nextButton').disabled = true;
-      }
-    }
-
-    function actualizarContador() {
-      const total = palabras.filter(p => p !== '\n').length;
-      const mostradas = palabras.slice(0, currentIndex).filter(p => p !== '\n').length;
-      document.getElementById('contador').textContent = `${mostradas} / ${total} palabras mostradas`;
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-      if (modo === 'articulos') {
-        while (currentIndex < palabras.length) {
-          currentIndex++;
-          if (palabras[currentIndex - 1] !== '\n') break;
-        }
-        mostrarPalabras();
-      }
-    });
-
-    document.getElementById('resetButton').addEventListener('click', () => {
-      if (intervalo) clearInterval(intervalo);
-      if (modo === 'articulos') {
-        currentIndex = 1;
-        mostrarPalabras();
-        document.getElementById('nextButton').disabled = false;
-        document.getElementById('nextButton').textContent = "Siguiente palabra";
-      } else if (modo === 'textos') {
-        prepararTextoTxt(document.getElementById('selector').value);
-      }
-    });
-	
-    document.getElementById('pauseButton').addEventListener('click', () => {
-      pausado = !pausado;
-    document.getElementById('pauseButton').textContent = pausado ? "Reanudar" : "Pausar";
-    });
-	
-
-function prepararTextoTxt(titulo) {
-  if (intervalo) clearInterval(intervalo);
-  pausado = false;
-  document.getElementById('pauseButton').textContent = "Pausar";
-  document.getElementById('pauseButton').disabled = false;
-
-  const texto = textosTxt[titulo];
-  const palabrasArray = texto.match(/\S+|\n/g) || [];
-  const output = document.getElementById('output');
-  output.innerHTML = '';
-  let i = 0;
-  let contadorPalabras = 0;
-
-  intervalo = setInterval(() => {
-    if (pausado) return;
-
-    if (i >= palabrasArray.length) {
+    function iniciarLectura(lista) {
+      let output = document.getElementById("output");
+      output.innerHTML = "";
+      let i = 0;
+      pausado = false;
       clearInterval(intervalo);
-      document.getElementById('pauseButton').disabled = true;
-      return;
+      document.getElementById("pauseButton").disabled = false;
+
+      function mostrarParte() {
+        if (pausado || i >= lista.length) return;
+        output.innerHTML += lista[i++] + " ";
+        if (i % 3 === 0) output.innerHTML += "<br>";
+        if (i >= lista.length) clearInterval(intervalo);
+      }
+
+      mostrarParte();
+      intervalo = setInterval(mostrarParte, 1000);
     }
 
-    let palabra = palabrasArray[i++];
-    const finFrase = /[.?!]/.test(palabra.slice(-1));
-    const salto = finFrase || contadorPalabras === 9;
+    document.getElementById("pauseButton").addEventListener("click", () => {
+      pausado = !pausado;
+      document.getElementById("pauseButton").textContent = pausado ? "Reanudar" : "Pausar";
+    });
 
-    output.innerHTML += palabra + (salto ? '<br>' : ' ');
-    contadorPalabras = salto ? 0 : contadorPalabras + 1;
+    document.getElementById("resetButton").addEventListener("click", () => {
+      clearInterval(intervalo);
+      document.getElementById("output").innerHTML = "";
+      document.getElementById("contador").textContent = "";
+    });
 
-    document.getElementById('contador').textContent = `${i} / ${palabrasArray.length} palabras`;
-  }, 1000);
-}
-
-
+    document.getElementById("filtrarBtn").addEventListener("click", () => {
+      const categoria = document.getElementById("categoriaSelect").value;
+      const letras = Array.from(document.querySelectorAll("#letrasPanel input:checked")).map(x => x.value);
+      const claves = Object.keys(diccionario).filter(k => {
+        const catOk = !categoria || diccionario[k][2] === categoria;
+        const letraOk = letras.length === 0 || letras.some(l => k.toUpperCase().startsWith(l));
+        return catOk && letraOk;
+      });
+      const resultado = [];
+      claves.forEach(k => {
+        resultado.push(k);
+        resultado.push("(" + diccionario[k][0] + ")");
+        resultado.push("(" + diccionario[k][1] + ")");
+      });
+      iniciarLectura(resultado);
+    });
 
     document.querySelectorAll('input[name="tipo"]').forEach(radio => {
       radio.addEventListener('change', async (e) => {
@@ -258,18 +211,36 @@ function prepararTextoTxt(titulo) {
         modo = e.target.value;
         document.getElementById('output').innerHTML = '';
         document.getElementById('contador').textContent = '';
+        document.getElementById("diccionarioControls").style.display = modo === "diccionario" ? "block" : "none";
+
         if (modo === 'articulos') {
+          await cargarJSON();
           poblarSelector();
           document.getElementById('nextButton').disabled = false;
-        } else {
+        } else if (modo === 'textos') {
           await cargarTextosTxt();
           poblarSelectorTextos();
-          document.getElementById('nextButton').disabled = true; // solo auto
+          document.getElementById('nextButton').disabled = true;
+        } else {
+          await cargarDiccionario();
+          poblarDiccionarioUI();
+          document.getElementById('nextButton').disabled = true;
         }
       });
     });
 
-    cargarTextos();
+    document.getElementById("nextButton").addEventListener("click", () => {
+      if (modo === "articulos") {
+        const sel = document.getElementById("selector");
+        const idx = sel.value;
+        const palabras = datos[idx].contenido.split(/\s+/);
+        if (indice < palabras.length) {
+          document.getElementById("output").innerHTML += palabras[indice++] + " ";
+          document.getElementById("contador").textContent = `${indice}/${palabras.length}`;
+          if (indice % 10 === 0) document.getElementById("output").innerHTML += "<br>";
+        }
+      }
+    });
   </script>
 </body>
 </html>
