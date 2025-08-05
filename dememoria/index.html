@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lector de Textos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1em;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 1.6em;
+      text-align: center;
+    }
+
+    label, select, button, input[type="checkbox"] {
+      display: block;
+      margin: 1em 0;
+      width: 100%;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 0.5em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #textoMostrado {
+      margin-top: 2em;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      min-height: 3em;
+      white-space: normal;
+    }
+
+    @media (min-width: 600px) {
+      label, select, button {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Lector de Textos</h1>
+
+  <label for="categoria">Categoría:</label>
+  <select id="categoria"></select>
+
+  <label for="descripcion">Texto:</label>
+  <select id="descripcion"></select>
+
+  <label for="velocidad">Velocidad:</label>
+  <select id="velocidad">
+    <option value="1000">1 palabra/seg</option>
+    <option value="500">2 palabras/seg</option>
+    <option value="333">3 palabras/seg</option>
+  </select>
+
+  <label>
+    <input type="checkbox" id="aleatorio"> Empezar desde palabra aleatoria
+  </label>
+
+  <button id="iniciar">Iniciar</button>
+  <button id="pausar">Pausar</button>
+  <button id="reiniciar">Reiniciar</button>
+
+  <div id="textoMostrado"></div>
+
+  <script>
+    let textos = {};
+    let palabras = [];
+    let indice = 0;
+    let intervalo = null;
+
+    const categoriaSelect = document.getElementById("categoria");
+    const descripcionSelect = document.getElementById("descripcion");
+    const velocidadSelect = document.getElementById("velocidad");
+    const aleatorioCheckbox = document.getElementById("aleatorio");
+    const textoMostrado = document.getElementById("textoMostrado");
+    const iniciarBtn = document.getElementById("iniciar");
+    const pausarBtn = document.getElementById("pausar");
+    const reiniciarBtn = document.getElementById("reiniciar");
+
+    fetch("dememoria.json")
+      .then(res => res.json())
+      .then(data => {
+        textos = data;
+        cargarCategorias();
+      })
+      .catch(err => {
+        textoMostrado.textContent = "Error al cargar los textos.";
+        console.error("Error al cargar el JSON:", err);
+      });
+
+    function cargarCategorias() {
+      categoriaSelect.innerHTML = "";
+      for (const categoria in textos) {
+        const option = document.createElement("option");
+        option.value = categoria;
+        option.textContent = categoria;
+        categoriaSelect.appendChild(option);
+      }
+      cargarDescripciones();
+    }
+
+    function cargarDescripciones() {
+      descripcionSelect.innerHTML = "";
+      const categoria = categoriaSelect.value;
+      textos[categoria].forEach((item, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = item.descripcion;
+        descripcionSelect.appendChild(option);
+      });
+    }
+
+    categoriaSelect.addEventListener("change", cargarDescripciones);
+
+    function iniciarLectura() {
+      const categoria = categoriaSelect.value;
+      const idx = descripcionSelect.value;
+      const contenido = textos[categoria][idx].contenido;
+
+      // Reemplazamos saltos de línea por un marcador único
+      palabras = contenido.replace(/\n/g, ' <SALTOLINEA> ').split(/\s+/);
+      indice = aleatorioCheckbox.checked
+        ? Math.floor(Math.random() * palabras.length)
+        : 0;
+
+      textoMostrado.innerHTML = "";
+      pausarLectura();
+      intervalo = setInterval(mostrarPalabra, parseInt(velocidadSelect.value));
+    }
+
+    function mostrarPalabra() {
+      if (indice < palabras.length) {
+        const palabra = palabras[indice];
+        if (palabra === "<SALTOLINEA>") {
+          textoMostrado.innerHTML += "<br>";
+        } else {
+          textoMostrado.innerHTML += palabra + " ";
+        }
+        indice++;
+      } else {
+        pausarLectura();
+      }
+    }
+
+    function pausarLectura() {
+      if (intervalo) {
+        clearInterval(intervalo);
+        intervalo = null;
+      }
+    }
+
+    function reanudarLectura() {
+      if (!intervalo && indice < palabras.length) {
+        intervalo = setInterval(mostrarPalabra, parseInt(velocidadSelect.value));
+      }
+    }
+
+    iniciarBtn.addEventListener("click", () => {
+      iniciarLectura();
+      pausarBtn.textContent = "Pausar";
+    });
+
+    pausarBtn.addEventListener("click", () => {
+      if (intervalo) {
+        pausarLectura();
+        pausarBtn.textContent = "Reanudar";
+      } else {
+        reanudarLectura();
+        pausarBtn.textContent = "Pausar";
+      }
+    });
+
+    reiniciarBtn.addEventListener("click", () => {
+      iniciarLectura();
+      pausarBtn.textContent = "Pausar";
+    });
+  </script>
+</body>
+</html>
