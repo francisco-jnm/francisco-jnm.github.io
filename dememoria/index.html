@@ -3,74 +3,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lector de Textos</title>
+  <title>Lector de Textos — Tres paneles</title>
   <style>
+    :root {
+      --bg: #0b0c0f;
+      --card: #111318;
+      --muted: #a7b0c0;
+      --text: #e9edf5;
+      --accent: #5ac8fa;
+      --ring: rgba(90,200,250,.45);
+      --border: #1d212a;
+    }
+
+    html, body { height: 100%; }
     body {
-      font-family: sans-serif;
-      padding: 1em;
-      max-width: 700px;
-      margin: auto;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% -10%, #152038 0%, transparent 55%),
+                  radial-gradient(900px 500px at 110% 10%, #1a1430 0%, transparent 55%),
+                  var(--bg);
+      color: var(--text);
     }
 
-    h1 {
-      font-size: 1.6em;
-      text-align: center;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(180deg, rgba(11,12,15,.85), rgba(11,12,15,.6));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    header .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+
+    .app {
+      max-width: 1280px;
+      margin: 12px auto;
+      padding: 12px 16px 24px;
+      display: grid;
+      grid-template-columns: 280px 1fr 1fr;
+      gap: 16px;
+      min-height: calc(100vh - 68px);
+      box-sizing: border-box;
     }
 
-    label, select, button, input[type="checkbox"] {
-      display: block;
-      margin: 1em 0;
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .panel header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(180deg, rgba(17,19,24,.95), rgba(17,19,24,.85));
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(4px);
+    }
+    .panel header h2 {
+      font-size: 14px;
+      margin: 0;
+      padding: 10px 12px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .3px;
+    }
+
+    .panel .content {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .field { display: grid; gap: 6px; }
+    .field label { font-size: 13px; color: var(--muted); }
+
+    select, button {
+      font-size: 14px;
       width: 100%;
-      font-size: 1em;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      background: #0f1116;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+    }
+
+    select:focus, button:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring);
     }
 
     button {
-      padding: 0.5em;
-      font-weight: bold;
       cursor: pointer;
+      font-weight: 600;
+      letter-spacing: .2px;
     }
+
+    .btn-row { display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+    #descripcion { height: 100%; min-height: 300px; }
+    .auto-grow { flex: 1; min-height: 0; }
 
     #textoMostrado {
-      margin-top: 2em;
-      font-size: 1.2em;
-      font-weight: bold;
-      text-align: center;
-      min-height: 3em;
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 600;
       white-space: normal;
+      word-wrap: break-word;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #0e1014;
+      border: 1px solid var(--border);
+      min-height: 140px;
     }
 
-    @media (min-width: 600px) {
-      label, select, button {
-        font-size: 1.2em;
-      }
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 240px 1fr; }
+      .panel.right { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .app { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <h1>Lector de Textos</h1>
+  <header>
+    <div class="wrap">
+      <h1>Lector de Textos</h1>
+    </div>
+  </header>
 
-  <label for="categoria">Categoría:</label>
-  <select id="categoria"></select>
+  <main class="app" role="application">
+    <!-- Panel izquierdo -->
+    <section class="panel left">
+      <header><h2>Controles</h2></header>
+      <div class="content">
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <select id="categoria"></select>
+        </div>
 
-  <label for="descripcion">Texto:</label>
-  <select id="descripcion"></select>
+        <div class="field">
+          <label for="velocidad">Velocidad</label>
+          <select id="velocidad">
+            <option value="1000">1 palabra/seg</option>
+            <option value="500">2 palabras/seg</option>
+            <option value="333">3 palabras/seg</option>
+          </select>
+        </div>
 
-  <label for="velocidad">Velocidad:</label>
-  <select id="velocidad">
-    <option value="1000">1 palabra/seg</option>
-    <option value="500">2 palabras/seg</option>
-    <option value="333">3 palabras/seg</option>
-  </select>
+        <div class="btn-row">
+          <button id="iniciar" type="button">Iniciar</button>
+          <button id="pausar" type="button">Pausar</button>
+          <button id="mostrarTodo" type="button">Mostrar todo</button>
+        </div>
+      </div>
+    </section>
 
-  <label>
-    <input type="checkbox" id="aleatorio"> Empezar desde palabra aleatoria
-  </label>
+    <!-- Panel central -->
+    <section class="panel center">
+      <header><h2>Texto</h2></header>
+      <div class="content auto-grow">
+        <div class="field auto-grow">
+          <label for="descripcion">Elementos</label>
+          <select id="descripcion" size="16" class="auto-grow"></select>
+        </div>
+      </div>
+    </section>
 
-  <button id="iniciar">Iniciar</button>
-  <button id="pausar">Pausar</button>
-  <button id="reiniciar">Reiniciar</button>
-
-  <div id="textoMostrado"></div>
+    <!-- Panel derecho -->
+    <section class="panel right">
+      <header><h2>Visor</h2></header>
+      <div class="content auto-grow">
+        <div id="textoMostrado" class="auto-grow"></div>
+      </div>
+    </section>
+  </main>
 
   <script>
     let textos = {};
@@ -81,11 +205,10 @@
     const categoriaSelect = document.getElementById("categoria");
     const descripcionSelect = document.getElementById("descripcion");
     const velocidadSelect = document.getElementById("velocidad");
-    const aleatorioCheckbox = document.getElementById("aleatorio");
     const textoMostrado = document.getElementById("textoMostrado");
     const iniciarBtn = document.getElementById("iniciar");
     const pausarBtn = document.getElementById("pausar");
-    const reiniciarBtn = document.getElementById("reiniciar");
+    const mostrarTodoBtn = document.getElementById("mostrarTodo");
 
     fetch("dememoria.json")
       .then(res => res.json())
@@ -112,43 +235,60 @@
     function cargarDescripciones() {
       descripcionSelect.innerHTML = "";
       const categoria = categoriaSelect.value;
-      textos[categoria].forEach((item, i) => {
+      (textos[categoria] || []).forEach((item, i) => {
         const option = document.createElement("option");
         option.value = i;
         option.textContent = item.descripcion;
         descripcionSelect.appendChild(option);
       });
+      detenerYLimpiar();
     }
 
     categoriaSelect.addEventListener("change", cargarDescripciones);
+    descripcionSelect.addEventListener("change", detenerYLimpiar);
 
-    function iniciarLectura() {
+    function detenerYLimpiar() {
+      pausarLectura();
+      textoMostrado.textContent = "";
+      palabras = [];
+      indice = 0;
+    }
+
+    function obtenerContenidoActual() {
       const categoria = categoriaSelect.value;
       const idx = descripcionSelect.value;
-      const contenido = textos[categoria][idx].contenido;
+      if (!categoria || idx === null || idx === undefined) return "";
+      const item = (textos[categoria] || [])[idx];
+      return item ? item.contenido : "";
+    }
 
-      // Reemplazamos saltos de línea por un marcador único
+    function delayMs() {
+      const raw = Number(velocidadSelect.value);
+      const d = Number.isFinite(raw) && raw > 0 ? raw : 333;
+      return Math.max(100, d);
+    }
+
+    function iniciarLectura() {
+      const contenido = obtenerContenidoActual();
+      if (!contenido) return;
+
       palabras = contenido.replace(/\n/g, ' <SALTOLINEA> ').split(/\s+/);
-      indice = aleatorioCheckbox.checked
-        ? Math.floor(Math.random() * palabras.length)
-        : 0;
+      indice = 0;
 
       textoMostrado.innerHTML = "";
       pausarLectura();
-      intervalo = setInterval(mostrarPalabra, parseInt(velocidadSelect.value));
+      intervalo = setInterval(mostrarPalabra, delayMs());
+      pausarBtn.textContent = "Pausar";
     }
 
     function mostrarPalabra() {
       if (indice < palabras.length) {
         const palabra = palabras[indice];
-        if (palabra === "<SALTOLINEA>") {
-          textoMostrado.innerHTML += "<br>";
-        } else {
-          textoMostrado.innerHTML += palabra + " ";
-        }
+        textoMostrado.innerHTML += (palabra === "<SALTOLINEA>") ? "<br>" : (palabra + " ");
         indice++;
       } else {
         pausarLectura();
+        pausarBtn.textContent = "Reanudar";
       }
     }
 
@@ -161,29 +301,29 @@
 
     function reanudarLectura() {
       if (!intervalo && indice < palabras.length) {
-        intervalo = setInterval(mostrarPalabra, parseInt(velocidadSelect.value));
+        intervalo = setInterval(mostrarPalabra, delayMs());
       }
     }
 
-    iniciarBtn.addEventListener("click", () => {
-      iniciarLectura();
-      pausarBtn.textContent = "Pausar";
-    });
+    function mostrarTodo() {
+      const contenido = obtenerContenidoActual();
+      textoMostrado.innerHTML = contenido.replace(/\n/g, "<br>");
+      pausarLectura();
+      pausarBtn.textContent = "Reanudar";
+    }
 
+    // Botones
+    iniciarBtn.addEventListener("click", iniciarLectura);
     pausarBtn.addEventListener("click", () => {
       if (intervalo) {
         pausarLectura();
         pausarBtn.textContent = "Reanudar";
       } else {
         reanudarLectura();
-        pausarBtn.textContent = "Pausar";
+        if (indice < palabras.length) pausarBtn.textContent = "Pausar";
       }
     });
-
-    reiniciarBtn.addEventListener("click", () => {
-      iniciarLectura();
-      pausarBtn.textContent = "Pausar";
-    });
+    mostrarTodoBtn.addEventListener("click", mostrarTodo);
   </script>
 </body>
 </html>
