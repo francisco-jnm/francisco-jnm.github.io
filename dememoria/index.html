@@ -64,7 +64,6 @@
       flex-direction: column;
       min-height: 0;
     }
-
     .panel header {
       position: sticky;
       top: 0;
@@ -72,14 +71,7 @@
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(4px);
     }
-    .panel header h2 {
-      font-size: 14px;
-      margin: 0;
-      padding: 10px 12px;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: .3px;
-    }
+    .panel header h2 { font-size: 14px; margin: 0; padding: 10px 12px; color: var(--muted); font-weight: 600; letter-spacing: .3px; }
 
     .panel .content {
       padding: 12px;
@@ -103,23 +95,15 @@
       border-radius: 12px;
       outline: none;
     }
+    select:focus, button:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); }
 
-    select:focus, button:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px var(--ring);
-    }
-
-    button {
-      cursor: pointer;
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
-
+    button { cursor: pointer; font-weight: 600; letter-spacing: .2px; }
     .btn-row { display: grid; grid-template-columns: 1fr; gap: 10px; }
 
-    #descripcion { height: 100%; min-height: 300px; }
-    .auto-grow { flex: 1; min-height: 0; }
+    /* Centro: sin títulos ni etiquetas, solo el dropdown */
+    #descripcion { height: auto; min-height: auto; }
 
+    /* Visor */
     #textoMostrado {
       font-size: 18px;
       line-height: 1.6;
@@ -133,6 +117,7 @@
       min-height: 140px;
     }
 
+    /* Responsive */
     @media (max-width: 980px) {
       .app { grid-template-columns: 240px 1fr; }
       .panel.right { grid-column: 1 / -1; }
@@ -176,13 +161,12 @@
       </div>
     </section>
 
-    <!-- Panel central -->
+    <!-- Panel central SIN títulos ni etiqueta -->
     <section class="panel center">
-      <header><h2>Texto</h2></header>
       <div class="content auto-grow">
         <div class="field auto-grow">
-          <label for="descripcion">Elementos</label>
-          <select id="descripcion" size="16" class="auto-grow"></select>
+          <!-- Sin label ni header -->
+          <select id="descripcion" class="auto-grow" aria-label="Lista de textos"></select>
         </div>
       </div>
     </section>
@@ -312,7 +296,6 @@
       pausarBtn.textContent = "Reanudar";
     }
 
-    // Botones
     iniciarBtn.addEventListener("click", iniciarLectura);
     pausarBtn.addEventListener("click", () => {
       if (intervalo) {
