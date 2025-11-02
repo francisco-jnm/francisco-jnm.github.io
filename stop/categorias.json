@@ -1,0 +1,1781 @@
+{
+  "Países": {
+    "A": [
+      "Albania",
+      "Alemania",
+      "Andorra"
+    ],
+    "B": [
+      "Brasil",
+      "Bélgica",
+      "Bolivia"
+    ],
+    "C": [
+      "Canadá",
+      "Chile",
+      "China"
+    ],
+    "D": [
+      "Dinamarca",
+      "Dominica",
+      "Djibouti"
+    ],
+    "E": [
+      "Ecuador",
+      "Egipto",
+      "España"
+    ],
+    "F": [
+      "Filipinas",
+      "Finlandia",
+      "Francia"
+    ],
+    "G": [
+      "Grecia",
+      "Guatemala",
+      "Ghana"
+    ],
+    "H": [
+      "Haití",
+      "Honduras",
+      "Hungría"
+    ],
+    "I": [
+      "India",
+      "Indonesia",
+      "Italia"
+    ],
+    "J": [
+      "Jamaica",
+      "Japón",
+      "Jordania"
+    ],
+    "K": [
+      "Kenia",
+      "Kuwait",
+      "Kazajistán"
+    ],
+    "L": [
+      "Laos",
+      "Letonia",
+      "Líbano"
+    ],
+    "M": [
+      "Marruecos",
+      "México",
+      "Mongolia"
+    ],
+    "N": [
+      "Namibia",
+      "Nepal",
+      "Noruega"
+    ],
+    "P": [
+      "Perú",
+      "Polonia",
+      "Portugal"
+    ],
+    "R": [
+      "Rumanía",
+      "Ruanda",
+      "Rusia"
+    ],
+    "S": [
+      "Suecia",
+      "Suiza",
+      "Sudáfrica"
+    ],
+    "T": [
+      "Tailandia",
+      "Tanzania",
+      "Turquía"
+    ],
+    "U": [
+      "Uganda",
+      "Ucrania",
+      "Uruguay"
+    ],
+    "V": [
+      "Vanuatu",
+      "Venezuela",
+      "Vietnam"
+    ]
+  },
+  "Marcas de coches": {
+    "A": [
+      "Audi",
+      "Alfa Romeo",
+      "Aston Martin"
+    ],
+    "B": [
+      "BMW",
+      "Bentley",
+      "Bugatti"
+    ],
+    "C": [
+      "Chevrolet",
+      "Chrysler",
+      "Citroën"
+    ],
+    "D": [
+      "Dacia",
+      "Daihatsu",
+      "Dodge"
+    ],
+    "E": [
+      "Exeed",
+      "Eagle",
+      "Edsel"
+    ],
+    "F": [
+      "Fiat",
+      "Ford",
+      "Ferrari"
+    ],
+    "G": [
+      "Geely",
+      "Genesis",
+      "Great Wall"
+    ],
+    "H": [
+      "Honda",
+      "Hyundai",
+      "Hummer"
+    ],
+    "I": [
+      "Infiniti",
+      "Isuzu",
+      "Ineos"
+    ],
+    "J": [
+      "Jaguar",
+      "Jeep",
+      "JAC"
+    ],
+    "K": [
+      "Kia",
+      "Koenigsegg",
+      "Karma"
+    ],
+    "L": [
+      "Lexus",
+      "Lamborghini",
+      "Land Rover"
+    ],
+    "M": [
+      "Mercedes-Benz",
+      "Mazda",
+      "Mitsubishi"
+    ],
+    "N": [
+      "Nissan",
+      "NIO",
+      "Noble"
+    ],
+    "O": [
+      "Opel",
+      "Oldsmobile",
+      "Omoda"
+    ],
+    "P": [
+      "Peugeot",
+      "Porsche",
+      "Pagani"
+    ],
+    "R": [
+      "Renault",
+      "Rivian",
+      "Rolls-Royce"
+    ],
+    "S": [
+      "SEAT",
+      "Subaru",
+      "Suzuki"
+    ],
+    "T": [
+      "Tesla",
+      "Toyota",
+      "Tata"
+    ],
+    "U": [
+      "UAZ",
+      "Ultima",
+      "Uniti"
+    ],
+    "V": [
+      "Volkswagen",
+      "Volvo",
+      "VinFast"
+    ],
+    "W": [
+      "Wuling",
+      "Wey",
+      "Wiesmann"
+    ],
+    "X": [
+      "XPeng",
+      "Xiali",
+      "Xinkai"
+    ],
+    "Y": [
+      "Yulon",
+      "Yema",
+      "Yugo"
+    ],
+    "Z": [
+      "Zotye",
+      "ZAZ",
+      "Zenvo"
+    ]
+  },
+  "Escritores": {
+    "A": [
+      "Jane Austen",
+      "Isabel Allende",
+      "Margaret Atwood"
+    ],
+    "B": [
+      "Jorge Luis Borges",
+      "Charlotte Brontë",
+      "Ray Bradbury"
+    ],
+    "C": [
+      "Miguel de Cervantes",
+      "Albert Camus",
+      "Truman Capote"
+    ],
+    "D": [
+      "Charles Dickens",
+      "Fiódor Dostoievski",
+      "Rubén Darío"
+    ],
+    "E": [
+      "Elena Ferrante",
+      "Émile Zola",
+      "Ernest Hemingway"
+    ],
+    "F": [
+      "Federico García Lorca",
+      "Fernando Pessoa",
+      "F. Scott Fitzgerald"
+    ],
+    "G": [
+      "Gabriel García Márquez",
+      "Günter Grass",
+      "Graham Greene"
+    ],
+    "H": [
+      "Hermann Hesse",
+      "Haruki Murakami",
+      "Homero"
+    ],
+    "I": [
+      "Italo Calvino",
+      "Iris Murdoch",
+      "Ildefonso Falcones"
+    ],
+    "J": [
+      "James Joyce",
+      "Julio Cortázar",
+      "Jorge Amado"
+    ],
+    "K": [
+      "Franz Kafka",
+      "Rudyard Kipling",
+      "Jack Kerouac"
+    ],
+    "L": [
+      "Louisa May Alcott",
+      "Luis de Góngora",
+      "Leopoldo Alas \"Clarín\""
+    ],
+    "M": [
+      "Thomas Mann",
+      "Herman Melville",
+      "Yukio Mishima"
+    ],
+    "N": [
+      "Vladimir Nabokov",
+      "Pablo Neruda",
+      "Naguib Mahfuz"
+    ],
+    "O": [
+      "George Orwell",
+      "Octavio Paz",
+      "Ovidio"
+    ],
+    "P": [
+      "Marcel Proust",
+      "Sylvia Plath",
+      "Paul Auster"
+    ],
+    "Q": [
+      "Francisco de Quevedo",
+      "Quino",
+      "Qian Zhongshu"
+    ],
+    "R": [
+      "Rainer Maria Rilke",
+      "Salman Rushdie",
+      "Jean-Jacques Rousseau"
+    ],
+    "S": [
+      "William Shakespeare",
+      "José Saramago",
+      "Jean-Paul Sartre"
+    ],
+    "T": [
+      "León Tolstói",
+      "J. R. R. Tolkien",
+      "Mark Twain"
+    ],
+    "U": [
+      "Umberto Eco",
+      "Ursula K. Le Guin",
+      "Miguel de Unamuno"
+    ],
+    "V": [
+      "Voltaire",
+      "Mario Vargas Llosa",
+      "Virginia Woolf"
+    ],
+    "W": [
+      "Walt Whitman",
+      "Willa Cather",
+      "William Faulkner"
+    ],
+    "X": [
+      "Xavier Villaurrutia",
+      "Xenofonte",
+      "Xosé Luís Méndez Ferrín"
+    ],
+    "Y": [
+      "Yasunari Kawabata",
+      "Yann Martel",
+      "Yuval Noah Harari"
+    ],
+    "Z": [
+      "Émile Zola",
+      "Stefan Zweig",
+      "María Zambrano"
+    ]
+  },
+  "Ríos": {
+    "A": [
+      "Amazonas",
+      "Amur",
+      "Arno"
+    ],
+    "B": [
+      "Bravo",
+      "Brahmaputra",
+      "Bidasoa"
+    ],
+    "C": [
+      "Colorado",
+      "Congo",
+      "Chao Phraya"
+    ],
+    "D": [
+      "Danubio",
+      "Dniéper",
+      "Dniéster"
+    ],
+    "E": [
+      "Ebro",
+      "Elba",
+      "Éufrates"
+    ],
+    "G": [
+      "Ganges",
+      "Guadalquivir",
+      "Guadiana"
+    ],
+    "H": [
+      "Hudson",
+      "Huang He",
+      "Han"
+    ],
+    "I": [
+      "Indo",
+      "Irtysh",
+      "Isonzo"
+    ],
+    "J": [
+      "Júcar",
+      "Jiloca",
+      "Jialing"
+    ],
+    "L": [
+      "Loira",
+      "Lena",
+      "Limpopo"
+    ],
+    "M": [
+      "Misisipi",
+      "Mekong",
+      "Madeira"
+    ],
+    "N": [
+      "Nilo",
+      "Níger",
+      "Neva"
+    ],
+    "O": [
+      "Oder",
+      "Okavango",
+      "Orinoco"
+    ],
+    "P": [
+      "Paraná",
+      "Po",
+      "Paraguay"
+    ],
+    "R": [
+      "Rin",
+      "Ródano",
+      "Rhin"
+    ],
+    "S": [
+      "Sena",
+      "Segura",
+      "San Lorenzo"
+    ],
+    "T": [
+      "Tajo",
+      "Tigris",
+      "Tíber"
+    ],
+    "U": [
+      "Uruguay",
+      "Ural",
+      "Ubangi"
+    ],
+    "V": [
+      "Volga",
+      "Vístula",
+      "Vermelho"
+    ],
+    "Y": [
+      "Yeniséi",
+      "Yukón",
+      "Yarlung Tsangpo"
+    ]
+  },
+  "Monumentos": {
+    "A": [
+      "Alhambra",
+      "Acrópolis",
+      "Arco del Triunfo"
+    ],
+    "B": [
+      "Big Ben",
+      "Basílica de San Pedro",
+      "Berliner Tor"
+    ],
+    "C": [
+      "Coliseo",
+      "Cristo Redentor",
+      "Castillo de Chambord"
+    ],
+    "D": [
+      "David de Miguel Ángel",
+      "Duomo de Florencia",
+      "Door of India"
+    ],
+    "E": [
+      "Estatua de la Libertad",
+      "Esfinge de Guiza",
+      "Escalinata Española"
+    ],
+    "G": [
+      "Gran Muralla",
+      "Golden Gate",
+      "Gran Pirámide"
+    ],
+    "M": [
+      "Mezquita de Córdoba",
+      "Monte Rushmore",
+      "Monasterio de El Escorial"
+    ],
+    "P": [
+      "Partenón",
+      "Puerta de Brandeburgo",
+      "Petra"
+    ],
+    "S": [
+      "Sagrada Familia",
+      "Stonehenge",
+      "Sydney Opera House"
+    ],
+    "T": [
+      "Taj Mahal",
+      "Templo del Cielo",
+      "Torre de Londres"
+    ]
+  },
+  "Comidas": {
+    "A": [
+      "Arepa",
+      "Arroz a la cubana",
+      "Asado"
+    ],
+    "B": [
+      "Bacalao",
+      "Berenjenas rellenas",
+      "Burrito"
+    ],
+    "C": [
+      "Canelones",
+      "Ceviche",
+      "Couscous"
+    ],
+    "D": [
+      "Dumplings",
+      "Dorada al horno",
+      "Doner kebab"
+    ],
+    "E": [
+      "Empanada",
+      "Enchiladas",
+      "Escabeche"
+    ],
+    "F": [
+      "Fabada",
+      "Falafel",
+      "Fideuá"
+    ],
+    "G": [
+      "Gazpacho",
+      "Gyoza",
+      "Goulash"
+    ],
+    "H": [
+      "Hamburguesa",
+      "Hummus",
+      "Hot dog"
+    ],
+    "L": [
+      "Lasaña",
+      "Lentejas",
+      "Laksa"
+    ],
+    "M": [
+      "Migas",
+      "Mole poblano",
+      "Moussaka"
+    ],
+    "P": [
+      "Paella",
+      "Pisto",
+      "Pupusas"
+    ],
+    "R": [
+      "Ramen",
+      "Ratatouille",
+      "Risotto"
+    ],
+    "S": [
+      "Sushi",
+      "Sancocho",
+      "Shakshuka"
+    ],
+    "T": [
+      "Tacos",
+      "Tortilla de patatas",
+      "Tabulé"
+    ]
+  },
+  "Bebidas": {
+    "A": [
+      "Agua",
+      "Aguapanela",
+      "Aperol Spritz"
+    ],
+    "B": [
+      "Batido",
+      "Bloody Mary",
+      "Bitter"
+    ],
+    "C": [
+      "Café",
+      "Cerveza",
+      "Chocolate caliente"
+    ],
+    "D": [
+      "Daiquiri",
+      "Destornillador",
+      "Dirty Martini"
+    ],
+    "F": [
+      "Frappe",
+      "Fernet",
+      "Frappuccino"
+    ],
+    "G": [
+      "Gin Tonic",
+      "Gaseosa",
+      "Ginger Ale"
+    ],
+    "L": [
+      "Limonada",
+      "Leche",
+      "Licor de café"
+    ],
+    "M": [
+      "Mojito",
+      "Mate",
+      "Malta"
+    ],
+    "R": [
+      "Ron Cola",
+      "Refresco",
+      "Rakija"
+    ],
+    "S": [
+      "Sangría",
+      "Sidra",
+      "Smoothie"
+    ],
+    "T": [
+      "Té",
+      "Tonico",
+      "Tinto de verano"
+    ],
+    "V": [
+      "Vino",
+      "Vermut",
+      "Vodka"
+    ]
+  },
+  "Frutas y verduras": {
+    "A": [
+      "Aguacate",
+      "Arándano",
+      "Alcachofa"
+    ],
+    "B": [
+      "Banana",
+      "Brócoli",
+      "Berenjena"
+    ],
+    "C": [
+      "Cereza",
+      "Calabacín",
+      "Coliflor"
+    ],
+    "F": [
+      "Fresa",
+      "Frambuesa",
+      "Feijoa"
+    ],
+    "K": [
+      "Kiwi",
+      "Kale",
+      "Kumquat"
+    ],
+    "L": [
+      "Limón",
+      "Lechuga",
+      "Lima"
+    ],
+    "M": [
+      "Manzana",
+      "Melón",
+      "Mango"
+    ],
+    "N": [
+      "Naranja",
+      "Nabo",
+      "Níspero"
+    ],
+    "P": [
+      "Pera",
+      "Pimiento",
+      "Papaya"
+    ],
+    "T": [
+      "Tomate",
+      "Tamarindo",
+      "Toronja"
+    ],
+    "U": [
+      "Uva",
+      "Uchuva",
+      "Ulluco"
+    ],
+    "Z": [
+      "Zapallo",
+      "Zanahoria",
+      "Zucchini"
+    ]
+  },
+  "Animales": {
+    "A": [
+      "Águila",
+      "Antílope",
+      "Ardilla"
+    ],
+    "B": [
+      "Ballena",
+      "Búho",
+      "Bisonte"
+    ],
+    "C": [
+      "Caballo",
+      "Camello",
+      "Canguro"
+    ],
+    "D": [
+      "Delfín",
+      "Dromedario",
+      "Dragón de Komodo"
+    ],
+    "E": [
+      "Elefante",
+      "Erizo",
+      "Escorpión"
+    ],
+    "F": [
+      "Flamenco",
+      "Foca",
+      "Faisán"
+    ],
+    "G": [
+      "Gorila",
+      "Gacela",
+      "Gato"
+    ],
+    "H": [
+      "Hiena",
+      "Hipopótamo",
+      "Halconcito"
+    ],
+    "J": [
+      "Jirafa",
+      "Jaguar",
+      "Jabalí"
+    ],
+    "L": [
+      "León",
+      "Lobo",
+      "Lémur"
+    ],
+    "M": [
+      "Mono",
+      "Manatí",
+      "Murciélago"
+    ],
+    "P": [
+      "Panda",
+      "Perro",
+      "Pingüino"
+    ],
+    "R": [
+      "Rinoceronte",
+      "Rana",
+      "Ratón"
+    ],
+    "T": [
+      "Tigre",
+      "Tortuga",
+      "Tapir"
+    ],
+    "Z": [
+      "Zorro",
+      "Zebra",
+      "Zorrillo"
+    ]
+  },
+  "Ciudades y pueblos": {
+    "A": [
+      "Atenas",
+      "Amsterdam",
+      "Ankara"
+    ],
+    "B": [
+      "Barcelona",
+      "Bogotá",
+      "Bruselas"
+    ],
+    "C": [
+      "Córdoba",
+      "Cali",
+      "Chicago"
+    ],
+    "D": [
+      "Dublín",
+      "Dubái",
+      "Detroit"
+    ],
+    "E": [
+      "Estocolmo",
+      "Edimburgo",
+      "El Cairo"
+    ],
+    "F": [
+      "Florencia",
+      "Fráncfort",
+      "Fukuoka"
+    ],
+    "G": [
+      "Granada",
+      "Ginebra",
+      "Guadalajara"
+    ],
+    "H": [
+      "Hamburgo",
+      "Helsinki",
+      "Hanoi"
+    ],
+    "L": [
+      "Lisboa",
+      "Lima",
+      "Los Ángeles"
+    ],
+    "M": [
+      "Madrid",
+      "México D. F.",
+      "Múnich"
+    ],
+    "N": [
+      "Nápoles",
+      "Nueva York",
+      "Niza"
+    ],
+    "P": [
+      "París",
+      "Praga",
+      "Pekín"
+    ],
+    "R": [
+      "Roma",
+      "Río de Janeiro",
+      "Rotterdam"
+    ],
+    "S": [
+      "Sevilla",
+      "Sídney",
+      "Santiago"
+    ],
+    "T": [
+      "Tokio",
+      "Toronto",
+      "Turín"
+    ]
+  },
+  "Pintores": {
+    "A": [
+      "Jose de Almada Negreiros",
+      "Artemisia Gentileschi",
+      "Anselm Kiefer"
+    ],
+    "C": [
+      "Paul Cézanne",
+      "Marc Chagall",
+      "Caravaggio"
+    ],
+    "D": [
+      "Edgar Degas",
+      "Otto Dix",
+      "Durero"
+    ],
+    "G": [
+      "Francisco de Goya",
+      "Giotto",
+      "El Greco"
+    ],
+    "K": [
+      "Wassily Kandinsky",
+      "Paul Klee",
+      "Gustav Klimt"
+    ],
+    "M": [
+      "Édouard Manet",
+      "Claude Monet",
+      "Henri Matisse"
+    ],
+    "P": [
+      "Pablo Picasso",
+      "Jackson Pollock",
+      "Giovanni Piranesi"
+    ],
+    "R": [
+      "Rembrandt",
+      "Renoir",
+      "Rothko"
+    ],
+    "V": [
+      "Diego Velázquez",
+      "Vincent van Gogh",
+      "Vermeer"
+    ]
+  },
+  "Libros": {
+    "A": [
+      "Ana Karenina",
+      "Alicia en el País de las Maravillas",
+      "A sangre fría"
+    ],
+    "B": [
+      "Bajo la misma estrella",
+      "Bodas de sangre",
+      "Beloved"
+    ],
+    "C": [
+      "Cien años de soledad",
+      "Crimen y castigo",
+      "Cometas en el cielo"
+    ],
+    "D": [
+      "Don Quijote de la Mancha",
+      "Drácula",
+      "Dune"
+    ],
+    "E": [
+      "El nombre de la rosa",
+      "El principito",
+      "El señor de los anillos"
+    ],
+    "F": [
+      "Fahrenheit 451",
+      "Fundación",
+      "Frankenstein"
+    ],
+    "H": [
+      "Hamlet",
+      "Historia de dos ciudades",
+      "Hijos de la medianoche"
+    ],
+    "L": [
+      "La Odisea",
+      "La Ilíada",
+      "La metamorfosis"
+    ],
+    "M": [
+      "Madame Bovary",
+      "Matar a un ruiseñor",
+      "Moby-Dick"
+    ],
+    "P": [
+      "Pedro Páramo",
+      "Pálido fuego",
+      "Paisajes después de la batalla"
+    ],
+    "S": [
+      "Siddhartha",
+      "Sapiens",
+      "Sin noticias de Gurb"
+    ],
+    "T": [
+      "Tristram Shandy",
+      "Tokio blues (Norwegian Wood)",
+      "Tintín en el Tíbet"
+    ]
+  },
+  "Herramientas": {
+    "A": [
+      "Alicates",
+      "Atornillador",
+      "Afilador"
+    ],
+    "B": [
+      "Broca",
+      "Barrena",
+      "Berbiquí"
+    ],
+    "C": [
+      "Cincel",
+      "Cutter",
+      "Calibre"
+    ],
+    "D": [
+      "Destornillador",
+      "Dinamométrica",
+      "Dremel"
+    ],
+    "H": [
+      "Hammer (martillo)",
+      "Hacha",
+      "Higrómetro"
+    ],
+    "L": [
+      "Llave inglesa",
+      "Llave Allen",
+      "Lijadora"
+    ],
+    "M": [
+      "Martillo",
+      "Metro",
+      "Maza"
+    ],
+    "S": [
+      "Serrucho",
+      "Soldador",
+      "Sargentos"
+    ],
+    "T": [
+      "Taladro",
+      "Tornillo de banco",
+      "Tenaza"
+    ]
+  },
+  "Utensilios de cocina": {
+    "B": [
+      "Batidora",
+      "Báscula",
+      "Bol"
+    ],
+    "C": [
+      "Cazo",
+      "Cuchillo chef",
+      "Colador"
+    ],
+    "E": [
+      "Escurridor",
+      "Espátula",
+      "Espumadera"
+    ],
+    "O": [
+      "Olla",
+      "Openers (abrebotellas)",
+      "Olla exprés"
+    ],
+    "P": [
+      "Plato",
+      "Pelador",
+      "Pinzas"
+    ],
+    "S": [
+      "Sartén",
+      "Salero",
+      "Sacacorchos"
+    ],
+    "T": [
+      "Tabla de cortar",
+      "Tenedor",
+      "Taza"
+    ]
+  },
+  "Ropa y complementos": {
+    "A": [
+      "Abrigo",
+      "Anorak",
+      "Americana"
+    ],
+    "B": [
+      "Blusa",
+      "Bufanda",
+      "Bermudas"
+    ],
+    "C": [
+      "Camisa",
+      "Cinturón",
+      "Chaqueta"
+    ],
+    "G": [
+      "Gorra",
+      "Guantes",
+      "Gafas"
+    ],
+    "P": [
+      "Pantalón",
+      "Pijama",
+      "Pulsera"
+    ],
+    "S": [
+      "Sombrero",
+      "Sudadera",
+      "Sandalias"
+    ],
+    "Z": [
+      "Zapatos",
+      "Zapatillas",
+      "Zuecos"
+    ]
+  },
+  "Árboles y plantas": {
+    "A": [
+      "Álamo",
+      "Arce",
+      "Acebo"
+    ],
+    "C": [
+      "Cerezo",
+      "Ciprés",
+      "Cactus"
+    ],
+    "E": [
+      "Encina",
+      "Eucalipto",
+      "Espino"
+    ],
+    "F": [
+      "Fresno",
+      "Ficus",
+      "Fucsia"
+    ],
+    "H": [
+      "Haya",
+      "Hiedra",
+      "Hibisco"
+    ],
+    "J": [
+      "Jacarandá",
+      "Jazmín",
+      "Jara"
+    ],
+    "M": [
+      "Magnolia",
+      "Madroño",
+      "Manzano"
+    ],
+    "P": [
+      "Pino",
+      "Palmera",
+      "Plátano de sombra"
+    ],
+    "R": [
+      "Roble",
+      "Romero",
+      "Retama"
+    ],
+    "S": [
+      "Sauce",
+      "Secuoya",
+      "Sabina"
+    ]
+  },
+  "Flores": {
+    "A": [
+      "Azucena",
+      "Amapola",
+      "Anturio"
+    ],
+    "C": [
+      "Clavel",
+      "Crisantemo",
+      "Campanilla"
+    ],
+    "D": [
+      "Dalia",
+      "Diente de león",
+      "Dedalera"
+    ],
+    "G": [
+      "Gardenia",
+      "Geranio",
+      "Girasol"
+    ],
+    "L": [
+      "Lirio",
+      "Lavanda",
+      "Lila"
+    ],
+    "M": [
+      "Margarita",
+      "Magnolia",
+      "Muguet"
+    ],
+    "O": [
+      "Orquídea",
+      "Osteospermum",
+      "Oxalis"
+    ],
+    "R": [
+      "Rosa",
+      "Ranúnculo",
+      "Rododendro"
+    ],
+    "T": [
+      "Tulipán",
+      "Tagete",
+      "Trompeta de ángel"
+    ]
+  },
+  "Partes del cuerpo": {
+    "B": [
+      "Brazo",
+      "Boca",
+      "Barbilla"
+    ],
+    "C": [
+      "Cabeza",
+      "Corazón",
+      "Codo"
+    ],
+    "H": [
+      "Hombro",
+      "Hígado",
+      "Hueso"
+    ],
+    "M": [
+      "Mano",
+      "Muñeca",
+      "Muslo"
+    ],
+    "P": [
+      "Pierna",
+      "Pie",
+      "Pulmón"
+    ],
+    "R": [
+      "Rodilla",
+      "Riñón",
+      "Respaldo (espalda)"
+    ],
+    "T": [
+      "Tobillo",
+      "Tronco",
+      "Tórax"
+    ]
+  },
+  "Youtubers e Influencers": {
+    "A": [
+      "AuronPlay",
+      "Alvinsch",
+      "Amouranth"
+    ],
+    "D": [
+      "Dalasmor",
+      "DrossRotzank",
+      "Domelipa"
+    ],
+    "E": [
+      "El Rubius",
+      "El Mariana",
+      "Emma Chamberlain"
+    ],
+    "I": [
+      "Ibai Llanos",
+      "IlloJuan",
+      "IJustine"
+    ],
+    "L": [
+      "Luisa Fernanda W",
+      "Luisito Comunica",
+      "Logan Paul"
+    ],
+    "M": [
+      "MrBeast",
+      "Marina Rivers",
+      "Martínez Twins"
+    ],
+    "N": [
+      "NikkieTutorials",
+      "Nil Ojeda",
+      "Noel Miller"
+    ],
+    "P": [
+      "PewDiePie",
+      "Patry Jordan",
+      "Paula Gonu"
+    ],
+    "R": [
+      "Rojuu",
+      "Rivers",
+      "Ruben Gundersen (ElRubius)"
+    ],
+    "V": [
+      "Vegetta777",
+      "Viry Vlog",
+      "Vikkstar123"
+    ]
+  },
+  "Juegos": {
+    "A": [
+      "Ajedrez",
+      "Among Us",
+      "Age of Empires"
+    ],
+    "B": [
+      "Baldur's Gate",
+      "Bloodborne",
+      "Boggle"
+    ],
+    "C": [
+      "Cluedo",
+      "Counter-Strike",
+      "Candy Crush"
+    ],
+    "D": [
+      "Diablo",
+      "Doom",
+      "Dark Souls"
+    ],
+    "F": [
+      "FIFA",
+      "Final Fantasy",
+      "Forza Horizon"
+    ],
+    "G": [
+      "Genshin Impact",
+      "God of War",
+      "Gran Turismo"
+    ],
+    "M": [
+      "Minecraft",
+      "Monopoly",
+      "Metro Exodus"
+    ],
+    "S": [
+      "Skyrim",
+      "Street Fighter",
+      "StarCraft"
+    ],
+    "T": [
+      "Terraria",
+      "Tetris",
+      "The Witcher"
+    ]
+  },
+  "Elementos químicos": {
+    "A": [
+      "Aluminio",
+      "Argón",
+      "Arsénico"
+    ],
+    "B": [
+      "Boro",
+      "Bromo",
+      "Bario"
+    ],
+    "C": [
+      "Carbono",
+      "Cobalto",
+      "Cobre"
+    ],
+    "F": [
+      "Flúor",
+      "Francio",
+      "Fierro (Hierro)"
+    ],
+    "G": [
+      "Galio",
+      "Germanio",
+      "Gadolinio"
+    ],
+    "H": [
+      "Hidrógeno",
+      "Helio",
+      "Hafnio"
+    ],
+    "I": [
+      "Iodo (Yodo)",
+      "Iridio",
+      "Indio"
+    ],
+    "K": [
+      "Potasio",
+      "Kriptón",
+      "Kurio (Kürio)"
+    ],
+    "L": [
+      "Litio",
+      "Lantano",
+      "Lawrencio"
+    ],
+    "M": [
+      "Magnesio",
+      "Manganeso",
+      "Molibdeno"
+    ],
+    "N": [
+      "Nitrógeno",
+      "Níquel",
+      "Neón"
+    ],
+    "O": [
+      "Oxígeno",
+      "Osmio",
+      "Oro"
+    ],
+    "P": [
+      "Plata",
+      "Plomo",
+      "Platino"
+    ],
+    "S": [
+      "Sodio",
+      "Silicio",
+      "Selenio"
+    ],
+    "T": [
+      "Talio",
+      "Titanio",
+      "Tulio"
+    ],
+    "U": [
+      "Uranio",
+      "Ununbio (Copernicio)",
+      "Ununhexio (Livermorio)"
+    ],
+    "Z": [
+      "Zinc",
+      "Zirconio",
+      "Zincato"
+    ]
+  },
+  "Nombres de persona": {
+    "A": [
+      "Ana",
+      "Andrés",
+      "Alejandro"
+    ],
+    "B": [
+      "Beatriz",
+      "Bruno",
+      "Berta"
+    ],
+    "C": [
+      "Carlos",
+      "Carmen",
+      "Claudia"
+    ],
+    "D": [
+      "Diego",
+      "Daniela",
+      "David"
+    ],
+    "E": [
+      "Elena",
+      "Eduardo",
+      "Esteban"
+    ],
+    "F": [
+      "Fernando",
+      "Francisco",
+      "Fabiana"
+    ],
+    "G": [
+      "Gabriel",
+      "Guillermo",
+      "Gloria"
+    ],
+    "I": [
+      "Isabel",
+      "Ignacio",
+      "Irene"
+    ],
+    "J": [
+      "Javier",
+      "Jorge",
+      "Julia"
+    ],
+    "L": [
+      "Laura",
+      "Lucía",
+      "Luis"
+    ],
+    "M": [
+      "Manuel",
+      "María",
+      "Miguel"
+    ],
+    "P": [
+      "Pablo",
+      "Paula",
+      "Patricia"
+    ],
+    "R": [
+      "Raúl",
+      "Rosa",
+      "Ricardo"
+    ],
+    "S": [
+      "Sergio",
+      "Sofía",
+      "Samuel"
+    ],
+    "T": [
+      "Teresa",
+      "Tomás",
+      "Tatiana"
+    ]
+  },
+  "Fenómenos atmosféricos": {
+    "B": [
+      "Brisa",
+      "Borrasca",
+      "Banco de niebla"
+    ],
+    "C": [
+      "Ciclón",
+      "Chubasco",
+      "Calima"
+    ],
+    "D": [
+      "Dorsal anticiclónica",
+      "Dew (rocío)",
+      "Descarga eléctrica"
+    ],
+    "G": [
+      "Granizo",
+      "Gota fría (DANA)",
+      "Galernas"
+    ],
+    "H": [
+      "Huracán",
+      "Helada",
+      "Halo solar"
+    ],
+    "N": [
+      "Niebla",
+      "Nevada",
+      "Nubarrón"
+    ],
+    "T": [
+      "Tormenta",
+      "Tornado",
+      "Tromba marina"
+    ]
+  },
+  "Marcas": {
+    "A": [
+      "Apple",
+      "Adidas",
+      "Airbnb"
+    ],
+    "B": [
+      "Bosch",
+      "Burger King",
+      "Balenciaga"
+    ],
+    "C": [
+      "Coca-Cola",
+      "Cisco",
+      "Canon"
+    ],
+    "D": [
+      "Disney",
+      "Dell",
+      "DHL"
+    ],
+    "H": [
+      "Huawei",
+      "Heineken",
+      "H&M"
+    ],
+    "I": [
+      "IKEA",
+      "Intel",
+      "Iberia"
+    ],
+    "L": [
+      "LEGO",
+      "Lenovo",
+      "Louis Vuitton"
+    ],
+    "M": [
+      "Microsoft",
+      "McDonald's",
+      "Mango"
+    ],
+    "N": [
+      "Nike",
+      "Netflix",
+      "Nestlé"
+    ],
+    "P": [
+      "Pepsi",
+      "Panasonic",
+      "PayPal"
+    ],
+    "S": [
+      "Samsung",
+      "Sony",
+      "Spotify"
+    ],
+    "T": [
+      "Toyota",
+      "Tesla",
+      "TikTok"
+    ],
+    "U": [
+      "Uber",
+      "Unilever",
+      "Uniqlo"
+    ]
+  },
+  "Cantantes": {
+    "A": [
+      "Adele",
+      "Alejandro Sanz",
+      "Ariana Grande"
+    ],
+    "B": [
+      "Beyoncé",
+      "Bad Bunny",
+      "Bruce Springsteen"
+    ],
+    "C": [
+      "Camila Cabello",
+      "Celine Dion",
+      "Chayanne"
+    ],
+    "D": [
+      "David Bowie",
+      "Dua Lipa",
+      "Diego El Cigala"
+    ],
+    "J": [
+      "Justin Bieber",
+      "Julio Iglesias",
+      "Jennifer Lopez"
+    ],
+    "L": [
+      "Lady Gaga",
+      "Lola Índigo",
+      "Luis Miguel"
+    ],
+    "M": [
+      "Michael Jackson",
+      "Madonna",
+      "Maluma"
+    ],
+    "R": [
+      "Rosalía",
+      "Rihanna",
+      "Ricky Martin"
+    ],
+    "S": [
+      "Shakira",
+      "Sia",
+      "Sam Smith"
+    ],
+    "T": [
+      "Taylor Swift",
+      "Thalía",
+      "Tom Jones"
+    ]
+  },
+  "Actores": {
+    "A": [
+      "Antonio Banderas",
+      "Anne Hathaway",
+      "Adam Driver"
+    ],
+    "B": [
+      "Brad Pitt",
+      "Ben Affleck",
+      "Benedict Cumberbatch"
+    ],
+    "C": [
+      "Cate Blanchett",
+      "Christian Bale",
+      "Chris Evans"
+    ],
+    "D": [
+      "Denzel Washington",
+      "Daniel Day-Lewis",
+      "Daniel Craig"
+    ],
+    "E": [
+      "Emma Stone",
+      "Edward Norton",
+      "Emily Blunt"
+    ],
+    "H": [
+      "Harrison Ford",
+      "Hugh Jackman",
+      "Helen Mirren"
+    ],
+    "J": [
+      "Javier Bardem",
+      "Jodie Foster",
+      "Joaquin Phoenix"
+    ],
+    "M": [
+      "Meryl Streep",
+      "Matt Damon",
+      "Morgan Freeman"
+    ],
+    "N": [
+      "Natalie Portman",
+      "Nicole Kidman",
+      "Naomi Watts"
+    ],
+    "R": [
+      "Robert De Niro",
+      "Ryan Gosling",
+      "Rachel Weisz"
+    ],
+    "S": [
+      "Scarlett Johansson",
+      "Samuel L. Jackson",
+      "Sandra Bullock"
+    ],
+    "T": [
+      "Tom Hanks",
+      "Tom Cruise",
+      "Tilda Swinton"
+    ],
+    "W": [
+      "Will Smith",
+      "Willem Dafoe",
+      "Winona Ryder"
+    ]
+  },
+  "Deportistas": {
+    "A": [
+      "Andre Agassi",
+      "Andrés Iniesta",
+      "Ayrton Senna"
+    ],
+    "B": [
+      "Babe Ruth",
+      "Benzema",
+      "Bolt, Usain"
+    ],
+    "C": [
+      "Cristiano Ronaldo",
+      "Curry, Stephen",
+      "Carl Lewis"
+    ],
+    "D": [
+      "Diego Maradona",
+      "Djokovic, Novak",
+      "Dirk Nowitzki"
+    ],
+    "F": [
+      "Federer, Roger",
+      "Floyd Mayweather",
+      "Fernando Alonso"
+    ],
+    "K": [
+      "Kobe Bryant",
+      "Kylian Mbappé",
+      "Kareem Abdul-Jabbar"
+    ],
+    "L": [
+      "Lionel Messi",
+      "LeBron James",
+      "Lindsey Vonn"
+    ],
+    "M": [
+      "Michael Jordan",
+      "Michael Phelps",
+      "Mireia Belmonte"
+    ],
+    "N": [
+      "Nadal, Rafael",
+      "Nowitzki, Dirk",
+      "Niki Lauda"
+    ],
+    "R": [
+      "Ronaldinho",
+      "Ronaldo Nazário",
+      "Roger Federer"
+    ],
+    "S": [
+      "Serena Williams",
+      "Simone Biles",
+      "Schumacher, Michael"
+    ],
+    "T": [
+      "Tiger Woods",
+      "Tom Brady",
+      "Toni Nadal"
+    ]
+  }
+}

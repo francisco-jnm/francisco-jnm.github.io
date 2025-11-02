@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sorteo de Categorías y Letras</title>
+<style>
+  :root{
+    --bg:#0b0c0f;
+    --text:#e9edf5;
+    --border:#1d212a;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+  }
+
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+    background:
+      radial-gradient(800px 400px at 0% 0%, #152038 0%, transparent 60%),
+      radial-gradient(800px 400px at 100% 0%, #1a1430 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5rem;
+    width:100%;
+  }
+
+  h1{
+    margin:0 0 1rem;
+    font-size:clamp(1.2rem,2vw,1.6rem);
+    text-align:center;
+  }
+
+  .bigbtn{
+    width:70vw;
+    max-width:400px;
+    aspect-ratio:3/1;
+    border:1px solid var(--border);
+    border-radius:14px;
+    font-size:clamp(1.3rem,4vw,2rem);
+    font-weight:700;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    user-select:none;
+    transition:.1s;
+    touch-action:manipulation;
+  }
+
+  .bigbtn:active{
+    transform:scale(0.97);
+  }
+
+  .bigbtn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+  }
+
+  .is-hidden{
+    display:none !important;
+  }
+
+  /* === Colores personalizados de los botones === */
+  #btnCat{
+    background:#2563eb;   /* azul */
+    color:white;
+  }
+
+  #btnLetra{
+    background:#facc15;   /* amarillo */
+    color:black;
+  }
+
+  #btnCountdown{
+    background:#16a34a;   /* verde */
+    color:white;
+  }
+
+  .result{
+    margin-top:1rem;
+    width:80vw;
+    max-width:500px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#0e1014;
+    padding:1rem;
+    font-size:1rem;
+    line-height:1.5;
+  }
+
+  .result ul{
+    margin:.5em 0 0 1em;
+    padding:0;
+  }
+
+  #btnReiniciar{
+    margin-top:1rem;
+    width:70vw;
+    max-width:400px;
+    aspect-ratio:3/1;
+    background:#2563eb;   /* azul, igual que Categorías */
+    color:white;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sorteo de Categorías y Letras</h1>
+
+  <button id="btnCat" class="bigbtn" type="button">Categorías</button>
+  <button id="btnLetra" class="bigbtn is-hidden" type="button">Letra</button>
+  <button id="btnCountdown" class="bigbtn is-hidden" type="button">30</button>
+
+  <div id="resultado" class="result is-hidden">
+    <div id="resTexto"></div>
+    <button id="btnReiniciar" class="bigbtn" type="button">Jugar otra vez</button>
+  </div>
+</div>
+
+<script>
+const DB_URL = 'categorias.json';
+const ANIM_DUR_MS = 3000;
+const STEP_MS = 250;
+const COUNT_START = 30;
+
+let DB = {};
+let seleccion = { categoria: null, letra: null };
+
+const $ = sel => document.querySelector(sel);
+const btnCat = $('#btnCat');
+const btnLetra = $('#btnLetra');
+const btnCountdown = $('#btnCountdown');
+const resDiv = $('#resultado');
+const resTexto = $('#resTexto');
+const btnReiniciar = $('#btnReiniciar');
+
+const choice = arr => arr[Math.floor(Math.random() * arr.length)];
+const cats = () => Object.keys(DB);
+const lettersOf = cat => Object.keys(DB[cat] || {});
+const examplesOf = (cat, l) => (DB[cat] && DB[cat][l]) ? DB[cat][l] : [];
+
+function show(el){ el.classList.remove('is-hidden'); }
+function hide(el){ el.classList.add('is-hidden'); }
+
+function animateButton(options, button) {
+  return new Promise(resolve => {
+    if (!options.length) return resolve(null);
+    button.disabled = true;
+    let timer = setInterval(() => { button.textContent = choice(options); }, STEP_MS);
+    setTimeout(() => {
+      clearInterval(timer);
+      const finalVal = choice(options);
+      button.textContent = finalVal;
+      button.disabled = false;
+      resolve(finalVal);
+    }, ANIM_DUR_MS);
+  });
+}
+
+function startCountdown(from) {
+  btnCountdown.textContent = from;
+  let t = from;
+  const timer = setInterval(() => {
+    t--;
+    btnCountdown.textContent = t;
+    if (t <= 0) {
+      clearInterval(timer);
+      mostrarResultado();
+    }
+  }, 1000);
+}
+
+function mostrarResultado() {
+  const { categoria, letra } = seleccion;
+  const ejemplos = examplesOf(categoria, letra);
+  resTexto.innerHTML = `
+    <p><strong>Categoría:</strong> ${categoria}</p>
+    <p><strong>Letra:</strong> ${letra}</p>
+    <p><strong>Ejemplos:</strong></p>
+    <ul>${ejemplos.map(e => `<li>${e}</li>`).join('')}</ul>
+  `;
+  hide(btnCat); hide(btnLetra); hide(btnCountdown);
+  show(resDiv);
+}
+
+// Eventos
+btnCat.addEventListener('click', async () => {
+  hide(resDiv); hide(btnLetra); hide(btnCountdown);
+  seleccion = { categoria: null, letra: null };
+  btnCat.textContent = 'Categorías';
+
+  const categoria = await animateButton(cats(), btnCat);
+  if (!categoria) return;
+  seleccion.categoria = categoria;
+  show(btnLetra);         // aparece SOLO ahora
+});
+
+btnLetra.addEventListener('click', async () => {
+  hide(resDiv); hide(btnCountdown);
+  btnLetra.textContent = 'Letra';
+  const letras = lettersOf(seleccion.categoria);
+  const letra = await animateButton(letras, btnLetra);
+  if (!letra) return;
+  seleccion.letra = letra;
+  show(btnCountdown);     // aparece SOLO ahora
+  startCountdown(COUNT_START); // y arranca solo
+});
+
+btnReiniciar.addEventListener('click', () => {
+  location.reload();
+});
+
+// Carga del JSON
+fetch(DB_URL).then(r => r.json()).then(data => { DB = data; });
+</script>
+</body>
+</html>
